@@ -7,14 +7,14 @@ var idMap = document.getElementById("idMap");
 var provider = document.getElementById("idUser");
 
 var locations = [];
-var km = 30;
+var km = 20;
 var Crcl ;
 var map;
 var mapOptions = {
     zoom: 11,
     center: {
-        lat: 30.008775,
-        lng: 51.190664
+        lat: -30.008775,
+        lng: -51.190664
     }
 };
 var markers = [];
@@ -36,13 +36,22 @@ function initialize() {
             longitude.value  =  position.coords.longitude;
             info.nodeValue =  position.coords.longitude;
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Sua localização.');
+            markerUser = new google.maps.Marker({
+                position: pos,
+                map: map,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
+                address: pos,
+                title: 'Sua localização'
+            });
+
+            // infoWindow.setPosition(pos);
+            // infoWindow.set("<img src='http://maps.google.com/mapfiles/ms/icons/blue.png' />");
 
             map.setCenter(pos);
 
             DrowCircle(mapOptions, map, pos, km);
 
+            RelatedLocationAjax();
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -62,10 +71,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function DrowCircle(mapOptions, map, pos, km ) {
     var populationOptions = {
         strokeColor: '#0000FF',
-        strokeOpacity: 0.4,
+        strokeOpacity: 0.5,
         strokeWeight: 2,
         fillColor: '#0000FF',
-        fillOpacity: 0.35,
+        fillOpacity: 0.25,
         map: map,
         center: pos,
         radius: Math.sqrt(km*500) * 100
@@ -93,13 +102,13 @@ function add_markers(data){
     var marker, i;
     var bounds = new google.maps.LatLngBounds();
     var infowindow = new google.maps.InfoWindow();
-    console.log(data);
+
     document.getElementById('info').innerHTML = " Available:" + data.length + " Providers<br>";
 
     for (i = 0; i < data.length; i++) {
         var coordStr = data[i][1];
         var coords = coordStr.split(",");
-        console.log(coords);
+
         var pt = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
         bounds.extend(pt);
         marker = new google.maps.Marker({

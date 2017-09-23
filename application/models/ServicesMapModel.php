@@ -21,10 +21,10 @@ class ServicesMapModel extends CI_Model
           + sin( radians({$latitude}) ) * sin( radians( `latitude` ) ) ) ) AS distance,
           CONCAT(user.id,',',user.name) as infoUser
           FROM user
-              WHERE user.id = 1
-          HAVING distance <= 30
+          HAVING distance <= 3
           ORDER BY distance ASC"
         )->result_array();
+
         return $result;
     }
 }
