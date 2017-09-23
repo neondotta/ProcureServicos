@@ -38,17 +38,17 @@ class ServicesMap extends CI_Controller
 
         $count = 0;
 
-//        foreach ($indexed_providers as $arrays => &$array) {
-//            foreach ($array as $key => &$value) {
-//                if ($key === 4) {
-//                    $pieces = explode(',', $value);
-//                    $value = "$pieces[1]<a href='$base$pieces[0]'>More...</a>";
-//                }
-//
-//                $count++;
-//
-//            }
-//        }
+        foreach ($indexed_providers as $arrays => &$array) {
+            foreach ($array as $key => &$value) {
+                if ($key === 4) {
+                    $pieces = explode(',', $value);
+                    $value = "$pieces[1]<a href='$base$pieces[0]'>More...</a>";
+                }
+
+                $count++;
+
+            }
+        }
 
         echo json_encode($indexed_providers,JSON_UNESCAPED_UNICODE);
     }
