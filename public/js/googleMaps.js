@@ -35,7 +35,7 @@ function initialize() {
             latitude.value  =  position.coords.latitude ;
             longitude.value  =  position.coords.longitude;
             info.nodeValue =  position.coords.longitude;
-            console.log(pos);
+
             infoWindow.setPosition(pos);
             infoWindow.setContent('Sua localização.');
 
@@ -44,11 +44,9 @@ function initialize() {
             DrowCircle(mapOptions, map, pos, km);
 
         }, function() {
-
             handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
-
         handleLocationError(false, infoWindow, map.getCenter());
 
     }
@@ -82,10 +80,12 @@ function RelatedLocationAjax() {
         url: "./index.php/servicesMap/closestLocations",
         dataType: "json",
         data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "idMap": "'+idMap.value+'" }',
+
         success:function(data) {
             // when request is successed add markers with results
             add_markers(data);
         }
+
     });
 }
 
@@ -93,19 +93,20 @@ function add_markers(data){
     var marker, i;
     var bounds = new google.maps.LatLngBounds();
     var infowindow = new google.maps.InfoWindow();
-
+    console.log(data);
     document.getElementById('info').innerHTML = " Available:" + data.length + " Providers<br>";
 
     for (i = 0; i < data.length; i++) {
-        var coordStr = data[i][2];
+        var coordStr = data[i][1];
         var coords = coordStr.split(",");
+        console.log(coords);
         var pt = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
         bounds.extend(pt);
         marker = new google.maps.Marker({
             position: pt,
             map: map,
-            icon: data[i][3],
-            address: data[i][1],
+            icon: data[i][2],
+            address: data[i][3],
             title: data[i][0],
             html: data[i][0] + "<br>" + data[i][1]
         });
@@ -113,6 +114,7 @@ function add_markers(data){
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
                 infowindow.setContent(marker.html);
+                prov.value = data[i][5];
                 infowindow.open(map, marker);
             }
         })

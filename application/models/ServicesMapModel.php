@@ -14,12 +14,12 @@ class ServicesMapModel extends CI_Model
 {
     function getClosestLocations($longitude, $latitude, $id)
     {
-
         $result = $this->db->query(
           "SELECT user.name,CONCAT(latitude,',', longitude) as pos,
           'http://maps.google.com/mapfiles/ms/icons/green.png' AS icon,
           ( 6371 * acos( cos( radians({$latitude}) ) * cos( radians( `latitude` ) ) * cos( radians( `longitude` ) - radians({$longitude}) ) 
-          + sin( radians({$latitude}) ) * sin( radians( `latitude` ) ) ) ) AS distance
+          + sin( radians({$latitude}) ) * sin( radians( `latitude` ) ) ) ) AS distance,
+          CONCAT(user.id,',',user.name) as infoUser
           FROM user
               WHERE user.id = 1
           HAVING distance <= 30

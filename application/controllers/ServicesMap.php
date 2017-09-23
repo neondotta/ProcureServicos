@@ -33,13 +33,14 @@ class ServicesMap extends CI_Controller
         $id = $location->idMap;
         $base = base_url();
         $providers = $this->servicesMapModel->getClosestLocations($longitude, $latitude, $id);
+
         $indexed_providers = array_map('array_values', $providers);
 
         $count = 0;
 
         foreach ($indexed_providers as $arrays => &$array) {
             foreach ($array as $key => &$value) {
-                if ($key === 1) {
+                if ($key === 4) {
                     $pieces = explode(',', $value);
                     $value = "$pieces[1]<a href='$base$pieces[0]'>More...</a>";
                 }
@@ -50,7 +51,6 @@ class ServicesMap extends CI_Controller
         }
 
         echo json_encode($indexed_providers,JSON_UNESCAPED_UNICODE);
-
     }
 
     function orderServicesTwo()
@@ -60,7 +60,6 @@ class ServicesMap extends CI_Controller
         $this->form_validation->set_rules('RequestAddress', 'RequestAddress', 'trim|required');
 
         if ($this->form_validation->run($this) == FALSE) {
-
             $data['error'] = validation_errors('
                 <div class="alert alert-danger notices errorimg alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert">
@@ -69,7 +68,6 @@ class ServicesMap extends CI_Controller
             $this->load->view('bookService', $data);
         } else {
             print_r($this->input->post());
-
         }
     }
 
