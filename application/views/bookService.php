@@ -29,16 +29,12 @@
     </div>
 </form>
 
-<script src="<?= base_url() ?>public/js/jquery-3.2.1.min.js"></script>
-<!--script src="<?= base_url() ?> public/js/geocomplete.min.js"></script -->
-
-<script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNyLsAhFt4hIZKeNJYC244jPPayM0GhrY">
-</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNyLsAhFt4hIZKeNJYC244jPPayM0GhrY"></script>
 <script src="<?= base_url() ?>public/js/googleMaps.js"></script>
+
+<!--script src="<?= base_url() ?> public/js/geocomplete.min.js"></script -->
 <!--script async defer
         src="https://maps.googleapis.com/maps/api/js?libraries=places&en=pt-br&key=AIzaSyDNyLsAhFt4hIZKeNJYC244jPPayM0GhrY">
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWX5CTUo9pl2mXPJ9x4-uL2XF-0HH5IOw=initialize">
 </script -->
-
 <!-- script src="https://maps.googleapis.com/maps/api/js?libraries=places&en=pt-br&key=AIzaSyDNyLsAhFt4hIZKeNJYC244jPPayM0GhrY"></script -->

@@ -6,7 +6,7 @@
  * Time: 09:59
  */
 
-class ServicesMap extends CI_Controller
+class ServicesMap extends indexCore
 {
 
     function __construct()
@@ -22,7 +22,7 @@ class ServicesMap extends CI_Controller
 
     function bookService()
     {
-        $this->load->view('bookService');
+        $this->view('bookService');
     }
 
     function closestLocations()
@@ -30,7 +30,7 @@ class ServicesMap extends CI_Controller
         $location = json_decode( preg_replace('/\\\"/',"\"",$_POST['data']));
         $longitude = $location->longitude;
         $latitude = $location->latitude;
-        $id = $location->idMap;
+        $id = isset($location->idMap) ? $location->idMap : 1;
         $base = base_url();
         $providers = $this->servicesMapModel->getClosestLocations($longitude, $latitude, $id);
 

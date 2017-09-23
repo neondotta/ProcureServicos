@@ -86,7 +86,7 @@ function DrowCircle(mapOptions, map, pos, km ) {
 function RelatedLocationAjax() {
     $.ajax({
         type: "POST",
-        url: "./index.php/servicesMap/closestLocations",
+        url: "./servicesMap/closestLocations",
         dataType: "json",
         data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "idMap": "'+idMap.value+'" }',
 
