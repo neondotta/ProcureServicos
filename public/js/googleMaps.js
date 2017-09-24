@@ -34,15 +34,21 @@ function serviceListMap() {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
             latitude.value  =  position.coords.latitude ;
             longitude.value  =  position.coords.longitude;
-            info.nodeValue =  position.coords.longitude;
 
-            UserLocationAjax();
+            var options = {
+                latitude: latitude.value,
+                longitude: longitude.value,
+                type: "list"
+            };
+
+            $.post("./index.php/servicesMap/closestLocations", options)
+                .done(function(data) {
+                    add_professional(data);
+                });
+
+            //UserLocationAjax();
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -133,22 +139,34 @@ function UserLocationAjax() {
         type: "POST",
         url: "./index.php/servicesMap/closestLocations",
         dataType: "json",
-        data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "type": "list" }',
-
-        success:function(data) {
-            document.getElementById('nameProfessional').innerHTML = data[0]['name'];
-            console.log('oioioi');
-        }
+        data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "type": "list" }'
     });
 
 }
 
-function add_markers(data){
+function add_professional(data) {
+
+    console.log(JSON.parse(data));
+    $.each(JSON.parse(data), function(i, e) {
+        var li = $("<li class=\"collection-item avatar\"></li>");
+        var span = $("<span class=\"title\" id=\"nameProfessional\"></span>");
+        var p = $("<p id=\"emailProfessional\"></p>");
+        var img = $('<img />', { src:'public/images/default.jpg', alt:"", class:"left" });
+        span.text(e.name);
+        p.text(e.email);
+
+        li.append(img, span, p);
+        li.appendTo($('.collection'));
+    });
+
+}
+
+function add_markers(data) {
     var marker, i;
     var bounds = new google.maps.LatLngBounds();
     var infowindow = new google.maps.InfoWindow();
 
-    document.getElementById('info').innerHTML = " Available:" + data.length + " Providers<br>";
+    document.getElementById('info').innerHTML = " Encontrado:" + data.length + " profissionais próximos de você.<br>";
 
     for (i = 0; i < data.length; i++) {
         var coordStr = data[i][1];

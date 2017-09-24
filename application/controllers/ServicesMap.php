@@ -27,13 +27,14 @@ class ServicesMap extends indexCore
 
     function closestLocations()
     {
-        $location = json_decode( preg_replace('/\\\"/',"\"",$_POST['data']));
-        $longitude = $location->longitude;
-        $latitude = $location->latitude;
-        $type = $location->type;
+
         $base = base_url();
 
-        if ($type == 'map') {
+        if (isset($_POST['data'])) {
+            $location = json_decode( preg_replace('/\\\"/',"\"",$_POST['data']));
+            $longitude = $location->longitude;
+            $latitude = $location->latitude;
+            $type = $location->type;
             $providers = $this->servicesMapModel->getClosestMap($longitude, $latitude, $type);
 
             $indexed_providers = array_map('array_values', $providers);
@@ -57,9 +58,16 @@ class ServicesMap extends indexCore
             return $indexed_providers;
         }
 
+        $location = $_POST;
+        $longitude = $location['longitude'];
+        $latitude = $location['latitude'];
+        $type = $location['type'];
+
         $providers = $this->servicesMapModel->getClosestList($longitude, $latitude, $type);
 
         //echo '<pre>';print_r($providers);echo '</pre>';
+
+        echo json_encode($providers,JSON_UNESCAPED_UNICODE);
 
         return $providers;
 
