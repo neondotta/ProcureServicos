@@ -1,7 +1,28 @@
+nav {
+    margin-bottom: 15px;
+}
 
+nav, nav .nav-wrapper i{
+    height:50px;
+    line-height:50px;
+}
+    .dropdown-content {
+        margin-top: 50px;
+    }
+
+.container.medium {
+    width:90vw;
+}
 
 .collection-item img {
     height: 70px;
     width: 70px;
     margin-right: 10px;
 }
+
+.card-panel{
+    padding:10px 24px;
+}
+    .card-panel > span.notification {
+        font-size:1em;
+    }

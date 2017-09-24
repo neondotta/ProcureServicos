@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Set-2017 às 01:01
+-- Generation Time: 25-Set-2017 às 01:24
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -34,6 +34,17 @@ CREATE TABLE `category` (
   `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `category`
+--
+
+INSERT INTO `category` (`id`, `category`, `description`) VALUES
+(1, 'Chaveiro', NULL),
+(2, 'Mecânico', NULL),
+(3, 'Eletricista', NULL),
+(4, 'Hidráulico', NULL),
+(5, 'Pedreiro', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +55,17 @@ CREATE TABLE `category_professional` (
   `id_category` int(11) NOT NULL,
   `id_professional` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `category_professional`
+--
+
+INSERT INTO `category_professional` (`id_category`, `id_professional`) VALUES
+(1, 1),
+(2, 1),
+(2, 2),
+(3, 1),
+(5, 3);
 
 -- --------------------------------------------------------
 
@@ -71,6 +93,15 @@ CREATE TABLE `professional` (
   `cnpj` varchar(45) DEFAULT NULL,
   `invoice` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `professional`
+--
+
+INSERT INTO `professional` (`id`, `certificate`, `id_user`, `cnpj`, `invoice`) VALUES
+(1, 1, 1, '1222222222221', 1),
+(2, 0, 2, NULL, 0),
+(3, 1, 3, '12345643222', 1);
 
 -- --------------------------------------------------------
 
@@ -128,8 +159,8 @@ CREATE TABLE `user` (
   `street` varchar(45) NOT NULL,
   `number` varchar(45) NOT NULL,
   `complemento` varchar(45) NOT NULL,
-  `latitude` float(9,7) DEFAULT NULL,
-  `longitude` float(9,7) DEFAULT NULL,
+  `latitude` float(10,7) DEFAULT NULL,
+  `longitude` float(10,7) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `name_picture` varchar(255) DEFAULT NULL,
   `address_picture` varchar(255) DEFAULT NULL
@@ -141,7 +172,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `cpf`, `cep`, `nation`, `country`, `city`, `street`, `number`, `complemento`, `latitude`, `longitude`, `email`, `name_picture`, `address_picture`) VALUES
 (1, 'Neon Dotta', '22222222222', 90550002, 'Brasil', 'RS', 'Porto Alegre', 'Benjamim Constant', '1111', '', -30.0162868, -51.1535683, 'neon@neon.com', NULL, NULL),
-(2, 'Tamara', '23232123412', 91360000, 'Brasil', 'RS', 'Porto Alegre', 'Avenida Do Forte', '697', '', -30.0113792, -51.1937218, 'tamara@tamara.com', NULL, NULL);
+(2, 'Tamara', '23232123412', 91360000, 'Brasil', 'RS', 'Porto Alegre', 'Avenida Do Forte', '697', '', -30.0113792, -51.1937218, 'tamara@tamara.com', NULL, NULL),
+(3, 'Matheus', '12121212121', 91750740, 'Brasil', 'RS', 'Porto Alegre', 'Romeu Samarani Ferreira', '265', '', -30.1275501, -51.2082291, 'matheus@matheus.com', NULL, NULL),
+(4, 'Deni', '12211245643', 92200300, 'Brasil', 'RS', 'Porto Alegre', 'Rua Primavera', '2109', '', -29.9635429, -51.1885872, 'deni@deni.com', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -204,7 +237,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `documents`
 --
@@ -214,7 +247,7 @@ ALTER TABLE `documents`
 -- AUTO_INCREMENT for table `professional`
 --
 ALTER TABLE `professional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `service`
 --
@@ -229,7 +262,7 @@ ALTER TABLE `service_map`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --

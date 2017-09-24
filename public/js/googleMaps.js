@@ -146,7 +146,7 @@ function UserLocationAjax() {
 
 function add_professional(data) {
 
-    console.log(JSON.parse(data));
+    document.getElementById('info').innerHTML = " Encontrado:" + JSON.parse(data).length + " profissionais próximos de você.<br>";
     $.each(JSON.parse(data), function(i, e) {
         var li = $("<li class=\"collection-item avatar\"></li>");
         var span = $("<span class=\"title\" id=\"nameProfessional\"></span>");
