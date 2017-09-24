@@ -12,6 +12,10 @@ if (!defined('BASEPATH'))
 
 class ServicesMapModel extends CI_Model
 {
+    function __construct()
+    {
+        parent::__construct();
+    }
 
     public function getClosestMap($longitude, $latitude, $type, $distance = NULL)
     {
@@ -37,9 +41,9 @@ class ServicesMapModel extends CI_Model
             $distance = 10;
         }
 
-        $sql = "SELECT name, city, street, latitude, longitude, email
+        $sql = "SELECT name, city, street, latitude, longitude, email,
               ( 6371 * acos( cos( radians({$latitude}) ) * cos( radians( `latitude` ) ) * cos( radians( `longitude` ) 
-              - radians({$longitude}) ) + sin( radians({$latitude}) ) * sin( radians( `latitude` ) ) ) ) AS distance,
+              - radians({$longitude}) ) + sin( radians({$latitude}) ) * sin( radians( `latitude` ) ) ) ) AS distance
               FROM user
               HAVING distance <= {$distance}
               ORDER BY distance ASC";
@@ -52,7 +56,7 @@ class ServicesMapModel extends CI_Model
     public function getClosestLocations($query)
     {
         $result = $this->db->query($query)->result_array();
-        //print_r($result);
+
         return $result;
     }
 }

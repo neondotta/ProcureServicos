@@ -12,13 +12,21 @@ class IndexController extends IndexCore
     {
         parent::__construct();
         $base = base_url();
-        $this->load->controller('servicesMap');
     }
 
     public function index()
     {
         $this->view('index/index');
+    }
 
+    public function listProfessional($listProfessional)
+    {
+        echo '<pre>';print_r($listProfessional);die();
+        if (isset($listProfessional)) {
+           return $listProfessional;
+        }
+
+        return "Não foi localizado profissionais nesta região";
     }
 
 }

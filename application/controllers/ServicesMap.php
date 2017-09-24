@@ -35,27 +35,34 @@ class ServicesMap extends indexCore
 
         if ($type == 'map') {
             $providers = $this->servicesMapModel->getClosestMap($longitude, $latitude, $type);
-        } else {
-            $providers = $this->servicesMapModel->getClosestList($longitude, $latitude, $type);
-        }
 
-        $indexed_providers = array_map('array_values', $providers);
+            $indexed_providers = array_map('array_values', $providers);
 
-        $count = 0;
+            $count = 0;
 
-        foreach ($indexed_providers as $arrays => &$array) {
-            foreach ($array as $key => &$value) {
-                if ($key === 4) {
-                    $pieces = explode(',', $value);
-                    $value = "$pieces[1]<a href='$base$pieces[0]'>More...</a>";
+            foreach ($indexed_providers as $arrays => &$array) {
+                foreach ($array as $key => &$value) {
+                    if ($key === 4) {
+                        $pieces = explode(',', $value);
+                        $value = "$pieces[1]<a href='$base$pieces[0]'>More...</a>";
+                    }
+
+                    $count++;
+
                 }
-
-                $count++;
-
             }
+
+            echo json_encode($indexed_providers,JSON_UNESCAPED_UNICODE);
+
+            return $indexed_providers;
         }
 
-        echo json_encode($indexed_providers,JSON_UNESCAPED_UNICODE);
+        $providers = $this->servicesMapModel->getClosestList($longitude, $latitude, $type);
+
+        //echo '<pre>';print_r($providers);echo '</pre>';
+
+        return $providers;
+
     }
 
 //    function orderServicesTwo()

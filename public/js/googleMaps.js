@@ -121,7 +121,7 @@ function RelatedLocationAjax() {
         data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "type": "map" }',
 
         success:function(data) {
-            // when request is successed add markers with results
+            // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
             add_markers(data);
         }
 
@@ -133,10 +133,15 @@ function UserLocationAjax() {
         type: "POST",
         url: "./index.php/servicesMap/closestLocations",
         dataType: "json",
-        data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "type": "list" }'
-    });
-}
+        data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "type": "list" }',
 
+        success:function(data) {
+            document.getElementById('nameProfessional').innerHTML = data[0]['name'];
+            console.log('oioioi');
+        }
+    });
+
+}
 
 function add_markers(data){
     var marker, i;

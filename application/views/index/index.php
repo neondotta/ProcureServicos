@@ -12,10 +12,8 @@
 <ul class="s12 m12 l11 collection">
     <li class="collection-item avatar">
         <img src="<?= base_url()?>public/images/default.jpg" alt="" class="left">
-        <span class="title">Title</span>
-        <p>First Line <br>
-            Second Line
-        </p>
+        <span class="title" id="nameProfessional"></span>
+        <p id="emailProfessional">1</p>
         <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
     </li>
     </li>
