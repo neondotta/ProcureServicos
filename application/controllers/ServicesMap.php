@@ -1,4 +1,4 @@
-<?php
+<?php (defined('BASEPATH')) OR exit('No direct script access allowed');
 /**
  * Created by PhpStorm.
  * User: Neon Dotta
@@ -30,9 +30,14 @@ class ServicesMap extends indexCore
         $location = json_decode( preg_replace('/\\\"/',"\"",$_POST['data']));
         $longitude = $location->longitude;
         $latitude = $location->latitude;
-        $id = isset($location->idMap) ? $location->idMap : 1;
+        $type = $location->type;
         $base = base_url();
-        $providers = $this->servicesMapModel->getClosestLocations($longitude, $latitude, $id);
+
+        if ($type == 'map') {
+            $providers = $this->servicesMapModel->getClosestMap($longitude, $latitude, $type);
+        } else {
+            $providers = $this->servicesMapModel->getClosestList($longitude, $latitude, $type);
+        }
 
         $indexed_providers = array_map('array_values', $providers);
 
@@ -53,22 +58,22 @@ class ServicesMap extends indexCore
         echo json_encode($indexed_providers,JSON_UNESCAPED_UNICODE);
     }
 
-    function orderServicesTwo()
-    {
-        $this->form_validation->set_rules('latitude', 'latitude', 'trim|required');
-        $this->form_validation->set_rules('longitude', 'longitude', 'trim|required');
-        $this->form_validation->set_rules('RequestAddress', 'RequestAddress', 'trim|required');
-
-        if ($this->form_validation->run($this) == FALSE) {
-            $data['error'] = validation_errors('
-                <div class="alert alert-danger notices errorimg alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">×</span><span class="sr-only">Close</span></button>', '</div> 
-            ');
-            $this->load->view('bookService', $data);
-        } else {
-            print_r($this->input->post());
-        }
-    }
+//    function orderServicesTwo()
+//    {
+//        $this->form_validation->set_rules('latitude', 'latitude', 'trim|required');
+//        $this->form_validation->set_rules('longitude', 'longitude', 'trim|required');
+//        $this->form_validation->set_rules('RequestAddress', 'RequestAddress', 'trim|required');
+//
+//        if ($this->form_validation->run($this) == FALSE) {
+//            $data['error'] = validation_errors('
+//                <div class="alert alert-danger notices errorimg alert-dismissible" role="alert">
+//                <button type="button" class="close" data-dismiss="alert">
+//                <span aria-hidden="true">×</span><span class="sr-only">Close</span></button>', '</div>
+//            ');
+//            $this->load->view('bookService', $data);
+//        } else {
+//            print_r($this->input->post());
+//        }
+//    }
 
 }

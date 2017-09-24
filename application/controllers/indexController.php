@@ -1,4 +1,4 @@
-<?php
+<?php (defined('BASEPATH')) OR exit('No direct script access allowed');
 /**
  * Created by PhpStorm.
  * User: Neon Dotta
@@ -12,11 +12,13 @@ class IndexController extends IndexCore
     {
         parent::__construct();
         $base = base_url();
+        $this->load->controller('servicesMap');
     }
 
     public function index()
     {
         $this->view('index/index');
+
     }
 
 }

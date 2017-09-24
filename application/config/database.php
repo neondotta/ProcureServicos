@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'ec2-54-227-252-202.compute-1.amazonaws.com',
-	'username' => 'ivnzaixntrbzrp',
-	'password' => '0870466c8e2fd945d07e9bc89d7f7d57063d560b6de9acfef4f6242712ef4ae4',
-	'database' => 'd3f7a8cgu9acba',
-	'dbdriver' => 'postgresql',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'procure_servicos',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
@@ -94,3 +94,25 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+//$db['default'] = array(
+//    'dsn'	=> '',
+//    'hostname' => 'ec2-54-227-252-202.compute-1.amazonaws.com',
+//    'username' => 'ivnzaixntrbzrp',
+//    'password' => '0870466c8e2fd945d07e9bc89d7f7d57063d560b6de9acfef4f6242712ef4ae4',
+//    'database' => 'd3f7a8cgu9acba',
+//    'dbdriver' => 'postgresql',
+//    'dbprefix' => '',
+//    'pconnect' => FALSE,
+//    'db_debug' => (ENVIRONMENT !== 'production'),
+//    'cache_on' => FALSE,
+//    'cachedir' => '',
+//    'char_set' => 'utf8',
+//    'dbcollat' => 'utf8_general_ci',
+//    'swap_pre' => '',
+//    'encrypt' => FALSE,
+//    'compress' => FALSE,
+//    'stricton' => FALSE,
+//    'failover' => array(),
+//    'save_queries' => TRUE
+//);

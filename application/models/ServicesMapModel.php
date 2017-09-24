@@ -12,19 +12,47 @@ if (!defined('BASEPATH'))
 
 class ServicesMapModel extends CI_Model
 {
-    function getClosestLocations($longitude, $latitude, $id)
-    {
-        $result = $this->db->query(
-          "SELECT user.name,CONCAT(latitude,',', longitude) as pos,
-          'http://maps.google.com/mapfiles/ms/icons/green.png' AS icon,
-          ( 6371 * acos( cos( radians({$latitude}) ) * cos( radians( `latitude` ) ) * cos( radians( `longitude` ) - radians({$longitude}) ) 
-          + sin( radians({$latitude}) ) * sin( radians( `latitude` ) ) ) ) AS distance,
-          CONCAT(user.id,',',user.name) as infoUser
-          FROM user
-          HAVING distance <= 5
-          ORDER BY distance ASC"
-        )->result_array();
 
+    public function getClosestMap($longitude, $latitude, $type, $distance = NULL)
+    {
+        if($distance == NULL){
+            $distance = 10;
+        }
+
+        $sql = "SELECT user.name,CONCAT(latitude,',', longitude) as pos,
+              'http://maps.google.com/mapfiles/ms/icons/green.png' AS icon,
+              ( 6371 * acos( cos( radians({$latitude}) ) * cos( radians( `latitude` ) ) * cos( radians( `longitude` ) 
+              - radians({$longitude}) ) + sin( radians({$latitude}) ) * sin( radians( `latitude` ) ) ) ) AS distance,
+              CONCAT(user.id,',',user.name) as infoUser
+              FROM user
+              HAVING distance <= {$distance}
+              ORDER BY distance ASC";
+
+        return $this->getClosestLocations($sql);
+    }
+
+    public function getClosestList($longitude, $latitude, $type, $distance = NULL)
+    {
+        if($distance == NULL){
+            $distance = 10;
+        }
+
+        $sql = "SELECT name, city, street, latitude, longitude, email
+              ( 6371 * acos( cos( radians({$latitude}) ) * cos( radians( `latitude` ) ) * cos( radians( `longitude` ) 
+              - radians({$longitude}) ) + sin( radians({$latitude}) ) * sin( radians( `latitude` ) ) ) ) AS distance,
+              FROM user
+              HAVING distance <= {$distance}
+              ORDER BY distance ASC";
+
+        return $this->getClosestLocations($sql);
+
+    }
+
+
+    public function getClosestLocations($query)
+    {
+        $result = $this->db->query($query)->result_array();
+        //print_r($result);
         return $result;
     }
 }

@@ -22,6 +22,39 @@ var infoWindow = new google.maps.InfoWindow();
 
 function initialize() {
 
+    if (document.getElementById('map')) {
+        serviceMap()
+    } else {
+        serviceListMap()
+    }
+
+}
+
+function serviceListMap() {
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            latitude.value  =  position.coords.latitude ;
+            longitude.value  =  position.coords.longitude;
+            info.nodeValue =  position.coords.longitude;
+
+            UserLocationAjax();
+        }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        handleLocationError(false, infoWindow, map.getCenter());
+
+    }
+
+}
+
+function serviceMap() {
+
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
     var infoWindow = new google.maps.InfoWindow({map: map});
@@ -43,9 +76,6 @@ function initialize() {
                 address: pos,
                 title: 'Sua localização'
             });
-
-            // infoWindow.setPosition(pos);
-            // infoWindow.set("<img src='http://maps.google.com/mapfiles/ms/icons/blue.png' />");
 
             map.setCenter(pos);
 
@@ -88,7 +118,7 @@ function RelatedLocationAjax() {
         type: "POST",
         url: "./servicesMap/closestLocations",
         dataType: "json",
-        data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "idMap": "'+idMap.value+'" }',
+        data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "type": "map" }',
 
         success:function(data) {
             // when request is successed add markers with results
@@ -97,6 +127,16 @@ function RelatedLocationAjax() {
 
     });
 }
+
+function UserLocationAjax() {
+    $.ajax({
+        type: "POST",
+        url: "./index.php/servicesMap/closestLocations",
+        dataType: "json",
+        data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "type": "list" }'
+    });
+}
+
 
 function add_markers(data){
     var marker, i;
