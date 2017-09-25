@@ -146,16 +146,23 @@ function UserLocationAjax() {
 
 function add_professional(data) {
 
-    document.getElementById('info').innerHTML = " Encontrado:" + JSON.parse(data).length + " profissionais próximos de você.<br>";
+    document.getElementById('info').innerHTML = " Encontrado:  " + JSON.parse(data).length + " profissionais próximos de você.<br>";
     $.each(JSON.parse(data), function(i, e) {
         var li = $("<li class=\"collection-item avatar\"></li>");
         var span = $("<span class=\"title\" id=\"nameProfessional\"></span>");
         var p = $("<p id=\"emailProfessional\"></p>");
         var img = $('<img />', { src:'public/images/default.jpg', alt:"", class:"left" });
+        var certificate = $("<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">check box</i></a>");
+
+        if(e.certificate == false) {
+            var certificate = $("<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">" +
+                "check box outline blank</i></a>");
+        }
+
         span.text(e.name);
         p.text(e.email);
 
-        li.append(img, span, p);
+        li.append(img, span, p, certificate);
         li.appendTo($('.collection'));
     });
 

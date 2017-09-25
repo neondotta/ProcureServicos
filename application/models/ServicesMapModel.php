@@ -20,7 +20,7 @@ class ServicesMapModel extends CI_Model
     public function getClosestMap($longitude, $latitude, $type, $distance = NULL)
     {
         if($distance == NULL){
-            $distance = 10;
+            $distance = 30;
         }
 
         $sql = "SELECT user.name,CONCAT(latitude,',', longitude) as pos,
@@ -41,10 +41,14 @@ class ServicesMapModel extends CI_Model
             $distance = 10;
         }
 
-        $sql = "SELECT name, city, street, latitude, longitude, email,
+        $sql = "SELECT u.name, u.city, u.street, u.latitude, u.longitude, u.email, 
+                        p.certificate, p.invoice,
               ( 6371 * acos( cos( radians({$latitude}) ) * cos( radians( `latitude` ) ) * cos( radians( `longitude` ) 
               - radians({$longitude}) ) + sin( radians({$latitude}) ) * sin( radians( `latitude` ) ) ) ) AS distance
-              FROM user
+              FROM user u
+                LEFT JOIN professional p
+                  ON (u.id = p.id_user)
+              WHERE u.user_professional = TRUE
               HAVING distance <= {$distance}
               ORDER BY distance ASC";
 

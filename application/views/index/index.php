@@ -5,12 +5,30 @@
             <input id="idUser" name="id" type="hidden" value="" />
             <input id="latitude" type="hidden" value="" />
             <input id="longitude" type="hidden" value="" />
-            <button type="button" class="waves-effect waves-light btn" onclick="UserLocationAjax();">
-                <i class="material-icons left">group</i>Procurar usuários</button>
-            <a href="<?=base_url()?>index.php/servicesMap" class="waves-effect waves-light btn">
-                <i class="material-icons left">map</i>Show Map</a>
         </form>
-        <div class="card-panel light-blue">
+        <div class="col s12 main-button">
+            <button type="button" class="waves-effect waves-light btn col s4" onclick="UserLocationAjax();">
+                <span class="hide-on-med-and-down">
+                    <i class="material-icons left">group</i>
+                    USUÁRIO
+                </span>
+                <i class="material-icons hide-on-large-only">group</i>
+            </button>
+            <a href="<?=base_url()?>index.php/servicesMap" class="waves-effect waves-light btn col s4">
+                <span class="hide-on-med-and-down">
+                    <i class="material-icons left">map</i>MAPA
+                </span>
+                <i class="material-icons hide-on-large-only">map</i>
+            </a>
+            <button type="button" class="waves-effect waves-light btn col s4" onclick="UserLocationAjax();">
+                <span class="hide-on-med-and-down">
+                    <i class="material-icons left">search</i>
+                    FILTRO
+                </span>
+                <i class="material-icons hide-on-large-only">search</i>
+            </button>
+        </div>
+        <div class="card-panel light-blue col s12">
             <span class="white-text notification" id="info"></span>
         </div>
 
