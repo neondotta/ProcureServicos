@@ -29,47 +29,50 @@ class ServicesMap extends IndexCore
     {
 
         $base = base_url();
+        if ($this->input->is_ajax_request()) {
+            if($this->input->post('type') == 'map') {
+                //$location = json_decode($this->input->post());
+                print_r($this->input->post('latitude'));
+                $longitude = $this->input->post('longitude');
+                $latitude = $this->input->post('latitude');
+                $type = $this->input->post('type');
+                $providers = $this->ServicesMapModel->getClosestMap($longitude, $latitude, $type);
 
-        if (isset($_POST['data'])) {
-            $location = json_decode( preg_replace('/\\\"/',"\"",$_POST['data']));
-            $longitude = $location->longitude;
-            $latitude = $location->latitude;
-            $type = $location->type;
-            $providers = $this->ServicesMapModel->getClosestMap($longitude, $latitude, $type);
+                $indexed_providers = array_map('array_values', $providers);
 
-            $indexed_providers = array_map('array_values', $providers);
+                $count = 0;
 
-            $count = 0;
+                foreach ($indexed_providers as $arrays => &$array) {
+                    foreach ($array as $key => &$value) {
+                        if ($key === 4) {
+                            $pieces = explode(',', $value);
+                            $value = "$pieces[1]<a href='$base$pieces[0]'>More...</a>";
+                        }
 
-            foreach ($indexed_providers as $arrays => &$array) {
-                foreach ($array as $key => &$value) {
-                    if ($key === 4) {
-                        $pieces = explode(',', $value);
-                        $value = "$pieces[1]<a href='$base$pieces[0]'>More...</a>";
+                        $count++;
+
                     }
-
-                    $count++;
-
                 }
+
+                echo json_encode($indexed_providers, JSON_UNESCAPED_UNICODE);
+
+                return $indexed_providers;
+
             }
 
-            echo json_encode($indexed_providers,JSON_UNESCAPED_UNICODE);
+            $location = $_POST;
+            $longitude = $location['longitude'];
+            $latitude = $location['latitude'];
+            $type = $location['type'];
 
-            return $indexed_providers;
+            $providers = $this->ServicesMapModel->getClosestList($longitude, $latitude, $type);
+
+            //echo '<pre>';print_r($providers);echo '</pre>';
+
+            echo json_encode($providers,JSON_UNESCAPED_UNICODE);
+
+            return $providers;
         }
-
-        $location = $_POST;
-        $longitude = $location['longitude'];
-        $latitude = $location['latitude'];
-        $type = $location['type'];
-
-        $providers = $this->ServicesMapModel->getClosestList($longitude, $latitude, $type);
-
-        //echo '<pre>';print_r($providers);echo '</pre>';
-
-        echo json_encode($providers,JSON_UNESCAPED_UNICODE);
-
-        return $providers;
 
     }
 

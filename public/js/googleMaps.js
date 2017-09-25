@@ -122,8 +122,11 @@ function RelatedLocationAjax() {
         type: "POST",
         url: "./servicesMap/closestLocations",
         dataType: "json",
-        data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "type": "map" }',
-
+        data: {
+            "latitude": latitude.value,
+            "longitude": longitude.value,
+            "type": "map"
+        },
         success:function(data) {
             // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
             add_markers(data);
@@ -137,7 +140,11 @@ function UserLocationAjax() {
         type: "POST",
         url: "./index.php/servicesMap/closestLocations",
         dataType: "json",
-        data:"data="+ '{ "latitude":"'+ latitude.value+'", "longitude": "'+longitude.value+'", "type": "list" }'
+        data: {
+            "latitude": latitude.value,
+            "longitude": longitude.value,
+            "type": "list"
+        }
     });
 
 }
@@ -150,12 +157,12 @@ function add_professional(data) {
         const span = $("<span class=\"title\" id=\"nameProfessional\"></span>");
         const p = $("<p id=\"emailProfessional\"></p>");
         const img = $('<img />', { src:'public/images/default.jpg', alt:"", class:"left" });
-        let certificate = e.certificate;
-        if(certificate == true) {
+        let certificate = null;
+        if(e.certificate == true) {
             certificate = $("<a href=\"#!\" class=\"secondary-content\">" +
                 "<i class=\"material-icons\">verified_user</i></a>");
         }
-        console.log(e.certificate);
+
         span.text(e.name);
         p.text(e.email);
 
