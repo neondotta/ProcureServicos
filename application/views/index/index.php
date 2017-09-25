@@ -14,7 +14,7 @@
                 </span>
                 <i class="material-icons hide-on-large-only">group</i>
             </button>
-            <a href="<?=base_url()?>index.php/servicesMap" class="waves-effect waves-light btn col s4">
+            <a href="<?=base_url()?>index.php/ServicesMap" class="waves-effect waves-light btn col s4">
                 <span class="hide-on-med-and-down">
                     <i class="material-icons left">map</i>MAPA
                 </span>

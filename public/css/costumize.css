@@ -34,6 +34,15 @@ nav, nav .nav-wrapper i{
         margin:0 5px;
     }
 
+.google-map {
+    top:50px;
+    position: absolute;
+    width:100vw;
+}
+    .google-map {
+        height: 100vh;
+    }
+
 @media screen and (min-width: 1200px) {
 
 }
@@ -68,6 +77,7 @@ nav, nav .nav-wrapper i{
             .main-button button:last-child, .main-button a:last-child {
                 border-left: 1px solid #eee;
             }
+
     .collection .collection-item {
         padding:5px 0;
     }
@@ -75,5 +85,10 @@ nav, nav .nav-wrapper i{
             padding-left:5px;
         }
 
+    .container-map .search-professional {
+        position: absolute;
+        left:5%;
+        top:15%;
+    }
 
 }

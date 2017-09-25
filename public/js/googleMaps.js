@@ -49,8 +49,6 @@ function serviceListMap() {
                 });
 
             //UserLocationAjax();
-        }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
         handleLocationError(false, infoWindow, map.getCenter());
@@ -148,17 +146,16 @@ function add_professional(data) {
 
     document.getElementById('info').innerHTML = " Encontrado:  " + JSON.parse(data).length + " profissionais próximos de você.<br>";
     $.each(JSON.parse(data), function(i, e) {
-        var li = $("<li class=\"collection-item avatar\"></li>");
-        var span = $("<span class=\"title\" id=\"nameProfessional\"></span>");
-        var p = $("<p id=\"emailProfessional\"></p>");
-        var img = $('<img />', { src:'public/images/default.jpg', alt:"", class:"left" });
-        var certificate = $("<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">check box</i></a>");
-
-        if(e.certificate == false) {
-            var certificate = $("<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">" +
-                "check box outline blank</i></a>");
+        const li = $("<li class=\"collection-item avatar\"></li>");
+        const span = $("<span class=\"title\" id=\"nameProfessional\"></span>");
+        const p = $("<p id=\"emailProfessional\"></p>");
+        const img = $('<img />', { src:'public/images/default.jpg', alt:"", class:"left" });
+        let certificate = e.certificate;
+        if(certificate == true) {
+            certificate = $("<a href=\"#!\" class=\"secondary-content\">" +
+                "<i class=\"material-icons\">verified_user</i></a>");
         }
-
+        console.log(e.certificate);
         span.text(e.name);
         p.text(e.email);
 

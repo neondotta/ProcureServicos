@@ -38,7 +38,7 @@ class ServicesMapModel extends CI_Model
     public function getClosestList($longitude, $latitude, $type, $distance = NULL)
     {
         if($distance == NULL){
-            $distance = 10;
+            $distance = 30;
         }
 
         $sql = "SELECT u.name, u.city, u.street, u.latitude, u.longitude, u.email, 
