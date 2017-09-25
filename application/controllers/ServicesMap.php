@@ -12,7 +12,7 @@ class ServicesMap extends IndexCore
     function __construct()
     {
         parent::__construct();
-        $this->load->model('servicesMapModel');
+        $this->load->model('ServicesMapModel');
     }
 
     function index()
@@ -22,7 +22,7 @@ class ServicesMap extends IndexCore
 
     function bookService()
     {
-        $this->view('bookService');
+        $this->view('BookService');
     }
 
     function closestLocations()
@@ -35,7 +35,7 @@ class ServicesMap extends IndexCore
             $longitude = $location->longitude;
             $latitude = $location->latitude;
             $type = $location->type;
-            $providers = $this->servicesMapModel->getClosestMap($longitude, $latitude, $type);
+            $providers = $this->ServicesMapModel->getClosestMap($longitude, $latitude, $type);
 
             $indexed_providers = array_map('array_values', $providers);
 
@@ -63,7 +63,7 @@ class ServicesMap extends IndexCore
         $latitude = $location['latitude'];
         $type = $location['type'];
 
-        $providers = $this->servicesMapModel->getClosestList($longitude, $latitude, $type);
+        $providers = $this->ServicesMapModel->getClosestList($longitude, $latitude, $type);
 
         //echo '<pre>';print_r($providers);echo '</pre>';
 
