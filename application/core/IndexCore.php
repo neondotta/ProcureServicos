@@ -9,14 +9,10 @@
 class IndexCore extends CI_Controller
 {
 
-    /***
-     * pages of site in menu
-     */
-
-    function __construct()
-    {
-        parent::__construct();
-    }
+//    function __construct()
+//    {
+//        parent::__construct();
+//    }
 
     /**
      * present master page includes header and footer
