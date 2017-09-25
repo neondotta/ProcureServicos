@@ -6,7 +6,7 @@
  * Time: 09:59
  */
 
-class ServicesMap extends indexCore
+class ServicesMap extends IndexCore
 {
 
     function __construct()
