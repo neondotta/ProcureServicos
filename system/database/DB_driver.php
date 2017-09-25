@@ -92,7 +92,7 @@ abstract class CI_DB_driver {
 	 *
 	 * @var	string
 	 */
-	public $dbdriver		= 'mysql';
+	public $dbdriver		= 'mysqli';
 
 	/**
 	 * Sub-driver
