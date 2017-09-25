@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 25-Set-2017 às 05:33
+-- Generation Time: 25-Set-2017 às 01:24
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -163,19 +163,18 @@ CREATE TABLE `user` (
   `longitude` float(10,7) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `name_picture` varchar(255) DEFAULT NULL,
-  `address_picture` varchar(255) DEFAULT NULL,
-  `user_professional` tinyint(1) NOT NULL
+  `address_picture` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `cpf`, `cep`, `nation`, `country`, `city`, `street`, `number`, `complemento`, `latitude`, `longitude`, `email`, `name_picture`, `address_picture`, `user_professional`) VALUES
-(1, 'Neon Dotta', '22222222222', 90550002, 'Brasil', 'RS', 'Porto Alegre', 'Benjamim Constant', '1111', '', -30.0162868, -51.1535683, 'neon@neon.com', NULL, NULL, 1),
-(2, 'Tamara', '23232123412', 91360000, 'Brasil', 'RS', 'Porto Alegre', 'Avenida Do Forte', '697', '', -30.0113792, -51.1937218, 'tamara@tamara.com', NULL, NULL, 1),
-(3, 'Matheus', '12121212121', 91750740, 'Brasil', 'RS', 'Porto Alegre', 'Romeu Samarani Ferreira', '265', '', -30.1275501, -51.2082291, 'matheus@matheus.com', NULL, NULL, 1),
-(4, 'Deni', '12211245643', 92200300, 'Brasil', 'RS', 'Porto Alegre', 'Rua Primavera', '2109', '', -29.9635429, -51.1885872, 'deni@deni.com', NULL, NULL, 0);
+INSERT INTO `user` (`id`, `name`, `cpf`, `cep`, `nation`, `country`, `city`, `street`, `number`, `complemento`, `latitude`, `longitude`, `email`, `name_picture`, `address_picture`) VALUES
+(1, 'Neon Dotta', '22222222222', 90550002, 'Brasil', 'RS', 'Porto Alegre', 'Benjamim Constant', '1111', '', -30.0162868, -51.1535683, 'neon@neon.com', NULL, NULL),
+(2, 'Tamara', '23232123412', 91360000, 'Brasil', 'RS', 'Porto Alegre', 'Avenida Do Forte', '697', '', -30.0113792, -51.1937218, 'tamara@tamara.com', NULL, NULL),
+(3, 'Matheus', '12121212121', 91750740, 'Brasil', 'RS', 'Porto Alegre', 'Romeu Samarani Ferreira', '265', '', -30.1275501, -51.2082291, 'matheus@matheus.com', NULL, NULL),
+(4, 'Deni', '12211245643', 92200300, 'Brasil', 'RS', 'Porto Alegre', 'Rua Primavera', '2109', '', -29.9635429, -51.1885872, 'deni@deni.com', NULL, NULL);
 
 --
 -- Indexes for dumped tables

@@ -10,8 +10,8 @@ class IndexController extends IndexCore
 {
     function __construct()
     {
-        //parent::__construct();
-        //$base = base_url();
+        parent::__construct();
+        $base = base_url();
     }
 
     public function index()
@@ -21,6 +21,7 @@ class IndexController extends IndexCore
 
     public function listProfessional($listProfessional)
     {
+        echo '<pre>';print_r($listProfessional);die();
         if (isset($listProfessional)) {
            return $listProfessional;
         }
