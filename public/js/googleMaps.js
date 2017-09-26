@@ -120,9 +120,9 @@ function DrowCircle(mapOptions, map, pos, km ) {
 function RelatedLocationAjax() {
     $.ajax({
         type: "POST",
-        url: "./servicesMap/closestLocations",
+        url: "./ServicesMap/closestLocations",
         dataType: "json",
-        data: {
+        data:{
             "latitude": latitude.value,
             "longitude": longitude.value,
             "type": "map"
@@ -130,7 +130,7 @@ function RelatedLocationAjax() {
         success:function(data) {
             // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
             add_markers(data);
-        }
+        },
 
     });
 }
@@ -138,7 +138,7 @@ function RelatedLocationAjax() {
 function UserLocationAjax() {
     $.ajax({
         type: "POST",
-        url: "./index.php/servicesMap/closestLocations",
+        url: "./index.php/ServicesMap/closestLocations",
         dataType: "json",
         data: {
             "latitude": latitude.value,

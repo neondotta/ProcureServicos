@@ -2,10 +2,9 @@
 
 <form id="ServiceRequest" action="<?= current_url() ?>" method='post'>
 
-    <div class="form-group container-map col s12 l12 l12">
+    <div class="form-group">
         <!-- provider_counter service id  !-->
-        <button type="button" class="waves-effect waves-light btn col s4 search-professional"
-                onclick="UserLocationAjax();">
+        <button type="button" class="waves-effect waves-light btn col s4" onclick="RelatedLocationAjax();">
                 <span class="hide-on-med-and-down">
                     <i class="material-icons left">group</i>
                     USUÁRIO
@@ -16,14 +15,16 @@
             <span class="white-text notification" id="info"></span>
         </div>
         <!-- display map  !-->
-        <div class="position-map">
-            <div id="map" class="google-map col s12 m12 l10"></div>
-        </div>
+        <div id="map" class="google-map"></div>
         <!-- current latituide and longtuide  !-->
         <input id="latitude" type="hidden" value="" />
         <input id="longitude" type="hidden" value="" />
+
     </div>
 
+    <div id='submit_button'>
+        <input class="btn btn-success" type="submit" name="submit" value="add comment"/>
+    </div>
 </form>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNyLsAhFt4hIZKeNJYC244jPPayM0GhrY"></script>
