@@ -2,7 +2,7 @@
 <?php
     if ($this->session->flashdata('error')) {
 ?>
-        <div id="card-alert" class="card red col s12 m12 l12">
+        <div id="card-alert" class="card red col s12 m12 l10">
             <div class="card-content white-text">
                 <p class="alert alert-success"><?= $this->session->flashdata('error'); ?></p>
             </div>
