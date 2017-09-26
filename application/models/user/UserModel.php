@@ -18,7 +18,12 @@ class UserModel extends CI_Model
     {
         $filter = ['email' => $email, 'password' => $password];
         $this->db->where($filter);
-        $user = $this->db->get('user')->row_array();
+        $user = [];
+
+        if($this->db->get('user')->num_rows() > 0) {
+            $user = $this->db->get('user')->row_array();
+        }
+
         return $user;
     }
 
