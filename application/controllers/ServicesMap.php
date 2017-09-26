@@ -30,12 +30,13 @@ class ServicesMap extends IndexCore
 
         $base = base_url();
         if ($this->input->is_ajax_request()) {
+
+            $longitude = $this->input->post('longitude');
+            $latitude = $this->input->post('latitude');
+            $type = $this->input->post('type');
+
             if($this->input->post('type') == 'map') {
-                //$location = json_decode($this->input->post());
-                print_r($this->input->post('latitude'));
-                $longitude = $this->input->post('longitude');
-                $latitude = $this->input->post('latitude');
-                $type = $this->input->post('type');
+
                 $providers = $this->ServicesMapModel->getClosestMap($longitude, $latitude, $type);
 
                 $indexed_providers = array_map('array_values', $providers);
@@ -60,14 +61,7 @@ class ServicesMap extends IndexCore
 
             }
 
-            $location = $_POST;
-            $longitude = $location['longitude'];
-            $latitude = $location['latitude'];
-            $type = $location['type'];
-
             $providers = $this->ServicesMapModel->getClosestList($longitude, $latitude, $type);
-
-            //echo '<pre>';print_r($providers);echo '</pre>';
 
             echo json_encode($providers,JSON_UNESCAPED_UNICODE);
 

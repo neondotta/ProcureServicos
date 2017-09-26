@@ -31,7 +31,7 @@
             <li><a href="badges.html">Components</a></li>
             <li><a href="collapsible.html">JavaScript</a></li>
             <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown
-                    <i class="material-icons right">arrow_drop_down</i></a></li>
+                    <i class="material-icons right">arrow_drop_down</i> </a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li><a href="sass.html">Sass</a></li>
@@ -39,7 +39,6 @@
             <li><a href="collapsible.html">Javascript</a></li>
             <li><a href="mobile.html">Mobile</a></li>
         </ul>
-
     </div>
 </nav>
 
