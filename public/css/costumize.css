@@ -43,6 +43,24 @@ nav, nav .nav-wrapper i{
         height: 100vh;
     }
 
+.form {
+    margin:0 auto;
+}
+
+#card-alert button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size:20px;
+    position: absolute;
+    right:10px;
+    top:7px;
+}
+
+.card .card-content {
+    padding:14px 24px;
+}
+
 @media screen and (min-width: 1200px) {
 
 }
