@@ -8,17 +8,30 @@
 
 class UserModel extends CI_Model
 {
-
-    public function insertUser($user)
-    {
-        $this->db->insert("user", $user);
-    }
-
     public function authLogin($email, $password)
     {
-        $filter = ['email' => $email, 'password' => $password];
-        $this->db->where($filter);
-        $user = $this->db->get('user')->row_array();
+        $where = ['email' => $email, 'password' => $password];
+        $filter = $this->db->where($where);
+        $user = [];
+
+        $user = $this->find(NULL, $filter);
+
+        return $user;
+    }
+
+    public function insert($user)
+    {
+        $result = $this->db->insert("user", $user);
+    }
+
+    public function find($field = NULL,$filter = NULL)
+    {
+        $user = [];
+
+        if($this->db->get('user')->num_rows() == 1) {
+            $user = $this->db->get('user')->row_array();
+        }
+
         return $user;
     }
 
