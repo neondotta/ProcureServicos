@@ -61,6 +61,9 @@ nav, nav .nav-wrapper i{
     padding:14px 24px;
 }
 
+select{
+    display: inline;
+}
 @media screen and (min-width: 1200px) {
 
 }
