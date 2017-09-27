@@ -33,7 +33,7 @@ class LoginController extends IndexCore
 
         $this->session->set_flashdata('error', 'E-mail ou senha inválida');
         redirect(base_url().'LoginController');
-        
+
     }
 
     public function logout()
