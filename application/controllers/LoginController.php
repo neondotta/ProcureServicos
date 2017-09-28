@@ -29,10 +29,11 @@ class LoginController extends IndexCore
         if ($user) {
             $this->session->set_userdata('login', $user);
             redirect(base_url());
-        } else {
-            $this->session->set_flashdata('error', 'E-mail ou senha inválida');
-            redirect(base_url().'LoginController');
         }
+
+        $this->session->set_flashdata('error', 'E-mail ou senha inválida');
+        redirect(base_url().'LoginController');
+
     }
 
     public function logout()
