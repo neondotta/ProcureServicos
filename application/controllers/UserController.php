@@ -28,7 +28,7 @@ class UserController extends IndexCore
         $imageController = $this->ImageController;
 
         $image = $_FILES['image'];
-        $addressImage = $_SERVER['DOCUMENT_ROOT'].'/procure-servicos/public/images/';
+        $addressImage = base_url('/public/images/');
         $nameImage = date('NOW').$_FILES['image']['name'];
 
         $user = [
@@ -52,6 +52,7 @@ class UserController extends IndexCore
             $confirmInsert = $this->UserModel->insert($user);
             print_r($confirmInsert);
             if($confirmInsert) {
+                $addressImage = $_SERVER['DOCUMENT_ROOT'].'/procure-servicos/public/images/';
                 $imageController->validateUpload($image, $nameImage, $addressImage);
             }
 

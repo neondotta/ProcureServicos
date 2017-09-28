@@ -10,12 +10,14 @@ class UserModel extends CI_Model
 {
     public function authLogin($email, $password)
     {
+
         $where = ['email' => $email, 'password' => $password];
-        $filter = $this->db->where($where);
+
         $user = [];
 
-        $user = $this->find(NULL, $filter);
-
+        $user = $this->find(NULL, $where);
+        echo 'find user';
+        print_r($user);
         return $user;
     }
 
@@ -26,15 +28,19 @@ class UserModel extends CI_Model
         return $result;
     }
 
-    public function find($field = NULL,$filter = NULL)
+    public function find($field = NULL,$where = NULL)
     {
         $user = [];
 
+        $this->db->where($where);
+
         if($this->db->get('user')->num_rows() == 1) {
+            $this->db->where($where);
             $user = $this->db->get('user')->row_array();
         }
 
         return $user;
+
     }
 
 }

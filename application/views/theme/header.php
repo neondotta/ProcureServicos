@@ -17,7 +17,7 @@
 <body class="l12 s12 m12">
 
 <ul id="dropdown1" class="dropdown-content">
-    <li><a href="<?= base_url('LoginController/logout')?>LoginController/logout">Logout</a></li>
+    <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
 </ul>
 <nav>
     <div class="nav-wrapper teal">
@@ -34,10 +34,26 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <?php if($this->session->userdata('login')) { ?>
-                <li><a href="#!"><?=$this->session->userdata('login')['name']; ?></a></li>
-                <li class="divider"></li>
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <img class="sidebar-background" src="<?=base_url('public/images/default-sidebar2.jpg')?>">
+                        </div>
+                        <a href="#!user"><img class="circle" src="<?=
+                                $this->session->userdata('login')['address_picture'] .
+                                $this->session->userdata('login')['name_picture']
+                            ?>"></a>
+                        <a href="#!"><span class="name white-text">
+                                        <?=$this->session->userdata('login')['name']; ?>
+                                    </span></a>
+                            <a href="#!email"><span class="email white-text">
+                                        <?=$this->session->userdata('login')['email']; ?>
+                                    </span></a>
+                    </div>
+                </li>
                 <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
             <?php } else { ?>
+                <?=$_SERVER['DOCUMENT_ROOT']."./bah";?>
                 <li><a href="<?= base_url('LoginController')?>">Login</a></li>
                 <li><a href="<?= base_url('UserController/openForm')?>">Cadastrar</a></li>
             <?php } ?>

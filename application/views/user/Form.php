@@ -1,19 +1,19 @@
-
-<div class="row">
-    <div class="col s12">
+<div class="valign-wrapper">
+    <div class="form col s12 m10 l8">
         <div class="row">
-            <div class="input-field col s12 m12 l6">
-                <?php echo form_open_multipart('UserController/insert');
+            <div class="input-field col s12 m12 l12">
+                <?php
+                echo form_open_multipart('UserController/insert');
 
-                    echo form_label("Nome:", 'name');
-                    echo form_input([
-                        "name" => 'name',
-                        "id" => 'name',
-                        "class" => 'validate',
-                        "maxlength" => 255,
-                    ]);
+                echo form_label("Nome:", 'name');
+                echo form_input([
+                    "name" => 'name',
+                    "id" => 'name',
+                    "class" => 'validate',
+                    "maxlength" => 255
+                ]);
                 ?>
-            </div>
+                </div>
             <div class="input-field col s12">
                 <?php
                     echo form_label("Cpf:", 'cpf');

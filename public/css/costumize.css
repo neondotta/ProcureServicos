@@ -37,11 +37,8 @@ nav, nav .nav-wrapper i{
 .google-map {
     top:50px;
     position: absolute;
-    width:100vw;
+    height:100vh;
 }
-    .google-map {
-        height: 100vh;
-    }
 
 .form {
     margin:0 auto;
@@ -107,6 +104,10 @@ nav, nav .nav-wrapper i{
         position: absolute;
         left:5%;
         top:15%;
+    }
+
+    img.sidebar-background {
+        width:100%;
     }
 
 }

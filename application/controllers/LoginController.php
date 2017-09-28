@@ -15,7 +15,6 @@ class LoginController extends IndexCore
 
     public function authLogin()
     {
-        $this->load->helper('form');
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('email', 'Email', 'required');
@@ -23,16 +22,18 @@ class LoginController extends IndexCore
 
         $this->load->model('user/UserModel');
         $email = $this->input->post('email');
-        $password = $this->input->post('password');
-        $user = $this->UserModel->authLogin($email, $password);
+        $password = md5($this->input->post('password'));
 
+        $user = $this->UserModel->authLogin($email, $password);
+        echo 'return user';
+        print_r($user);
         if ($user) {
             $this->session->set_userdata('login', $user);
             redirect(base_url());
         }
 
         $this->session->set_flashdata('error', 'E-mail ou senha inválida');
-        redirect(base_url().'LoginController');
+        redirect(base_url('LoginController'));
 
     }
 

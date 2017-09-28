@@ -5,7 +5,7 @@
         <div class="row">
             <div class="input-field col s12 m12 l12">
                 <?php
-                echo form_open('LoginController/authLogin');
+                echo form_open_multipart('LoginController/authLogin');
 
                 echo form_label("E-mail:", 'email');
                 echo form_input([

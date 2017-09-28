@@ -15,7 +15,7 @@
             <span class="white-text notification" id="info"></span>
         </div>
         <!-- display map  !-->
-        <div id="map" class="google-map"></div>
+        <div id="map" class="google-map col s10"></div>
         <!-- current latituide and longtuide  !-->
         <input id="latitude" type="hidden" value="" />
         <input id="longitude" type="hidden" value="" />
