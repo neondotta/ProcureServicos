@@ -52,7 +52,7 @@
                                     </span></a>
                     </div>
                 </li>
-               // <li><a href="<?= base_url('ProfessionalController/insert')?>">Vire um Profissional</a></li>
+                <li><a href="<?= base_url('ProfessionalController/insert')?>">Vire um Profissional</a></li>
                 <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
             <?php } else { ?>
                 <?=$_SERVER['DOCUMENT_ROOT']."./bah";?>

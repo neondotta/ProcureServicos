@@ -8,6 +8,26 @@
             <input id="longitude" type="hidden" value="" />
         </form>
 
+        <div class="col s12 hide-content" id="filter-professional">
+            <div class="input-field col s8">
+                <select multiple>
+                    <option value="" disabled selected>Profissional</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </select>
+                <label>Categoria de profissional</label>
+            </div>
+
+            <div class="input-field col s4">
+                <select>
+                    <option value="" disabled selected>Nota fiscal</option>
+                    <option value="1">Sim</option>
+                    <option value="2">Não</option>
+                </select>
+            </div>
+        </div>
+
         <div class="col s12 main-button">
 
             <button type="button" class="waves-effect waves-light btn col s4" onclick="UserLocationAjax();">
@@ -25,7 +45,7 @@
                 <i class="material-icons hide-on-large-only">map</i>
             </a>
 
-            <button type="button" class="waves-effect waves-light btn col s4 search"">
+            <button type="button" class="waves-effect waves-light btn col s4" id="search-professional">
                 <span class="hide-on-med-and-down">
                     <i class="material-icons left">search</i>
                     FILTRO
@@ -33,18 +53,6 @@
                 <i class="material-icons hide-on-large-only">search</i>
             </button>
 
-        </div>
-
-        <div class="filter-professional hide-content">
-            <div class="input-field col s12">
-                <select>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </select>
-                <label>Materialize Select</label>
-            </div>
         </div>
 
         <div class="card-panel light-blue col s12">

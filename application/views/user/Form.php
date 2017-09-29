@@ -22,6 +22,7 @@
                         "id" => 'cpf',
                         "class" => 'validate',
                         "maxlength" => 11,
+                        "minlength" => 11,
                     ]);
                 ?>
             </div>
@@ -125,7 +126,9 @@
                         "name" => 'password',
                         "id" => 'password',
                         "class" => 'validate',
+                        "type" => "password",
                         "maxlength" => 255,
+                        "minlength" => 8
                     ]);
                 ?>
             </div>
@@ -135,8 +138,10 @@
                     echo form_input([
                         "name" => 'confirm-password',
                         "id" => 'confirm-password',
+                        "type" => "password",
                         "class" => 'validate',
                         "maxlength" => 255,
+                        "minlength" => 8
                     ]);
                 ?>
             </div>

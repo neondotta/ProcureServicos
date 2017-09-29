@@ -9,9 +9,17 @@
         }, 3000);
 
 
-        $('.search').click(function () {
-           $('.filter-professional').toggleClass("show-content");
+        $('#search-professional').on("click", function () {
+           $('#filter-professional').toggleClass("show-content hide-content");
         });
+
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+
+//        $('#confirm-password').blur(function() {
+//           if('#confirme password ')
+//        });
     });
 </script>
 

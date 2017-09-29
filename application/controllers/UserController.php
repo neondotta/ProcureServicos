@@ -50,7 +50,7 @@ class UserController extends IndexCore
         if ($this->form_validation->run()) {
 
             $confirmInsert = $this->UserModel->insert($user);
-            print_r($confirmInsert);
+
             if($confirmInsert) {
                 $addressImage = $_SERVER['DOCUMENT_ROOT'].'/procure-servicos/public/images/';
                 $imageController->validateUpload($image, $nameImage, $addressImage);
