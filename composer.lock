@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea76d5706bdead3fdece60ec04f0446b",
+    "content-hash": "2d8ed304389cd8819bb946259640491b",
     "packages": [
         {
             "name": "pagseguro/php",
@@ -1392,7 +1392,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6"
+        "php": ">=5.3.7",
+        "ext-gd": "*"
     },
     "platform-dev": []
 }
