@@ -25,7 +25,7 @@
                 <i class="material-icons hide-on-large-only">map</i>
             </a>
 
-            <button type="button" class="waves-effect waves-light btn col s4" onclick="UserLocationAjax();">
+            <button type="button" class="waves-effect waves-light btn col s4 search"">
                 <span class="hide-on-med-and-down">
                     <i class="material-icons left">search</i>
                     FILTRO
@@ -33,6 +33,18 @@
                 <i class="material-icons hide-on-large-only">search</i>
             </button>
 
+        </div>
+
+        <div class="filter-professional hide-content">
+            <div class="input-field col s12">
+                <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </select>
+                <label>Materialize Select</label>
+            </div>
         </div>
 
         <div class="card-panel light-blue col s12">

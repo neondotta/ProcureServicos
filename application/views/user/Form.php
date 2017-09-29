@@ -162,7 +162,7 @@
                     ?>
                 </div>
             </div>
-            <div class="input-field">
+            <div class="input-field col s12">
                 <?php
                     echo form_button([
                         "class" => "waves-effect waves-light btn red darken-1",

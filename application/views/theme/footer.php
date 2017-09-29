@@ -8,6 +8,10 @@
             $("#card-alert").slideToggle(500);
         }, 3000);
 
+
+        $('.search').click(function () {
+           $('.filter-professional').toggleClass("show-content");
+        });
     });
 </script>
 
