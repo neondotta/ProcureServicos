@@ -53,6 +53,8 @@ class ImageController extends CI_Controller
                 imagepng($newImage, $address . $name);
                 break;
         }
+        
+        move_uploaded_file($newImage, $address);
         imagedestroy($image);
         imagedestroy($newImage);
 
