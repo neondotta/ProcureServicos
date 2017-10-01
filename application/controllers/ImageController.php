@@ -43,17 +43,23 @@ class ImageController extends CI_Controller
         imagesavealpha($newImage, true);
         imagecopyresampled($newImage, $image, 0, 0, 0, 0, $imageX, $imageY, $x, $y);
 
-        move_uploaded_file($newImage, $address . $name);
-        switch ($picture['type']) {
-            case 'image/jpg':
-            case 'image/jpeg':
-            case 'image/pjpeg':
-                imagejpeg($newImage, $address . $name);
-                break;
-            case 'image/png':
-            case 'image/x-png':
-                imagepng($newImage, $address . $name);
-                break;
+        chmod($address, 0777);
+
+        if (is_writable($address)) {
+            move_uploaded_file($newImage, $address . $name);
+            switch ($picture['type']) {
+                case 'image/jpg':
+                case 'image/jpeg':
+                case 'image/pjpeg':
+                    imagejpeg($newImage, $address . $name);
+                    break;
+                case 'image/png':
+                case 'image/x-png':
+                    imagepng($newImage, $address . $name);
+                    break;
+            }
+        } else {
+            print_r('não acontece'); die();
         }
 
         imagedestroy($image);
