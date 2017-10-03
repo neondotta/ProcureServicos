@@ -24,7 +24,7 @@
 	},
 	"scripts": {
 		"compile": [
-			"chmod 665 public/images"
+			"chmod 665 $HOME/public/images"
 		]
 	}
 }
