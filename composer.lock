@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d8ed304389cd8819bb946259640491b",
+    "content-hash": "6648aeee3e6068b2e5ae2682eb80a060",
     "packages": [
         {
             "name": "pagseguro/php",

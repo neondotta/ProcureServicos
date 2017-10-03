@@ -22,11 +22,9 @@
 		"mikey179/vfsStream": "1.1.*",
 		"phpunit/phpunit": "4.* || 5.*"
 	},
-	"extra": {
-		"heroku": {
-			"compile": [
-				"chmod -R 665 /public/images/"
-			]
-		}
+	"scripts": {
+		"compile": [
+			"chmod -R 665 /public/images/"
+		]
 	}
 }
