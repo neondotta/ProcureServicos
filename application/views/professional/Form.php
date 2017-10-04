@@ -14,10 +14,21 @@
                 ]);
                 ?>
             </div>
+            <div class="input-field col s12 m12 hide-content" id="nota-fiscal">
+                <?php
+                    $options = [
+                        '' => 'Você disponibiliza nota fiscal?',
+                        '0' => 'NÃO',
+                        '1' => 'SIM',
+                    ];
+
+                    echo form_dropdown('invoice', $options);
+                ?>
+            </div>
             <div class="input-field col s12 m12 l12">
                 <?php
                     $options = [];
-
+                    $options[] = 'Suas categorias de serviço';
                     foreach ($categories as $key => $value) {
                         $options[$value['id']] = $value['category'];
                     }
@@ -30,6 +41,7 @@
                 echo form_button([
                     "class" => "waves-effect waves-light btn red darken-1",
                     "content" => "Cadastrar",
+                    "id" => "btn-submit",
                     "type" => "submit"
                 ]);
 

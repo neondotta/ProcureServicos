@@ -41,4 +41,39 @@ class ValidForm
         $data = ['status' => true];
         return $data;
     }
+
+    function validCNPJ($cnpj)
+    {
+        if($cnpj != "") {
+            $cnpj = preg_replace('/[^0-9]/', '', (string)$cnpj);
+            // Valida tamanho
+            if (strlen($cnpj) != 14) {
+                $data = ['status' => false];
+                return $data;
+            }
+            // Valida primeiro dígito verificador
+            for ($i = 0, $j = 5, $soma = 0; $i < 12; $i++) {
+                $soma += $cnpj{$i} * $j;
+                $j = ($j == 2) ? 9 : $j - 1;
+            }
+            $resto = $soma % 11;
+            if ($cnpj{12} != ($resto < 2 ? 0 : 11 - $resto)) {
+
+            }
+            // Valida segundo dígito verificador
+            for ($i = 0, $j = 6, $soma = 0; $i < 13; $i++) {
+                $soma += $cnpj{$i} * $j;
+                $j = ($j == 2) ? 9 : $j - 1;
+            }
+            $resto = $soma % 11;
+             if($cnpj{13} == ($resto < 2 ? 0 : 11 - $resto)) {
+                 $data = ['status' => true];
+                 return $data;
+             }
+             $data = ['status' => false];
+             return $data;
+        }
+
+        return 0;
+    }
 }

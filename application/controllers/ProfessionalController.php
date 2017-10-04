@@ -31,22 +31,17 @@ class ProfessionalController extends IndexCore
             "certificate" => 0
         ];
 
-        $array = $this->input->post('categorias');
-
-
-
-        exit;
         $confirmProfessional = $this->ProfessionalModel->insert($professional);
 
         if($confirmProfessional) {
 
-            //$categories = $this->CategoryController->find();
+            $professionalId = $this->db->insert_id();
 
-            $idCategory = [ "id_category" => $this->input->post('id_category') ];
+            $categoryProfessional['idProfessional'] = $professionalId;
+            $categoryProfessional['category'] = $this->input->post('categorias');
 
-//            foreach($category as $key => $value) {
-//
-//            }
+            $this->load->model('category_professional/CategoryProfessionalModel');
+            $this->CategoryProfessionalModel->insert($categoryProfessional);
 
         }
     }
