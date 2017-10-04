@@ -24,8 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://localhost/procure-servicos';
-//$config['base_url'] = 'https://procureservicos.herokuapp.com/';
-$config['base_url'] = 'https://stagingprocureservicos.herokuapp.com/';
+$config['base_url'] = 'https://procureservicos.herokuapp.com/';
+//$config['base_url'] = 'https://stagingprocureservicos.herokuapp.com/';
 
 /*
 |--------------------------------------------------------------------------
