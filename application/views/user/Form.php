@@ -171,6 +171,7 @@
                 <?php
                     echo form_button([
                         "class" => "waves-effect waves-light btn red darken-1",
+                        "id" => "btn-submit",
                         "content" => "Login",
                         "type" => "submit"
                     ]);

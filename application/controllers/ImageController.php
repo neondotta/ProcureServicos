@@ -42,6 +42,8 @@ class ImageController extends CI_Controller
         imagealphablending($newImage, false);
         imagesavealpha($newImage, true);
         imagecopyresampled($newImage, $image, 0, 0, 0, 0, $imageX, $imageY, $x, $y);
+
+
         switch ($picture['type']) {
             case 'image/jpg':
             case 'image/jpeg':
@@ -53,6 +55,9 @@ class ImageController extends CI_Controller
                 imagepng($newImage, $address . $name);
                 break;
         }
+
+        move_uploaded_file($newImage, $address . $name);
+
         imagedestroy($image);
         imagedestroy($newImage);
 

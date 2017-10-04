@@ -17,7 +17,7 @@
 <body class="l12 s12 m12">
 
 <ul id="dropdown1" class="dropdown-content">
-    <li><a href="<?= base_url('ProfessionalController/insert')?>">Vire um Profissional</a></li>
+    <li><a href="<?= base_url('ProfessionalController/openForm')?>">Vire um Profissional</a></li>
     <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
 </ul>
 <nav>
@@ -52,7 +52,7 @@
                                     </span></a>
                     </div>
                 </li>
-                <li><a href="<?= base_url('ProfessionalController/insert')?>">Vire um Profissional</a></li>
+                <li><a href="<?= base_url('ProfessionalController/openForm')?>">Vire um Profissional</a></li>
                 <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
             <?php } else { ?>
                 <?=$_SERVER['DOCUMENT_ROOT']."./bah";?>
@@ -80,7 +80,7 @@ if ($this->session->flashdata('success')) {
 ?>
     <div id="card-alert" class="card green lighten-2 col s12 m12 l10">
             <div class="card-content white-text">
-            <p class="alert alert-success"><?= $this->session->flashdata('error'); ?></p>
+            <p class="alert alert-success"><?= $this->session->flashdata('success'); ?></p>
         </div>
         <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">×</span>
