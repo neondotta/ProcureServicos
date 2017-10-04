@@ -24,8 +24,8 @@
 	},
 	"scripts": {
 		"post-install-cmd": [
-			"chmod -R 777 $HOME/public",
-			"chmod 777 $HOME/public/images"
+			"chmod -R 777 public",
+			"chmod 777 public/images"
 		]
 	}
 }
