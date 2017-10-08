@@ -1,11 +1,26 @@
 <div class="valign-wrapper">
     <div class="form col s12 m10 l8">
         <div class="row">
+            <?php
+                echo form_open_multipart('UserController/insert');
+                echo form_input([
+                    "type" => 'hidden',
+                    "name" => 'latitude',
+                    "id" => 'latitude',
+                    "class" => 'validate',
+                    "maxlength" => 255
+                ]);
+                echo form_input([
+                    "type" => 'hidden',
+                    "name" => 'longitude',
+                    "id" => 'longitude',
+                    "class" => 'validate',
+                    "maxlength" => 255
+                ]);
+            ?>
             <div class="input-field col s12 m12 l12">
                 <?php
-                echo form_open_multipart('UserController/insert');
-
-                echo form_label("Nome:", 'name');
+                    echo form_label("Nome:", 'name');
                 echo form_input([
                     "name" => 'name',
                     "id" => 'name',
@@ -13,7 +28,7 @@
                     "maxlength" => 255
                 ]);
                 ?>
-                </div>
+            </div>
             <div class="input-field col s12">
                 <?php
                     echo form_label("Cpf:", 'cpf');
@@ -33,7 +48,8 @@
                         "name" => 'cep',
                         "id" => 'cep',
                         "class" => 'validate',
-                        "maxlength" => 255,
+                        "maxlength" => 9,
+                        "tabindex" => 1
                     ]);
                 ?>
             </div>
@@ -89,6 +105,7 @@
                         "id" => 'number',
                         "class" => 'validate',
                         "maxlength" => 255,
+                        "tabindex" => 2
                     ]);
                 ?>
             </div>
@@ -172,7 +189,7 @@
                     echo form_button([
                         "class" => "waves-effect waves-light btn red darken-1",
                         "id" => "btn-submit",
-                        "content" => "Login",
+                        "content" => "Cadastrar",
                         "type" => "submit"
                     ]);
 
@@ -182,3 +199,6 @@
         </div>
     </div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNyLsAhFt4hIZKeNJYC244jPPayM0GhrY"></script>
+<script src="<?= base_url() ?>public/js/googleMaps.js"></script>

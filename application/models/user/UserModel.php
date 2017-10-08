@@ -43,4 +43,11 @@ class UserModel extends CI_Model
 
     }
 
+    public function becomeProfessional()
+    {
+        $this->db->set('user_professional', TRUE);
+        $this->db->where('id', $this->session->userdata('login')['id']);
+        $this->db->update('user');
+    }
+
 }

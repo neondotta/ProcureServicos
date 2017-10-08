@@ -42,6 +42,8 @@ class UserController extends IndexCore
             "number" => $this->input->post('number'),
             "complement" => $this->input->post('complement'),
             "email" => $this->input->post('email'),
+            "latitude" => $this->input->post('latitude'),
+            "longitude" => $this->input->post('longitude'),
             "name_picture" => $nameImage ? $nameImage : 'default.jpg',
             "address_picture" => $addressImage,
             "password" => md5($this->input->post('password'))  //criptografia temporária, para alterar para bcrypt

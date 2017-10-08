@@ -19,6 +19,7 @@ var mapOptions = {
 };
 var markers = [];
 var infoWindow = new google.maps.InfoWindow();
+var geocoder= new google.maps.Geocoder();
 
 function initialize() {
 
@@ -207,5 +208,32 @@ function add_markers(data) {
 
     map.fitBounds(this.Crcl.getBounds());
 }
+
+function completAddress() {
+    var getNation = $("#nation").val();
+    var getCity = $("#city").val();
+    var getStreet = $("#street").val();
+    var getNumber = $("#number").val();
+    var getAddress = getStreet + " " + getNumber + ', ' + getCity + ', ' + getNation;
+    return getAddress;
+}
+
+$("#number").blur(function () {
+    var getAddress = completAddress();
+    var getLatitude = '';
+    var getLongitude = '';
+
+    geocoder.geocode( { 'address': getAddress}, function(results, status) {
+        if (status == 'OK') {
+            $('#latitude').val(results[0].geometry.location.lat());
+            $('#longitude').val(results[0].geometry.location.lng());
+            console.log(getLatitude);
+        } else {
+            alert("Não foi possivel obter localização: " + status);
+        }
+    });
+    console.log('Latitude: ' + getLatitude + ' Logitude: ' + getLongitude);
+
+});
 
 google.maps.event.addDomListener(window, 'load', initialize);

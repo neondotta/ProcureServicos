@@ -21,7 +21,6 @@ class IndexController extends IndexCore
 
     public function listProfessional($listProfessional)
     {
-        echo '<pre>';print_r($listProfessional);die();
         if (isset($listProfessional)) {
            return $listProfessional;
         }

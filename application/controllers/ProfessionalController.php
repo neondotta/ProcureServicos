@@ -34,8 +34,11 @@ class ProfessionalController extends IndexCore
         $confirmProfessional = $this->ProfessionalModel->insert($professional);
 
         if($confirmProfessional) {
-
             $professionalId = $this->db->insert_id();
+
+            $this->load->model('user/UserModel');
+
+            $this->UserModel->becomeProfessional();
 
             $categoryProfessional['idProfessional'] = $professionalId;
             $categoryProfessional['category'] = $this->input->post('categorias');
@@ -43,7 +46,11 @@ class ProfessionalController extends IndexCore
             $this->load->model('category_professional/CategoryProfessionalModel');
             $this->CategoryProfessionalModel->insert($categoryProfessional);
 
+            $this->session->set_flashdata('success', 'Cadastrado com sucesso.');
+            redirect('/');
         }
+
+
     }
 
 }
