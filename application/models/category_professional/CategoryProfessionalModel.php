@@ -17,4 +17,21 @@ class CategoryProfessionalModel extends CI_Model
             $this->db->insert('category_professional', $professional);
         }
     }
+
+    public function findId($id)
+    {
+        $categories_professional = $this->db->where('id_professional', $id)
+                                        ->get('category_professional')
+                                        ->result_array();
+
+        $categories = [];
+
+        foreach($categories_professional as $category) {
+           array_push($categories,$category['id_category']);
+        }
+
+        $this->load->model('category/CategoryModel');
+        return $this->CategoryModel->findId($categories);
+
+    }
 }

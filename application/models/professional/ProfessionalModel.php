@@ -14,4 +14,33 @@ class ProfessionalModel extends CI_Model
 
         return $result;
     }
+
+    public function findId($id)
+    {
+
+        $this->load->model('category/CategoryModel');
+        $professional = $this->find($id);
+
+
+    }
+
+    public function find($where = NULL)
+    {
+        if ($where != NULL) {
+            $this->db->where('id_user', $where);
+        }
+
+        $query = $this->db->select('*')
+            ->from('professional')
+            ->get();
+
+        if ($query->num_rows() == 1) {
+            $professional = $query->result_array();
+
+            $this->load->model('category_professional/CategoryProfessionalModel');
+            $professional['categories'] = $this->CategoryProfessionalModel->findId($professional[0]['id']);
+
+            return $professional;
+        }
+    }
 }

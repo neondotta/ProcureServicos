@@ -20,4 +20,12 @@ class CategoryModel extends CI_Model
        $categories = ['categories' => $result];
        return $categories;
     }
+
+    public function findId($ids)
+    {
+        return $this->db->where_in('id', $ids)
+                        ->get('category')
+                        ->result_array();
+    }
+
 }
