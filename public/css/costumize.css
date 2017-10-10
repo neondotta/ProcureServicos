@@ -20,6 +20,10 @@ nav, nav .nav-wrapper i{
     margin-right: 10px;
 }
 
+.collection-hidden {
+    display:none;
+}
+
 .card-panel{
     padding:10px 24px;
 }
@@ -75,6 +79,49 @@ nav, nav .nav-wrapper i{
     -o-transition: all .3s ease .15s;
     -ms-transition: all .3s ease .15s;
     transition: all .3s ease .15s;
+}
+
+.row .col.no-padding {
+    padding: 0;
+}
+
+/********** FIX MARGIN *********/
+
+.margin-b-10 {
+    margin-bottom: 10px;
+}
+
+.margin-r-10 {
+    margin-right:10px;
+}
+
+.margin-10-0 {
+    margin: 10px 0;
+}
+
+
+
+/************* FIX PADDING **************/
+
+.padding-0-30 {
+    padding:0 30px;
+}
+
+
+/*********** FIX FLOAT *************/
+
+.no-float {
+    float: none;
+}
+
+/************** FIX OVERFLOW *******************/
+
+.no-overflow {
+    overflow: inherit;
+}
+
+.secondary-content.no-float {
+    text-align: right;
 }
 
 @media screen and (min-width: 1200px) {

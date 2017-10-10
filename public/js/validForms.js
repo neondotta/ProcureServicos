@@ -1,5 +1,3 @@
-
-
     const confirm_password = document.getElementById("confirm-password");
     const password = document.getElementById("password");
     const cnpj = document.getElementById("cnpj");
@@ -136,3 +134,48 @@
             clearInputAddress();
         }
     });
+
+    function showCollection() {
+        $('#collection-categories').slideToggle();
+    }
+
+    $("#js-collection-button").click(function(e) {
+        e.preventDefault();
+
+        loadCategories();
+        showCollection();
+    });
+
+    function catchCategoriesProfessional() {
+        var professionalCategories = $('li.categories');
+        var noListCategories = [];
+        $(professionalCategories).each(function (i, e) {
+            var categories = $(e).text();
+            noListCategories.push(categories);
+        });
+
+        return noListCategories;
+    }
+
+    function loadCategories() {
+
+        var select = $('#loadCategories');
+
+        select.empty();
+        $.get("../CategoryController/jsonCategories")
+            .done(function (response) {
+                response = JSON.parse(response) || {};
+
+                noListCategories = catchCategoriesProfessional();
+
+                select.append($('<option disabled></option>', {value: 0, text: 'Selecione novas categorias'}));
+
+                $.each(response.categories, function(i, e){
+                    if ($.inArray(e.category, noListCategories) == -1) {
+                        select.append($('<option></option>', {value: e.id, text: e.category}));
+                    }
+                });
+
+                select.material_select();
+            });
+    }

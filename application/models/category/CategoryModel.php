@@ -28,4 +28,9 @@ class CategoryModel extends CI_Model
                         ->result_array();
     }
 
+    public function addCategoriesProfessional()
+    {
+
+    }
+
 }

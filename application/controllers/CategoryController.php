@@ -12,6 +12,7 @@ class CategoryController extends IndexCore
     {
         parent::__construct();
         $this->CI =& get_instance();
+        $this->load->model('category/CategoryModel');
     }
 
     public function openForm()
@@ -29,11 +30,27 @@ class CategoryController extends IndexCore
         $this->CategoryModel->insert($category);
     }
 
+    public function addCategoryProfessional()
+    {
+
+        $categoryProfessional['idProfessional'] = $this->input->post('professionalId');
+        $categoryProfessional['category'] = $this->input->post('category');
+
+        $this->load->model('category_professional/CategoryProfessionalModel');
+        $this->CategoryProfessionalModel->insert($categoryProfessional);
+
+        redirect(base_url('ProfessionalController/profile'));
+    }
+
     public function find()
     {
-        $this->load->model('category/CategoryModel');
         $result = $this->CategoryModel->find();
         return $result;
+    }
+
+    public function jsonCategories()
+    {
+        echo json_encode($this->find());
     }
 
 }

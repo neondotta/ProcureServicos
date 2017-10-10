@@ -17,11 +17,8 @@ class ProfessionalModel extends CI_Model
 
     public function findId($id)
     {
-
         $this->load->model('category/CategoryModel');
-        $professional = $this->find($id);
-
-
+        return $this->find($id);
     }
 
     public function find($where = NULL)
@@ -34,12 +31,10 @@ class ProfessionalModel extends CI_Model
             ->from('professional')
             ->get();
 
-        if ($query->num_rows() == 1) {
-            $professional = $query->result_array();
-
+        if ($query->num_rows() > 0) {
+            $professional['professional'] = $query->row_array();
             $this->load->model('category_professional/CategoryProfessionalModel');
-            $professional['categories'] = $this->CategoryProfessionalModel->findId($professional[0]['id']);
-
+            $professional['categories'] = $this->CategoryProfessionalModel->findId($professional['professional']['id']);
             return $professional;
         }
     }
