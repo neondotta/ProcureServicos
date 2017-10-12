@@ -162,28 +162,28 @@
                     ]);
                 ?>
             </div>
-            <div class="file-field input-field col s12">
-                <div class="btn col s4">
-                    <span>Foto</span>
-                    <?php
-                        echo form_input([
-                            "name" => 'image',
-                            "id" => 'image',
-                            "type" => 'file'
-                        ]);
-                    ?>
-                </div>
-                <div class="file-path-wrapper col s8">
-                    <?php
-                        echo form_input([
-                            "name" => 'image',
-                            "id" => 'image',
-                            "class" => 'file-path validate',
-                            "maxlength" => 255,
-                        ]);
-                    ?>
-                </div>
-            </div>
+<!--            <div class="file-field input-field col s12">-->
+<!--                <div class="btn col s4">-->
+<!--                    <span>Foto</span>-->
+<!--                    --><?php
+//                        echo form_input([
+//                            "name" => 'image',
+//                            "id" => 'image',
+//                            "type" => 'file'
+//                        ]);
+//                    ?>
+<!--                </div>-->
+<!--                <div class="file-path-wrapper col s8">-->
+<!--                    --><?php
+//                        echo form_input([
+//                            "name" => 'image',
+//                            "id" => 'image',
+//                            "class" => 'file-path validate',
+//                            "maxlength" => 255,
+//                        ]);
+//                    ?>
+<!--                </div>-->
+<!--            </div>-->
             <div class="input-field col s12">
                 <?php
                     echo form_button([
