@@ -102,10 +102,10 @@
             if(validCep.test(cep)) {
 
                 //Preenche os campos com "..." enquanto consulta webservice.
-                $("#street").val("...").change();
-                $("#city").val("...").change();
-                $("#country").val("...").change();
-                $("#nation").val("Brazil").change();
+                $("#street").val("...").change().attr('readonly', true);
+                $("#city").val("...").change().attr('readonly', true);
+                $("#country").val("...").change().attr('readonly', true);
+                $("#nation").val("Brazil").change().attr('readonly', true);
 
                 //Consulta o webservice viacep.com.br/
                 $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
@@ -147,7 +147,8 @@
     });
 
     function catchCategoriesProfessional() {
-        var professionalCategories = $('li.categories');
+
+        var professionalCategories = $('li.categories span');
         var noListCategories = [];
         $(professionalCategories).each(function (i, e) {
             var categories = $(e).text();
@@ -158,7 +159,6 @@
     }
 
     function loadCategories() {
-
         var select = $('#loadCategories');
 
         select.empty();
@@ -169,7 +169,6 @@
                 noListCategories = catchCategoriesProfessional();
 
                 select.append($('<option disabled></option>', {value: 0, text: 'Selecione novas categorias'}));
-
                 $.each(response.categories, function(i, e){
                     if ($.inArray(e.category, noListCategories) == -1) {
                         select.append($('<option></option>', {value: e.id, text: e.category}));

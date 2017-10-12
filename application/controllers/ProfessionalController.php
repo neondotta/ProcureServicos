@@ -53,16 +53,27 @@ class ProfessionalController extends IndexCore
 
     }
 
-    public function find()
+    public function findId($id = NULL)
     {
         $idUser = $this->session->userdata('login')['id'];
+
+        if ($id != NULL) {
+            $idUser = $id;
+        }
         return $this->ProfessionalModel->findId($idUser);
     }
 
     public function profile()
     {
-        $professional = $this->find();
+        $professional = $this->findId();
         $this->view('professional/Profile', $professional);
+    }
+
+    public function professionalProfile()
+    {
+        $idProfessional = $this->input->get('id');
+        $professional = $this->findId($idProfessional);
+        $this->view('professional/professionalProfile', $professional);
     }
 
 }

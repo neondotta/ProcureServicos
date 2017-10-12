@@ -35,8 +35,10 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <?php if($this->session->has_userdata('login')) { ?>
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?=$this->session->userdata('login')['name']; ?>
-                        <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">
+                        <?=$this->session->userdata('login')['name']; ?>
+                        <i class="material-icons right">arrow_drop_down</i>
+                </a></li>
             <?php } else { ?>
                 <li><a href="<?= base_url('LoginController')?>">Login</a></li>
                 <li><a href="<?= base_url('UserController/openForm')?>">Cadastrar</a></li>

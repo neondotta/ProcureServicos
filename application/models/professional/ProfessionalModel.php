@@ -27,12 +27,14 @@ class ProfessionalModel extends CI_Model
             $this->db->where('id_user', $where);
         }
 
-        $query = $this->db->select('*')
+        $query = $this->db->select('professional.*,user.name, user.email, user.name_picture, user.address_picture')
             ->from('professional')
+            ->join('user', 'user.id = professional.id_user', 'inner')
             ->get();
 
         if ($query->num_rows() > 0) {
             $professional['professional'] = $query->row_array();
+
             $this->load->model('category_professional/CategoryProfessionalModel');
             $professional['categories'] = $this->CategoryProfessionalModel->findId($professional['professional']['id']);
             return $professional;

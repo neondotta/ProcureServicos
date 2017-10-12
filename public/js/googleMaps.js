@@ -151,9 +151,11 @@ function UserLocationAjax() {
 }
 
 function add_professional(data) {
-
+    console.log(data);
     document.getElementById('info').innerHTML = " Encontrado:  " + JSON.parse(data).length + " profissionais próximos de você.<br>";
     $.each(JSON.parse(data), function(i, e) {
+        var link = 'ProfessionalController/professionalProfile?id=' +e.userId;
+        const a = $("<a href='"+ link +"'></a>");
         const li = $("<li class=\"collection-item avatar\"></li>");
         const span = $("<span class=\"title\" id=\"nameProfessional\"></span>");
         const p = $("<p id=\"emailProfessional\"></p>");
@@ -167,7 +169,8 @@ function add_professional(data) {
         span.text(e.name);
         p.text(e.email);
 
-        li.append(img, span, p, certificate);
+        a.append(img, span, p, certificate);
+        li.append(a);
         li.appendTo($('.collection'));
     });
 

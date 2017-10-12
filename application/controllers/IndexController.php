@@ -8,11 +8,10 @@
 
 class IndexController extends IndexCore
 {
-//    function __construct()
-//    {
-//        parent::__construct();
-//        $base = base_url();
-//    }
+    function __construct()
+    {
+        parent::__construct();
+    }
 
     public function index()
     {

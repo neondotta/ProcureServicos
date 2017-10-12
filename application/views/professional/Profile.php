@@ -7,7 +7,10 @@
 
                 foreach ($categories as $value){
             ?>
-                    <li class="collection-item categories"><?=$value['category']?></li>
+                    <li class="collection-item categories">
+                        <span><?=$value['category']?></span>
+                        <a href="#!" class="secondary-content red-text darken-1"><i class="material-icons">delete</i></a>
+                    </li>
             <?php
                 }
             ?>
