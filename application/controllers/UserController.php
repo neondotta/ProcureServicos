@@ -57,10 +57,10 @@ class UserController extends IndexCore
 
             $confirmInsert = $this->UserModel->insert($user);
 
-            if($confirmInsert && $_FILES['image']) {
-                $addressImage = $_SERVER['DOCUMENT_ROOT'].'/procure-servicos/public/images/';
-                $imageController->validateUpload($image, $nameImage, $addressImage);
-            }
+//            if($confirmInsert && $_FILES['image']) {
+//                $addressImage = $_SERVER['DOCUMENT_ROOT'].'/procure-servicos/public/images/';
+//                $imageController->validateUpload($image, $nameImage, $addressImage);
+//            }
 
             $this->session->set_flashdata('success', 'Cadastrado com sucesso.');
             redirect('/');
