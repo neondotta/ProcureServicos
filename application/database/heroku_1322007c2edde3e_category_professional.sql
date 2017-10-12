@@ -39,7 +39,7 @@ CREATE TABLE `category_professional` (
 
 LOCK TABLES `category_professional` WRITE;
 /*!40000 ALTER TABLE `category_professional` DISABLE KEYS */;
-INSERT INTO `category_professional` VALUES (1,1),(2,1),(3,1),(2,2),(5,3),(1,11),(3,11),(4,11);
+INSERT INTO `category_professional` VALUES (1,1),(2,1),(3,1),(5,1),(2,2),(5,3),(1,11),(3,11),(4,11),(1,21),(2,21),(3,21),(5,21),(1,31),(3,31),(1,41),(1,51),(3,51),(1,61);
 /*!40000 ALTER TABLE `category_professional` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-04 20:37:27
+-- Dump completed on 2017-10-12 12:25:03

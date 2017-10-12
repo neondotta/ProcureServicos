@@ -29,6 +29,9 @@ CREATE TABLE `service` (
   `description` text NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_professional` int(11) NOT NULL,
+  `date` date DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_service_user_idx` (`id_user`),
   KEY `fk_service_professional1_idx` (`id_professional`)
@@ -53,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-04 20:37:22
+-- Dump completed on 2017-10-12 12:24:58
