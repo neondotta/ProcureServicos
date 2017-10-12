@@ -154,7 +154,7 @@ function add_professional(data) {
     console.log(data);
     document.getElementById('info').innerHTML = " Encontrado:  " + JSON.parse(data).length + " profissionais próximos de você.<br>";
     $.each(JSON.parse(data), function(i, e) {
-        var link = 'ProfessionalController/professionalProfile?id=' +e.userId;
+        var link = 'ProfessionalController/professionalProfile?id=' +e.professionalId;
         const a = $("<a href='"+ link +"'></a>");
         const li = $("<li class=\"collection-item avatar\"></li>");
         const span = $("<span class=\"title\" id=\"nameProfessional\"></span>");

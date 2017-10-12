@@ -15,16 +15,16 @@ class ProfessionalModel extends CI_Model
         return $result;
     }
 
-    public function findId($id)
+    public function findId($id, $find)
     {
         $this->load->model('category/CategoryModel');
-        return $this->find($id);
+        return $this->find($id, $find);
     }
 
-    public function find($where = NULL)
+    public function find($where = NULL, $find = NULL)
     {
         if ($where != NULL) {
-            $this->db->where('id_user', $where);
+            $this->db->where($find, $where);
         }
 
         $query = $this->db->select('professional.*,user.name, user.email, user.name_picture, user.address_picture')
