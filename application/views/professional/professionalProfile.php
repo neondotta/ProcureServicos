@@ -31,12 +31,71 @@
         <div id="modal1" class="modal">
             <div class="modal-content">
                 <?php if($this->session->has_userdata('login')) { ?>
-
                     <h4>Informações para o profissional</h4>
 
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat red darken-1 white-text">Contratar</a>
-                </div>
+                    <div class="row">
+                        <?php echo form_open('ServiceController/insert'); ?>
+                            <div class="input-field col s12 m12" id="type_time">
+                                <?php
+                                $options = [
+                                    '0' => 'Atendimento Programado',
+                                    '1' => 'Atendimento Urgente(agora)',
+                                ];
+
+                                echo form_dropdown('type_time', $options);
+                                ?>
+                            </div>
+                            <?php
+                                echo form_hidden([
+                                    "professional" => $this->input->get('id')
+                                ]);
+                            ?>
+                            <div class="input-field col s6 m6 l6">
+                                <?php
+                                    echo form_label("Data:", 'date', 'class="active"');
+                                    echo form_input([
+                                        "name" => 'date',
+                                        "id" => 'date',
+                                        "class" => 'validate',
+                                        "type" => 'date'
+                                    ]);
+                                ?>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <?php
+                                    echo form_label("Hora:", 'time', 'class="active"');
+                                    echo form_input([
+                                        "name" => 'time',
+                                        "id" => 'time',
+                                        "class" => 'validate',
+                                        "type" => 'time'
+                                    ]);
+                                ?>
+                            </div>
+                            <div class="input-field col s12 m12 l12">
+                                <?php
+                                    echo form_label("Descrição:", 'description');
+                                    echo form_textarea([
+                                        "name" => 'description',
+                                        "id" => 'textarea1',
+                                        "class" => 'materialize-textarea'
+                                    ]);
+                                ?>
+                            </div>
+
+                            <div class="modal-footer">
+                                <?php
+                                    echo form_button([
+                                        "class" => "modal-action modal-close waves-effect waves-green btn-flat red darken-1 white-text",
+                                        "content" => "Contratar",
+                                        "id" => "btn-submit",
+                                        "type" => "submit"
+                                    ]);
+                                ?>
+                            </div>
+                        <?php echo form_close(); ?>
+
+                    </div>
 
                 <?php } else {?>
 
@@ -57,6 +116,9 @@
 <script>
     $(document).ready(function(){
         $('.modal').modal();
+
+        $('#textarea1').trigger('autoresize');
+
     });
 </script>
 
