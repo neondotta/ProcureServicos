@@ -4,7 +4,6 @@
                 <h4 class="">Categorias</h4>
             </li>
             <?php
-
                 foreach ($categories as $value){
             ?>
                     <li class="collection-item categories">

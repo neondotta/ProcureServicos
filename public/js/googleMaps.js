@@ -160,7 +160,7 @@ function add_professional(data) {
         const span = $("<span class=\"title\" id=\"nameProfessional\"></span>");
         const p = $("<p id=\"emailProfessional\"></p>");
         const img = $('<img />', { src:'public/images/default.jpg', alt:"", class:"left" });
-        let certificate = null;
+        var certificate = null;
         if(e.certificate == true) {
             certificate = $("<a href=\"#!\" class=\"secondary-content\">" +
                 "<i class=\"material-icons\">verified_user</i></a>");

@@ -20,9 +20,15 @@
                     ?>
                 </span>
             </div>
-            <div class="icon col s3">
-                <i class="small material-icons teal-text">verified_user</i>
-            </div>
+            <?php
+                if ($professional['certificate']) {
+            ?>
+                    <div class="icon col s3">
+                        <i class="small material-icons teal-text">verified_user</i>
+                    </div>
+            <?php
+                }
+            ?>
         </div>
     </div>
     <div class="col s12 info-professional col s12">
@@ -31,7 +37,7 @@
         <div id="modal1" class="modal">
             <div class="modal-content">
                 <?php if($this->session->has_userdata('login')) { ?>
-                    <h4>Informações para o profissional</h4>
+                    <h5>Informações para o profissional</h5>
 
                     <div class="row">
                         <?php echo form_open('ServiceController/insert'); ?>
@@ -99,18 +105,49 @@
 
                 <?php } else {?>
 
-                    <h4>Para contratar um profissional, será necessário se logar ou se cadastrar.</h4>
+                    <h5>Para contratar um profissional, será necessário se logar ou se cadastrar.</h5>
 
-                    <div class="modal-footer">
-                        <a href="<?= base_url('LoginController')?>" class="modal-action modal-close waves-effect waves-green btn-flat red darken-1 white-text">Login</a>
-                        <a href="<?= base_url('UserController/openForm')?>" class="modal-action modal-close waves-effect waves-green btn-flat red darken-1 white-text">Cadastre-se</a>
+                    <div class="modal-footer row">
+                        <a href="<?= base_url('UserController/openForm')?>" class="modal-action modal-close waves-effect waves-green btn-flat red darken-1 white-text col s10 text-center">Cadastre-se</a>
+                        <a href="<?= base_url('LoginController')?>" class="modal-action modal-close waves-effect waves-green btn-flat blue darken-4 white-text col s6 text-center">Login</a>
                     </div>
 
                 <?php } ?>
 
             </div>
         </div>
+
+        <ul class="collection with-header col s12 no-padding no-overflow" id="rating-professional">
+            <li class="collection-header blue darken-4 white-text padding-5"> Avaliação Professional</li>
+            <li class="padding-5 flex-center">
+                <div id="circle-rating" class="col s3">
+                    <span class="col s12 no-padding blue-text text-darken-4"><?=$professional['evaluation']?></span>
+                </div>
+                <div class="col s8 offset-s1 no-padding">
+                    <?php if ($professional['amount_service'] > 0) { ?>
+                        <p class="no-padding"><?=$professional['amount_service']?> avaliações(s) até o momento.</p>
+                    <?php } else { ?>
+                        <p class="no-padding">Profissional sem avaliação.</p>
+                    <?php } ?>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="collection with-header col s12 no-padding no-overflow" id="rating-professional">
+            <li class="collection-header blue darken-4 white-text padding-5">Categorias profissionais</li>
+            <?php
+            foreach ($categories as $value){
+                ?>
+                <li class="collection-item categories">
+                    <span><?=$value['category']?></span>
+                </li>
+                <?php
+            }
+            ?>
+        </ul>
+
     </div>
+
 </div>
 
 <script>
@@ -118,7 +155,6 @@
         $('.modal').modal();
 
         $('#textarea1').trigger('autoresize');
-
     });
 </script>
 
