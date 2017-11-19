@@ -48,7 +48,7 @@ class ServicesMapModel extends CI_Model
 
         $idUser = $this->session->userdata('login')['id'] ? $this->session->userdata('login')['id'] : 0;
 
-        $sql = "SELECT u.id userId, u.name, u.city, u.street, u.latitude, u.longitude, u.email, 
+        $sql = "SELECT u.id userId, u.name, u.city, u.street, u.latitude, u.longitude, u.email, u.address_picture, u.name_picture,
                        p.id professionalId, p.certificate, p.invoice,
               ( 6371 * acos( cos( radians({$latitude}) ) * cos( radians( `latitude` ) ) * cos( radians( `longitude` ) 
               - radians({$longitude}) ) + sin( radians({$latitude}) ) * sin( radians( `latitude` ) ) ) ) AS distance

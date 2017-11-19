@@ -151,7 +151,6 @@ function UserLocationAjax() {
 }
 
 function add_professional(data) {
-    console.log(data);
     document.getElementById('info').innerHTML = " Encontrado:  " + JSON.parse(data).length + " profissionais próximos de você.<br>";
     $.each(JSON.parse(data), function(i, e) {
         var link = 'ProfessionalController/professionalProfile?id=' +e.professionalId;
@@ -159,8 +158,13 @@ function add_professional(data) {
         const li = $("<li class=\"collection-item avatar\"></li>");
         const span = $("<span class=\"title\" id=\"nameProfessional\"></span>");
         const p = $("<p id=\"emailProfessional\"></p>");
-        const img = $('<img />', { src:'public/images/default.jpg', alt:"", class:"left" });
+        var img = $('<img />', { src:'public/images/default.jpg', alt:"", class:"left" });;
         var certificate = null;
+
+        if(e.name_picture) {
+            img =  $('<img />', { src:e.address_picture + e.name_picture , alt:"", class:"left" });
+        }
+
         if(e.certificate == true) {
             certificate = $("<a href=\"#!\" class=\"secondary-content\">" +
                 "<i class=\"material-icons\">verified_user</i></a>");
