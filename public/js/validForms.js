@@ -8,7 +8,7 @@
     });
 
 
-    $('#confirm-password').on('blur', function() {
+    $('#confirm-password').on('keyup', function() {
         if(confirm_password.value != password.value) {
             $( "#confirm-password, #password" ).removeClass("valid").addClass("invalid");
             submit.setAttribute("disabled","disabled");
@@ -117,7 +117,9 @@
                         $("#country").val(dados.uf);
 
                         if(dados.logradouro.length == 0) {
-                            $("#street").val("...").change().attr('readonly', false).parent('label').addClass('active');
+                            $("#street").val("").change().attr('readonly', false).focus();
+                        } else {
+                            $("#number").focus();
                         }
 
                     } //end if.

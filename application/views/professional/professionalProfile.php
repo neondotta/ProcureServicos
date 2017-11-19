@@ -58,7 +58,7 @@
                             <div class="input-field col s12 m12" id="type_time">
                                 <?php
                                 $options = [
-                                    '0' => 'Atendimento Programado',
+                                    '2' => 'Atendimento Programado',
                                     '1' => 'Atendimento Urgente(agora)',
                                 ];
 
