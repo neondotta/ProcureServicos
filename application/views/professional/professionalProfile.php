@@ -62,7 +62,7 @@
                                     '1' => 'Atendimento Urgente(agora)',
                                 ];
 
-                                echo form_dropdown('type_time', $options);
+                                echo form_dropdown('type_time', $options, '', 'id="dropdown_service"');
                                 ?>
                             </div>
                             <?php
@@ -70,27 +70,29 @@
                                     "professional" => $this->input->get('id')
                                 ]);
                             ?>
-                            <div class="input-field col s6 m6 l6">
-                                <?php
-                                    echo form_label("Data:", 'date', 'class="active"');
-                                    echo form_input([
-                                        "name" => 'date',
-                                        "id" => 'date',
-                                        "class" => 'validate',
-                                        "type" => 'date'
-                                    ]);
-                                ?>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <?php
-                                    echo form_label("Hora:", 'time', 'class="active"');
-                                    echo form_input([
-                                        "name" => 'time',
-                                        "id" => 'time',
-                                        "class" => 'validate',
-                                        "type" => 'time'
-                                    ]);
-                                ?>
+                            <div id="date-time" class="show-content">
+                                <div class="input-field col s6 m6 l6">
+                                    <?php
+                                        echo form_label("Data:", 'date', 'class="active"');
+                                        echo form_input([
+                                            "name" => 'date',
+                                            "id" => 'date',
+                                            "class" => 'validate',
+                                            "type" => 'date'
+                                        ]);
+                                    ?>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <?php
+                                        echo form_label("Hora:", 'time', 'class="active"');
+                                        echo form_input([
+                                            "name" => 'time',
+                                            "id" => 'time',
+                                            "class" => 'validate',
+                                            "type" => 'time'
+                                        ]);
+                                    ?>
+                                </div>
                             </div>
                             <div class="input-field col s12 m12 l12">
                                 <?php
@@ -174,6 +176,14 @@
         $('.modal').modal();
 
         $('#textarea1').trigger('autoresize');
+
+        $('#type_time').on('change', function() {
+            console.log( $('#dropdown_service').val() );
+            if($('#dropdown_service').val()) {
+                $('#date-time').toggleClass("show-content hide-content");
+            }
+        });
+
     });
 </script>
 
