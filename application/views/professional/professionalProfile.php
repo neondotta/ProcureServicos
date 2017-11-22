@@ -4,30 +4,44 @@
         <div class="simple-data col s8">
             <div class="identifier col s9">
                 <strong><span><?= $professional['name'] ?></span></strong>
-                <span><?= $professional['email'] ?></span>
-                <span class="flex-center">
+                <?php
+                    if($this->session->has_userdata('login')) {
+                ?>
+                    <span><?= $professional['email'] ?></span>
+                    <span class="flex-center">
 
-                    <?php
-                        if ($professional['invoice']) {
-                    ?>
-                            Nota Fiscal: <i class="material-icons teal-text">check_circle</i>
-                    <?php
-                        } else {
-                    ?>
-                            Nota Fiscal: <i class="material-icons teal-text">block</i>
-                    <?php
-                        }
-                    ?>
-                </span>
+                        <?php
+                            if ($professional['invoice']) {
+                        ?>
+                                Nota Fiscal: <i class="material-icons teal-text">check_circle</i>
+                        <?php
+                            } else {
+                        ?>
+                                Nota Fiscal: <i class="material-icons teal-text">block</i>
+                        <?php
+                            }
+                        ?>
+                    </span>
+
+                <?php
+                    }
+                ?>
+
             </div>
             <?php
-                if ($professional['certificate']) {
+            if($this->session->has_userdata('login')) {
             ?>
+                <?php
+                if ($professional['certificate']) {
+                    ?>
                     <div class="icon col s3">
                         <i class="small material-icons teal-text">verified_user</i>
                     </div>
-            <?php
+                    <?php
                 }
+                ?>
+            <?php
+            }
             ?>
         </div>
     </div>
@@ -44,11 +58,11 @@
                             <div class="input-field col s12 m12" id="type_time">
                                 <?php
                                 $options = [
-                                    '0' => 'Atendimento Programado',
+                                    '2' => 'Atendimento Programado',
                                     '1' => 'Atendimento Urgente(agora)',
                                 ];
 
-                                echo form_dropdown('type_time', $options);
+                                echo form_dropdown('type_time', $options, '', 'id="dropdown_service"');
                                 ?>
                             </div>
                             <?php
@@ -56,27 +70,29 @@
                                     "professional" => $this->input->get('id')
                                 ]);
                             ?>
-                            <div class="input-field col s6 m6 l6">
-                                <?php
-                                    echo form_label("Data:", 'date', 'class="active"');
-                                    echo form_input([
-                                        "name" => 'date',
-                                        "id" => 'date',
-                                        "class" => 'validate',
-                                        "type" => 'date'
-                                    ]);
-                                ?>
-                            </div>
-                            <div class="input-field col s6 m6 l6">
-                                <?php
-                                    echo form_label("Hora:", 'time', 'class="active"');
-                                    echo form_input([
-                                        "name" => 'time',
-                                        "id" => 'time',
-                                        "class" => 'validate',
-                                        "type" => 'time'
-                                    ]);
-                                ?>
+                            <div id="date-time" class="show-content">
+                                <div class="input-field col s6 m6 l6">
+                                    <?php
+                                        echo form_label("Data:", 'date', 'class="active"');
+                                        echo form_input([
+                                            "name" => 'date',
+                                            "id" => 'date',
+                                            "class" => 'validate',
+                                            "type" => 'date'
+                                        ]);
+                                    ?>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <?php
+                                        echo form_label("Hora:", 'time', 'class="active"');
+                                        echo form_input([
+                                            "name" => 'time',
+                                            "id" => 'time',
+                                            "class" => 'validate',
+                                            "type" => 'time'
+                                        ]);
+                                    ?>
+                                </div>
                             </div>
                             <div class="input-field col s12 m12 l12">
                                 <?php
@@ -116,36 +132,41 @@
 
             </div>
         </div>
-
-        <ul class="collection with-header col s12 no-padding no-overflow" id="rating-professional">
-            <li class="collection-header blue darken-4 white-text padding-5"> Avaliação Professional</li>
-            <li class="padding-5 flex-center">
-                <div id="circle-rating" class="col s3">
-                    <span class="col s12 no-padding blue-text text-darken-4"><?=$professional['evaluation']?></span>
-                </div>
-                <div class="col s8 offset-s1 no-padding">
-                    <?php if ($professional['amount_service'] > 0) { ?>
-                        <p class="no-padding"><?=$professional['amount_service']?> avaliações(s) até o momento.</p>
-                    <?php } else { ?>
-                        <p class="no-padding">Profissional sem avaliação.</p>
-                    <?php } ?>
-                </div>
-            </li>
-        </ul>
-
-        <ul class="collection with-header col s12 no-padding no-overflow" id="rating-professional">
-            <li class="collection-header blue darken-4 white-text padding-5">Categorias profissionais</li>
-            <?php
-            foreach ($categories as $value){
-                ?>
-                <li class="collection-item categories">
-                    <span><?=$value['category']?></span>
-                </li>
-                <?php
-            }
+        <?php
+        if($this->session->has_userdata('login')) {
             ?>
-        </ul>
+            <ul class="collection with-header col s12 no-padding no-overflow" id="rating-professional">
+                <li class="collection-header blue darken-4 white-text padding-5"> Avaliação Professional</li>
+                <li class="padding-5 flex-center">
+                    <div id="circle-rating" class="col s3">
+                        <span class="col s12 no-padding blue-text text-darken-4"><?= $professional['evaluation'] ?></span>
+                    </div>
+                    <div class="col s8 offset-s1 no-padding">
+                        <?php if ($professional['amount_service'] > 0) { ?>
+                            <p class="no-padding"><?= $professional['amount_service'] ?> avaliações(s) até o
+                                momento.</p>
+                        <?php } else { ?>
+                            <p class="no-padding">Profissional sem avaliação.</p>
+                        <?php } ?>
+                    </div>
+                </li>
+            </ul>
 
+            <ul class="collection with-header col s12 no-padding no-overflow" id="rating-professional">
+                <li class="collection-header blue darken-4 white-text padding-5">Categorias profissionais</li>
+                <?php
+                foreach ($categories as $value) {
+                    ?>
+                    <li class="collection-item categories">
+                        <span><?= $value['category'] ?></span>
+                    </li>
+                    <?php
+                }
+                ?>
+            </ul>
+        <?php
+        }
+        ?>
     </div>
 
 </div>
@@ -155,6 +176,14 @@
         $('.modal').modal();
 
         $('#textarea1').trigger('autoresize');
+
+        $('#type_time').on('change', function() {
+            console.log( $('#dropdown_service').val() );
+            if($('#dropdown_service').val()) {
+                $('#date-time').toggleClass("show-content hide-content");
+            }
+        });
+
     });
 </script>
 

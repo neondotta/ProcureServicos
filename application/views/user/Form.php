@@ -49,7 +49,7 @@
                         "id" => 'cep',
                         "class" => 'validate',
                         "maxlength" => 9,
-                        "tabindex" => 1
+                        // "tabindex" => 1
                     ]);
                 ?>
             </div>
@@ -105,7 +105,7 @@
                         "id" => 'number',
                         "class" => 'validate',
                         "maxlength" => 255,
-                        "tabindex" => 2
+                        // "tabindex" => 2
                     ]);
                 ?>
             </div>

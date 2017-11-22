@@ -19,7 +19,7 @@ class ServiceController extends IndexCore
         $date = $this->input->post('date');
         $time = $this->input->post('time');
 
-        if ($this->input->post('type_time')) {
+        if ($this->input->post('type_time') || $this->input->post('type_time') == 1) {
             date_default_timezone_set('America/Sao_Paulo');
             $date = date("Y-m-d");
             $time = date("H:i");

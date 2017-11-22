@@ -8,7 +8,7 @@
     });
 
 
-    $('#confirm-password').on('blur', function() {
+    $('#confirm-password').on('keyup', function() {
         if(confirm_password.value != password.value) {
             $( "#confirm-password, #password" ).removeClass("valid").addClass("invalid");
             submit.setAttribute("disabled","disabled");
@@ -112,9 +112,16 @@
 
                     if (!("erro" in dados)) {
                         //Atualiza os campos com os valores da consulta.
-                        $("#street").val(dados.logradouro).parent('label').addClass('active');
+                        $("#street").val(dados.logradouro);
                         $("#city").val(dados.localidade);
                         $("#country").val(dados.uf);
+
+                        if(dados.logradouro.length == 0) {
+                            $("#street").val("").change().attr('readonly', false).focus();
+                        } else {
+                            $("#number").focus();
+                        }
+
                     } //end if.
                     else {
                         //CEP pesquisado não foi encontrado.
