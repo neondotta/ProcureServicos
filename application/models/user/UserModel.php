@@ -45,12 +45,16 @@ class UserModel extends CI_Model
         $this->db->update('user');
     }
 
-    public function statusUser($user)
+    public function statusUser()
     {
+        $user = $this->find(null, ['id' => $this->session->userdata('login')['id']]);
+        print_r($user);
         if ($user['status'] == 0) {
             $this->db->set('status', TRUE);
+            $this->session->userdata('login')['status'] = 1;
         } else {
             $this->db->set('status', FALSE);
+            $this->session->userdata('login')['status'] = 0;
         }
 
         $this->db->where('id', $user['id']);

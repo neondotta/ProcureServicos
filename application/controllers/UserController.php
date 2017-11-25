@@ -86,7 +86,6 @@ class UserController extends IndexCore
 
     public function statusUser()
     {
-        $user = $this->session->userdata('login');
-        return $this->UserModel->statusUser($user);
+        return $this->UserModel->statusUser();
     }
 }
