@@ -55,7 +55,7 @@
 
                     <div class="row">
                         <?php echo form_open('ServiceController/insert'); ?>
-                            <div class="input-field col s6 m6" id="type_time">
+                            <div class="input-field col s12 m6 l6" id="type_time">
                                 <?php
                                 $options = [
                                     '2' => 'Atendimento Programado',
@@ -65,7 +65,7 @@
                                 echo form_dropdown('type_time', $options, '', 'id="dropdown_service"');
                                 ?>
                             </div>
-                            <div class="input-field col s6 m6" id="type_payment">
+                            <div class="input-field col s12 m6 l6" id="type_payment">
                                 <?php
                                 $options = [
                                     '1' => 'Pagamento pelo sistema',
@@ -190,11 +190,20 @@
         $('#textarea1').trigger('autoresize');
 
         $('#type_time').on('change', function() {
-            console.log( $('#dropdown_service').val() );
             if($('#dropdown_service').val()) {
                 $('#date-time').toggleClass("show-content hide-content");
             }
         });
+
+        $('#date').on('blur', function () {
+            if(Date.now() > $('#date')['0'].valueAsNumber){
+                $( "#date" ).removeClass("valid").addClass("invalid");
+                submit.setAttribute("disabled","disabled");
+            }else{
+                $( "#date" ).removeClass("invalid").addClass("valid");
+                submit.removeAttribute("disabled");
+            }
+        })
 
     });
 </script>
