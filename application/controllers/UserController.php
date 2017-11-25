@@ -8,6 +8,14 @@
 
 class UserController extends IndexCore
 {
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->CI =& get_instance();
+        $this->load->model('user/UserModel');
+    }
+
     public function openForm()
     {
         $this->view('user/Form');
@@ -74,5 +82,11 @@ class UserController extends IndexCore
     public function edit()
     {
 
+    }
+
+    public function statusUser()
+    {
+        $user = $this->session->userdata('login');
+        return $this->UserModel->statusUser($user);
     }
 }

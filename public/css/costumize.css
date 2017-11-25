@@ -11,9 +11,56 @@ nav, nav .nav-wrapper i{
     height:50px;
     line-height:50px;
 }
+
+ul#nav-mobile li {
+    width:200px;
+}
+
     .dropdown-content {
         margin-top: 50px;
     }
+        .side-nav li .switch{
+            color: rgba(0,0,0,0.87);
+            font-size: 16px;
+            line-height: 22px;
+            padding: 14px 16px;
+        }
+
+        .dropdown-content li{
+            color: rgba(0,0,0,0.87);
+            font-size: 16px;
+            line-height: 22px;
+            padding: 14px 16px;
+        }
+
+    ul#dropdown1 li {
+        padding: 5px;
+    }
+
+        ul#dropdown1 div.switch {
+            font-size:14px;
+            font-weight: 500;
+            height: 40px;
+            padding: 16px;
+        }
+
+        ul#mobile-demo div.switch label {
+            padding: 14px 16px;
+        }
+            ul#mobile-demo div.switch span {
+                color: rgba(0,0,0,0.87);
+                font-size:14px;
+                font-weight: 500;
+            }
+                ul#mobile-demo div.switch span.lever {
+                    padding: 0 10px;
+                }
+
+        ul.hide-on-med-and-down div.switch span {
+            color: #26a69a;
+            font-size:14px;
+            font-weight: 500;
+        }
 
 .container.medium {
     width:90vw;
@@ -126,8 +173,6 @@ nav, nav .nav-wrapper i{
     margin: 10px 0;
 }
 
-
-
 /************* FIX PADDING **************/
 
 .padding-0-30 {
@@ -161,7 +206,6 @@ nav, nav .nav-wrapper i{
     text-align: center;
 }
 
-
 /****************** MODALS *******************/
 
 
@@ -173,6 +217,7 @@ nav, nav .nav-wrapper i{
 
 .flex-center{
     display: flex;
+    align-items: center;
 }
 
 @media screen and (min-width: 1200px) {
@@ -180,6 +225,10 @@ nav, nav .nav-wrapper i{
 }
 
 @media screen and (min-width: 992px) {
+
+    nav .brand-logo{
+        margin-left: 40px;
+    }
 
 }
 

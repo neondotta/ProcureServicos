@@ -40,4 +40,5 @@ class ProfessionalModel extends CI_Model
             return $professional;
         }
     }
+
 }

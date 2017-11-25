@@ -31,6 +31,7 @@ class ServiceController extends IndexCore
             'description' => $this->input->post('description'),
             'id_user' => $this->session->userdata('login')['id'],
             'id_professional' => $this->input->post('professional'),
+            'type_payment' => $this->input->post('type_payment'),
             'date' => $date,
             'time' => $time,
             'status' => 0

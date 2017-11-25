@@ -10,14 +10,9 @@ class UserModel extends CI_Model
 {
     public function authLogin($email, $password)
     {
-
         $where = ['email' => $email, 'password' => $password];
 
-        $user = [];
-
         $user = $this->find(NULL, $where);
-        echo 'find user';
-        print_r($user);
         return $user;
     }
 
@@ -48,6 +43,19 @@ class UserModel extends CI_Model
         $this->db->set('user_professional', TRUE);
         $this->db->where('id', $this->session->userdata('login')['id']);
         $this->db->update('user');
+    }
+
+    public function statusUser($user)
+    {
+        if ($user['status'] == 0) {
+            $this->db->set('status', TRUE);
+        } else {
+            $this->db->set('status', FALSE);
+        }
+
+        $this->db->where('id', $user['id']);
+        $this->db->update('user');
+
     }
 
 }

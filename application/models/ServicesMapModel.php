@@ -33,7 +33,7 @@ class ServicesMapModel extends CI_Model
               FROM user u
               INNER JOIN professional p
                   ON (u.id = p.id_user)
-              WHERE u.user_professional = TRUE AND p.id != {$idUser}
+              WHERE u.user_professional = TRUE AND p.id != {$idUser} AND u.status = 1
               HAVING distance <= {$distance}
               ORDER BY distance ASC";
 
@@ -55,7 +55,7 @@ class ServicesMapModel extends CI_Model
               FROM user u
                 INNER JOIN professional p
                   ON (u.id = p.id_user)
-              WHERE u.user_professional = TRUE AND p.id != {$idUser}
+              WHERE u.user_professional = TRUE AND p.id != {$idUser} AND u.status = 1
               HAVING distance <= {$distance}
               ORDER BY distance ASC";
 

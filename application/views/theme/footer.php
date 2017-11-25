@@ -16,9 +16,16 @@
            $('#filter-professional').toggleClass("show-content hide-content");
         });
 
-        $(document).ready(function() {
-            $('select').material_select();
+        $('select').material_select();
+
+        $('.lever').on("click", function () {
+            $.ajax({
+                type: "POST",
+                url: "./index.php/UserController/statusUser",
+                dataType: "json"
+            });
         });
+
     });
 </script>
 

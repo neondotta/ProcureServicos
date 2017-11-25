@@ -55,7 +55,7 @@
 
                     <div class="row">
                         <?php echo form_open('ServiceController/insert'); ?>
-                            <div class="input-field col s12 m12" id="type_time">
+                            <div class="input-field col s6 m6" id="type_time">
                                 <?php
                                 $options = [
                                     '2' => 'Atendimento Programado',
@@ -63,6 +63,18 @@
                                 ];
 
                                 echo form_dropdown('type_time', $options, '', 'id="dropdown_service"');
+                                ?>
+                            </div>
+                            <div class="input-field col s6 m6" id="type_payment">
+                                <?php
+                                $options = [
+                                    '1' => 'Pagamento pelo sistema',
+                                    '2' => 'Cartão (crédito)',
+                                    '3' => 'Cartão (débito)',
+                                    '4' => 'Dinheiro',
+                                ];
+
+                                echo form_dropdown('type_payment', $options, '', 'id="dropdown_service"');
                                 ?>
                             </div>
                             <?php

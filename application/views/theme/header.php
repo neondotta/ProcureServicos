@@ -24,13 +24,29 @@
         } else {
     ?>
             <li><a href="<?= base_url('ProfessionalController/profile')?>">Perfil Profissional</a></li>
+            <li>
+                <div class="switch flex-center">
+                    <label>
+                        <span>Off</span>
+                        <?php
+                            if ($this->session->userdata('login')['status']) {
+                                echo form_checkbox('status', 'accept', TRUE);
+                            } else {
+                                echo form_checkbox('status', 'accept', FALSE);
+                            }
+                        ?>
+                        <span class="lever"></span>
+                        <span>On</span>
+                    </label>
+                </div>
+            </li>
     <?php
         }
     ?>
     <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
 </ul>
 <nav>
-    <div class="nav-wrapper teal">
+    <div class="nav-wrapper blue darken-4">
         <a href="<?= base_url()?>" class="brand-logo">Logo</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -64,13 +80,29 @@
                     </div>
                 </li>
                     <?php
-                    if ($this->session->userdata('login')['user_professional'] != TRUE)  {
+                        if ($this->session->userdata('login')['user_professional'] != TRUE)  {
                         ?>
                         <li><a href="<?= base_url('ProfessionalController/openForm')?>">Vire um Profissional</a></li>
                         <?php
-                    } else {
+                        } else {
                         ?>
                         <li><a href="<?= base_url('ProfessionalController/profile')?>">Perfil Profissional</a></li>
+                        <li>
+                            <div class="switch">
+                                <label>
+                                    <span>Off</span>
+                                    <?php
+                                    if ($this->session->userdata('login')['status']) {
+                                        echo form_checkbox('status', 'accept', TRUE);
+                                    } else {
+                                        echo form_checkbox('status', 'accept', FALSE);
+                                    }
+                                    ?>
+                                    <span class="lever"></span>
+                                    <span>On</span>
+                                </label>
+                            </div>
+                        </li>
                         <?php
                     }
                     ?>
