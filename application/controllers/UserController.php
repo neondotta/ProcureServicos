@@ -88,4 +88,15 @@ class UserController extends IndexCore
     {
         return $this->UserModel->statusUser();
     }
+
+    public function findFavorite()
+    {
+        return $this->UserModel->findFavorite($this->input->post('professional'));
+    }
+
+    public function favoriteProfessional()
+    {
+        return $this->UserModel->favoriteProfessional($this->input->post('professional'));
+    }
+
 }

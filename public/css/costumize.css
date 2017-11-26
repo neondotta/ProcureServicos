@@ -96,6 +96,11 @@ ul#nav-mobile li {
         margin:0 5px;
     }
 
+.btn-border-red-darken-1 {
+    background: none;
+    border: 1px #e53935 solid;
+}
+
 .google-map {
     top:50px;
     position: absolute;

@@ -46,8 +46,12 @@
         </div>
     </div>
     <div class="col s12 info-professional col s12">
-        <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" href="#modal1">Contratar</a>
-
+        <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4 margin-r-10" href="#modal1">Contratar</a>
+        <?php if ($professional['favorite']) { ?>
+            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="favorite">Favoritar</a>
+        <?php } else { ?>
+            <a class="waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4" id="favorite">Favoritado</a>
+        <?php } ?>
         <div id="modal1" class="modal">
             <div class="modal-content">
                 <?php if($this->session->has_userdata('login')) { ?>
@@ -203,7 +207,27 @@
                 $( "#date" ).removeClass("invalid").addClass("valid");
                 submit.removeAttribute("disabled");
             }
-        })
+        });
+
+        $('#favorite').on('click', function () {
+            var favorite = $('#favorite').text();
+            const professionalId = <?php echo $this->input->get('id'); ?>;
+            $.ajax({
+                type: "POST",
+                url: "../index.php/UserController/favoriteProfessional",
+                dataType: "json",
+                data: {
+                    'professional': professionalId
+                }
+            }).done(function(){
+                console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+                if(favorite = 'Favoritar') {
+                    $('#favorite').text('Favoritado').removeClass().addClass('waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4');
+                } else {
+                    $('#favorite').text('Favoritar').removeClass().addClass('waves-effect waves-light btn modal-trigger red darken-1 col s4');
+                }
+            });
+        });
 
     });
 </script>

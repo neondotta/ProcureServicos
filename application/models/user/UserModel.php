@@ -48,7 +48,7 @@ class UserModel extends CI_Model
     public function statusUser()
     {
         $user = $this->find(null, ['id' => $this->session->userdata('login')['id']]);
-        print_r($user);
+
         if ($user['status'] == 0) {
             $this->db->set('status', TRUE);
             $this->session->userdata('login')['status'] = 1;
@@ -60,6 +60,34 @@ class UserModel extends CI_Model
         $this->db->where('id', $user['id']);
         $this->db->update('user');
 
+    }
+
+    public function findFavorite($professional)
+    {
+        $user = $this->session->userdata('login')['id'];
+
+        $where = ['id_user' => $user, 'id_professional' => $professional];
+
+        $this->db->where($where);
+
+        if($this->db->get('favorite_professional')->num_rows() == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function favoriteProfessional($professional)
+    {
+        $user = $this->session->userdata('login')['id'];
+        $fields = ['id_user' => $user, 'id_professional' => $professional];
+        if($this->findFavorite($professional)) {
+            print_r('lalalalaalal');
+            print_r($fields);
+            return $this->db->delete('favorite_professional', $fields);
+        }
+
+        return $this->db->insert("favorite_professional", $fields);
     }
 
 }

@@ -43,6 +43,7 @@
     <?php
         }
     ?>
+    <li><a href="<?= base_url('ProfessionalController/favoriteList')?>">Profissionais Favoritados</a></li>
     <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
 </ul>
 <nav>
@@ -106,6 +107,7 @@
                         <?php
                     }
                     ?>
+                <li><a href="<?= base_url('ProfessionalController/favoriteList')?>">Profissionais Favoritados</a></li>
                 <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
             <?php } else { ?>
                 <?=$_SERVER['DOCUMENT_ROOT']."./bah";?>

@@ -72,8 +72,14 @@ class ProfessionalController extends IndexCore
 
     public function professionalProfile()
     {
+        $this->load->model('user/UserModel');
         $idProfessional = $this->input->get('id');
+
         $professional = $this->findId($idProfessional);
+        $favorite = $this->UserModel->findFavorite($idProfessional);
+
+        $professional['professional']['favorite'] = $favorite;
+
         $this->view('professional/professionalProfile', $professional);
     }
 
