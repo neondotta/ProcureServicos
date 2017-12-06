@@ -270,3 +270,10 @@ nav, nav .nav-wrapper i{
     }
 
 }
+
+
+
+/********************** SERVIÇOS *******************/
+.collection.with-header .collection-item.avatar {
+    padding-left: 20px;
+}

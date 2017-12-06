@@ -67,3 +67,4 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNyLsAhFt4hIZKeNJYC244jPPayM0GhrY"></script>
 <script src="<?= base_url() ?>public/js/googleMaps.js"></script>
+<script src="<?= base_url() ?>public/js/service.js"></script>

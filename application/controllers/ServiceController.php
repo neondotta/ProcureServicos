@@ -49,4 +49,22 @@ class ServiceController extends IndexCore
 
     }
 
-}
+    public function searchServices()
+    {   
+        $userId = $this->session->userdata('login')['id'];
+
+        $this->load->model('service/ServiceModel');
+        $result = $this->ServiceModel->searchService($userId);
+        echo json_encode($result);
+        return $result;
+    }
+
+    public function listServices()
+    {
+        $this->load->model('service/ServiceModel'); 
+        $userId = $this->session->userdata('login')['id'];
+
+        $data['services'] = $this->ServiceModel->listServices($userId);
+        $this->view("service/services", $data);
+    }
+}   

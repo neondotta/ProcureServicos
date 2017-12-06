@@ -12,4 +12,44 @@ class ServiceModel extends CI_Model
     {
         return $this->db->insert('service', $service);
     }
+
+    public function searchService($idUser)
+    {
+        $id_professional = $this->findProfessionalId($idUser);
+        
+        $query = $this->db->select('*')
+        ->from('service')        
+        ->where('id_professional',$id_professional)
+        ->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        }
+    }
+
+    public function listServices($idUser)
+    {
+        $id_professional = $this->findProfessionalId($idUser);
+        
+        $query = $this->db->select('service.*,user.name')
+        ->from('service')
+        ->where('id_professional',$id_professional)
+        ->join('user', 'user.id = service.id_user', 'left')
+        ->get();
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+    }
+
+    public function findProfessionalId($idUser)
+    {
+        $sql = $this->db->select('id')
+        ->from('professional')
+        ->where('id_user',$idUser)
+        ->get();
+
+        $id_professional = $sql->row_array()['id'];
+
+        return $id_professional;
+    }
 }
