@@ -31,11 +31,13 @@ class ServiceModel extends CI_Model
     {
         $id_professional = $this->findProfessionalId($idUser);
         
-        $query = $this->db->select('service.*,user.name')
+        $query = $this->db->select('service.*,user.name, service_status.service_status')
         ->from('service')
         ->where('id_professional',$id_professional)
         ->join('user', 'user.id = service.id_user', 'left')
+        ->join('service_status', 'service.status = service_status.cod', 'left')
         ->get();
+        
         if ($query->num_rows() > 0) {
             return $query->result_array();
         }

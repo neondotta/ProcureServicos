@@ -69,4 +69,11 @@ class ServiceController extends IndexCore
         $data['services'] = $this->ServiceModel->listServices($userId);
         $this->view("service/services", $data);
     }
+
+    public function acceptService()
+    {
+        $serviceId = $this->input->post("serviceId");
+        
+    }
+
 }   
