@@ -1,5 +1,5 @@
 .flex-center {
-    display:flex;
+    display: flex;
     align-items: center;
 }
 
@@ -7,94 +7,103 @@ nav {
     margin-bottom: 15px;
 }
 
-nav, nav .nav-wrapper i{
-    height:50px;
-    line-height:50px;
+nav,
+nav .nav-wrapper i {
+    height: 50px;
+    line-height: 50px;
 }
 
 ul#nav-mobile li {
-    width:200px;
+    width: 200px;
 }
 
-    .dropdown-content {
-        margin-top: 50px;
-    }
-        .side-nav li .switch{
-            color: rgba(0,0,0,0.87);
-            font-size: 16px;
-            line-height: 22px;
-            padding: 14px 16px;
-        }
+.dropdown-content {
+    margin-top: 50px;
+}
 
-        .dropdown-content li{
-            color: rgba(0,0,0,0.87);
-            font-size: 16px;
-            line-height: 22px;
-            padding: 14px 16px;
-        }
+.side-nav li .switch {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 16px;
+    line-height: 22px;
+    padding: 14px 16px;
+}
 
-    ul#dropdown1 li {
-        padding: 5px;
-    }
+.dropdown-content li {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 16px;
+    line-height: 22px;
+    padding: 14px 16px;
+}
 
-        ul#dropdown1 div.switch {
-            font-size:14px;
-            font-weight: 500;
-            height: 40px;
-            padding: 16px;
-        }
+ul#dropdown1 li {
+    padding: 5px;
+}
 
-        ul#mobile-demo div.switch label {
-            padding: 14px 16px;
-        }
-            ul#mobile-demo div.switch span {
-                color: rgba(0,0,0,0.87);
-                font-size:14px;
-                font-weight: 500;
-            }
-                ul#mobile-demo div.switch span.lever {
-                    padding: 0 10px;
-                }
+ul#dropdown1 div.switch {
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    padding: 16px;
+}
 
-        ul.hide-on-med-and-down div.switch span {
-            color: #26a69a;
-            font-size:14px;
-            font-weight: 500;
-        }
+ul#mobile-demo div.switch label {
+    padding: 14px 16px;
+}
+
+ul#mobile-demo div.switch span {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+ul#mobile-demo div.switch span.lever {
+    padding: 0 10px;
+}
+
+ul.hide-on-med-and-down div.switch span {
+    color: #26a69a;
+    font-size: 14px;
+    font-weight: 500;
+}
 
 .container.medium {
-    width:90vw;
+    width: 90vw;
 }
 
 .collection-item a {
     color: #000;
 }
-    .collection-item a.secondary-content {
-        color: #009688;
+
+.collection-item a.secondary-content {
+    color: #009688;
 }
-    .collection-item img {
-        height: 70px;
-        width: 70px;
-        margin-right: 10px;
-    }
+
+.collection-item img {
+    height: 70px;
+    width: 70px;
+    margin-right: 10px;
+}
 
 .collection-hidden {
-    display:none;
+    display: none;
 }
 
-.card-panel{
-    padding:10px 24px;
+.card-panel {
+    padding: 10px 24px;
 }
-    .card-panel > span.notification {
-        font-size:1em;
-    }
 
-.col.main-button{
+.card-panel>span.notification {
+    font-size: 1em;
+}
+
+.col.main-button {
     text-align: center;
 }
-    .main-button > button, .main-button > a  {
-        margin:0 5px;
-    }
+
+.main-button>button,
+.main-button>a {
+    margin: 0 5px;
+}
 
 .btn-border-red-darken-1 {
     background: none;
@@ -102,40 +111,39 @@ ul#nav-mobile li {
 }
 
 .google-map {
-    top:50px;
+    top: 50px;
     position: absolute;
-    height:100vh;
-    width:100vw;
+    height: 100vh;
+    width: 100vw;
 }
 
-
 .form {
-    margin:0 auto;
+    margin: 0 auto;
 }
 
 #card-alert button {
     background: none;
     border: none;
     color: #fff;
-    font-size:20px;
+    font-size: 20px;
     position: absolute;
-    right:7px;
-    top:7px;
+    right: 7px;
+    top: 7px;
 }
 
 .card .card-content {
-    padding:14px 24px;
+    padding: 14px 24px;
 }
 
 .hide-content {
-    opacity:0;
+    opacity: 0;
     height: 0;
     overflow: hidden;
     transition: all .3s ease .15s;
 }
 
 .show-content {
-    opacity:1;
+    opacity: 1;
     height: 70px;
     -webkit-transition: all .3s ease .15s;
     -moz-transition: all .3s ease .15s;
@@ -149,20 +157,23 @@ ul#nav-mobile li {
 }
 
 #rating-professional {
-    padding:10px 5px;
+    padding: 10px 5px;
 }
+
 #circle-rating {
-    border:2px solid #0d47a1;
-    border-radius:50px;
+    border: 2px solid #0d47a1;
+    border-radius: 50px;
     height: 75px;
     text-align: center;
     display: flex;
     align-items: center;
 }
-    #circle-rating span {
-        text-align: center;
-        font-size:2em;
-    }
+
+#circle-rating span {
+    text-align: center;
+    font-size: 2em;
+}
+
 
 /********** FIX MARGIN *********/
 
@@ -171,21 +182,22 @@ ul#nav-mobile li {
 }
 
 .margin-r-10 {
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 .margin-10-0 {
     margin: 10px 0;
 }
 
+
 /************* FIX PADDING **************/
 
 .padding-0-30 {
-    padding:0 30px;
+    padding: 0 30px;
 }
 
-.padding-5{
-    padding:5px;
+.padding-5 {
+    padding: 5px;
 }
 
 
@@ -194,6 +206,7 @@ ul#nav-mobile li {
 .no-float {
     float: none;
 }
+
 
 /************** FIX OVERFLOW *******************/
 
@@ -205,122 +218,110 @@ ul#nav-mobile li {
     text-align: right;
 }
 
+
 /****************** TEXT *******************/
 
 .text-center {
     text-align: center;
 }
 
+
 /****************** MODALS *******************/
 
 
 /****************** DISPLAY *******************/
 
-.flex{
+
+/****************** TESTE *******************/
+
+.flex {
     display: flex;
 }
 
-.flex-center{
+.flex-center {
     display: flex;
     align-items: center;
 }
 
-@media screen and (min-width: 1200px) {
-
-}
+@media screen and (min-width: 1200px) {}
 
 @media screen and (min-width: 992px) {
-
-    nav .brand-logo{
+    nav .brand-logo {
         margin-left: 40px;
     }
-
 }
 
 @media screen and (max-width: 768px) {
-
-    .container{
+    .container {
         width: 100vw;
     }
-
-    row col{
-        padding:10px;
+    row col {
+        padding: 10px;
     }
-        .card-panel span {
-            padding:10px 5px;
-        }
-
+    .card-panel span {
+        padding: 10px 5px;
+    }
     .col.main-button {
-        padding:0;
-        margin:0;
-        left:0;
+        padding: 0;
+        margin: 0;
+        left: 0;
     }
-        .main-button button, .main-button a {
-            border-radius:0;
-            box-shadow: none;
-            margin:0;
-        }
-            .main-button button:first-child, .main-button a:first-child {
-                border-right: 1px solid #eee;
-            }
-            .main-button button:last-child, .main-button a:last-child {
-                border-left: 1px solid #eee;
-            }
-
+    .main-button button,
+    .main-button a {
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+    }
+    .main-button button:first-child,
+    .main-button a:first-child {
+        border-right: 1px solid #eee;
+    }
+    .main-button button:last-child,
+    .main-button a:last-child {
+        border-left: 1px solid #eee;
+    }
     .collection .collection-item {
-        padding:5px 0;
+        padding: 5px 0;
     }
-        .collection .collection-item.avatar {
-            padding-left:5px;
-        }
-
+    .collection .collection-item.avatar {
+        padding-left: 5px;
+    }
     .container-map .search-professional {
         position: absolute;
-        left:5%;
-        top:15%;
+        left: 5%;
+        top: 15%;
     }
-
     img.sidebar-background {
-        width:100%;
+        width: 100%;
     }
-
-
     /******************** COSTUM PERFIL********************/
-    
-        .perfil img {
-            display: inline-block;
-            float: left;
-            height: auto;
-            width: 100px;
-        }
-
-        .perfil .simple-data {
-            display: flex;
-        }
-            .perfil .identifier {
-                font-size: 1.1em;
-                padding: 10px;
-            }
-
-            .perfil .identifier strong {
-                font-size: 1.3em;
-            }
-
-            .perfil .icon {
-                display: flex;
-                padding:10px 0;
-            }
-
-    .info-professional {
-        margin-top:15px;
+    .perfil img {
+        display: inline-block;
+        float: left;
+        height: auto;
+        width: 100px;
     }
-
-        .info-professional #modal1 {
-            height: 70vh;
-        }
-
+    .perfil .simple-data {
+        display: flex;
+    }
+    .perfil .identifier {
+        font-size: 1.1em;
+        padding: 10px;
+    }
+    .perfil .identifier strong {
+        font-size: 1.3em;
+    }
+    .perfil .icon {
+        display: flex;
+        padding: 10px 0;
+    }
+    .info-professional {
+        margin-top: 15px;
+    }
+    .info-professional #modal1 {
+        height: 70vh;
+    }
     .flex-center i {
         margin-left: 5px;
     }
-
 }
