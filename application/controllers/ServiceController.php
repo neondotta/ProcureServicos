@@ -25,7 +25,6 @@ class ServiceController extends IndexCore
             $date = date("Y-m-d");
             $time = date("H:i");
         }
-        print_r($date);exit();
         $service = [
             'type_payment' => 0,
             'value' => 0,
