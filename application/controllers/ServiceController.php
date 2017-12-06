@@ -16,21 +16,23 @@ class ServiceController extends IndexCore
 
     public function insert()
     {
+        print_r($this->input->post());
         $date = $this->input->post('date');
         $time = $this->input->post('time');
 
-        if ($this->input->post('type_time') || $this->input->post('type_time') == 1) {
+        if ((!$this->input->post('date') && !$this->input->post('time')) || $this->input->post('type_time') == '1') {
             date_default_timezone_set('America/Sao_Paulo');
             $date = date("Y-m-d");
             $time = date("H:i");
         }
-
+        print_r($date);exit();
         $service = [
             'type_payment' => 0,
             'value' => 0,
             'description' => $this->input->post('description'),
             'id_user' => $this->session->userdata('login')['id'],
             'id_professional' => $this->input->post('professional'),
+            'type_payment' => $this->input->post('type_payment'),
             'date' => $date,
             'time' => $time,
             'status' => 0

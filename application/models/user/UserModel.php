@@ -10,14 +10,9 @@ class UserModel extends CI_Model
 {
     public function authLogin($email, $password)
     {
-
         $where = ['email' => $email, 'password' => $password];
 
-        $user = [];
-
         $user = $this->find(NULL, $where);
-        echo 'find user';
-        print_r($user);
         return $user;
     }
 
@@ -48,6 +43,51 @@ class UserModel extends CI_Model
         $this->db->set('user_professional', TRUE);
         $this->db->where('id', $this->session->userdata('login')['id']);
         $this->db->update('user');
+    }
+
+    public function statusUser()
+    {
+        $user = $this->find(null, ['id' => $this->session->userdata('login')['id']]);
+
+        if ($user['status'] == 0) {
+            $this->db->set('status', TRUE);
+            $this->session->userdata('login')['status'] = 1;
+        } else {
+            $this->db->set('status', FALSE);
+            $this->session->userdata('login')['status'] = 0;
+        }
+
+        $this->db->where('id', $user['id']);
+        $this->db->update('user');
+
+    }
+
+    public function findFavorite($professional)
+    {
+        $user = $this->session->userdata('login')['id'];
+
+        $where = ['id_user' => $user, 'id_professional' => $professional];
+
+        $this->db->where($where);
+
+        if($this->db->get('favorite_professional')->num_rows() == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function favoriteProfessional($professional)
+    {
+        $user = $this->session->userdata('login')['id'];
+        $fields = ['id_user' => $user, 'id_professional' => $professional];
+        if($this->findFavorite($professional)) {
+            print_r('lalalalaalal');
+            print_r($fields);
+            return $this->db->delete('favorite_professional', $fields);
+        }
+
+        return $this->db->insert("favorite_professional", $fields);
     }
 
 }

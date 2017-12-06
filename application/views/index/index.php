@@ -31,7 +31,7 @@
 
         <div class="col s12 main-button">
 
-            <button type="button" class="waves-effect waves-light btn col s4" onclick="UserLocationAjax();">
+            <button type="button" class="waves-effect waves-light btn col s4 l3 m3 blue darken-4" onclick="UserLocationAjax();">
                 <span class="hide-on-med-and-down">
                     <i class="material-icons left">group</i>
                     USUÁRIO
@@ -39,14 +39,14 @@
                 <i class="material-icons hide-on-large-only">group</i>
             </button>
 
-            <a href="<?=base_url()?>ServicesMap" class="waves-effect waves-light btn col s4">
+            <a href="<?=base_url()?>ServicesMap" class="waves-effect waves-light btn col s4 l3 m3 blue darken-4">
                 <span class="hide-on-med-and-down">
                     <i class="material-icons left">map</i>MAPA
                 </span>
                 <i class="material-icons hide-on-large-only">map</i>
             </a>
 
-            <button type="button" class="waves-effect waves-light btn col s4" id="search-professional">
+            <button type="button" class="waves-effect waves-light btn col s4 l3 m3 blue darken-4" id="search-professional">
                 <span class="hide-on-med-and-down">
                     <i class="material-icons left">search</i>
                     FILTRO

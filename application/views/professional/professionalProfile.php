@@ -46,8 +46,12 @@
         </div>
     </div>
     <div class="col s12 info-professional col s12">
-        <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" href="#modal1">Contratar</a>
-
+        <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4 margin-r-10" href="#modal1">Contratar</a>
+        <?php if ($professional['favorite']) { ?>
+            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="favorite">Favoritar</a>
+        <?php } else { ?>
+            <a class="waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4" id="favorite">Favoritado</a>
+        <?php } ?>
         <div id="modal1" class="modal">
             <div class="modal-content">
                 <?php if($this->session->has_userdata('login')) { ?>
@@ -55,7 +59,7 @@
 
                     <div class="row">
                         <?php echo form_open('ServiceController/insert'); ?>
-                            <div class="input-field col s12 m12" id="type_time">
+                            <div class="input-field col s12 m6 l6" id="type_time">
                                 <?php
                                 $options = [
                                     '2' => 'Atendimento Programado',
@@ -63,6 +67,18 @@
                                 ];
 
                                 echo form_dropdown('type_time', $options, '', 'id="dropdown_service"');
+                                ?>
+                            </div>
+                            <div class="input-field col s12 m6 l6" id="type_payment">
+                                <?php
+                                $options = [
+                                    '1' => 'Pagamento pelo sistema',
+                                    '2' => 'Cartão (crédito)',
+                                    '3' => 'Cartão (débito)',
+                                    '4' => 'Dinheiro',
+                                ];
+
+                                echo form_dropdown('type_payment', $options, '', 'id="dropdown_service"');
                                 ?>
                             </div>
                             <?php
@@ -178,10 +194,39 @@
         $('#textarea1').trigger('autoresize');
 
         $('#type_time').on('change', function() {
-            console.log( $('#dropdown_service').val() );
             if($('#dropdown_service').val()) {
                 $('#date-time').toggleClass("show-content hide-content");
             }
+        });
+
+        $('#date').on('blur', function () {
+            if(Date.now() > $('#date')['0'].valueAsNumber){
+                $( "#date" ).removeClass("valid").addClass("invalid");
+                submit.setAttribute("disabled","disabled");
+            }else{
+                $( "#date" ).removeClass("invalid").addClass("valid");
+                submit.removeAttribute("disabled");
+            }
+        });
+
+        $('#favorite').on('click', function () {
+            var favorite = $('#favorite').text();
+            const professionalId = <?php echo $this->input->get('id'); ?>;
+            $.ajax({
+                type: "POST",
+                url: "../index.php/UserController/favoriteProfessional",
+                dataType: "json",
+                data: {
+                    'professional': professionalId
+                }
+            }).done(function(){
+                console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+                if(favorite = 'Favoritar') {
+                    $('#favorite').text('Favoritado').removeClass().addClass('waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4');
+                } else {
+                    $('#favorite').text('Favoritar').removeClass().addClass('waves-effect waves-light btn modal-trigger red darken-1 col s4');
+                }
+            });
         });
 
     });

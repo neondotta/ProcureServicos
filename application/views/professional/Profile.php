@@ -1,8 +1,6 @@
 <div class="row">
         <ul class="collection with-header no-padding no-overflow">
-            <li class="collection-header indigo accent-3 white-text">
-                <h4 class="">Categorias</h4>
-            </li>
+            <li class="collection-header blue darken-4 white-text padding-5">Categorias</li>
             <?php
                 foreach ($categories as $value){
             ?>
@@ -38,4 +36,20 @@
         <a class="btn-floating btn-medium waves-effect waves-light red darken-1 right margin-r-10" href="#" id="js-collection-button">
             <i class="material-icons">add</i>
         </a>
+        <ul class="collection with-header col s12 no-padding no-overflow" id="rating-professional">
+            <li class="collection-header blue darken-4 white-text padding-5">Minha Avaliação</li>
+            <li class="padding-5 flex-center">
+                <div id="circle-rating" class="col s3">
+                    <span class="col s12 no-padding blue-text text-darken-4"><?= $professional['evaluation'] ?></span>
+                </div>
+                <div class="col s8 offset-s1 no-padding">
+                    <?php if ($professional['amount_service'] > 0) { ?>
+                        <p class="no-padding"><?= $professional['amount_service'] ?> avaliações(s) até o
+                            momento.</p>
+                    <?php } else { ?>
+                        <p class="no-padding">Profissional sem avaliação.</p>
+                    <?php } ?>
+                </div>
+            </li>
+        </ul>
 </div>

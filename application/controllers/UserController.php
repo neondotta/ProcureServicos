@@ -8,6 +8,14 @@
 
 class UserController extends IndexCore
 {
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->CI =& get_instance();
+        $this->load->model('user/UserModel');
+    }
+
     public function openForm()
     {
         $this->view('user/Form');
@@ -75,4 +83,20 @@ class UserController extends IndexCore
     {
 
     }
+
+    public function statusUser()
+    {
+        return $this->UserModel->statusUser();
+    }
+
+    public function findFavorite()
+    {
+        return $this->UserModel->findFavorite($this->input->post('professional'));
+    }
+
+    public function favoriteProfessional()
+    {
+        return $this->UserModel->favoriteProfessional($this->input->post('professional'));
+    }
+
 }
