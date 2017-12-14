@@ -16,7 +16,7 @@ class ServiceModel extends CI_Model
     public function searchService($idUser)
     {
         $id_professional = $this->findProfessionalId($idUser);
-        
+     
         $query = $this->db->select('*')
         ->from('service')        
         ->where('id_professional',$id_professional)
@@ -27,16 +27,27 @@ class ServiceModel extends CI_Model
         }
     }
 
-    public function listServices($idUser)
+    public function listServices($idUser,$type)
     {
-        $id_professional = $this->findProfessionalId($idUser);
+        if ($type == 'user') {
+            $query = $this->db->select('service.*,user.name, service_status.service_status')
+            ->from('service')
+            ->where('id_user',$idUser)
+            ->join('user', 'user.id = service.id_user', 'left')
+            ->join('service_status', 'service.status = service_status.cod', 'left')
+            ->get();
+        } else {
         
-        $query = $this->db->select('service.*,user.name, service_status.service_status')
-        ->from('service')
-        ->where('id_professional',$id_professional)
-        ->join('user', 'user.id = service.id_user', 'left')
-        ->join('service_status', 'service.status = service_status.cod', 'left')
-        ->get();
+            $id_professional = $this->findProfessionalId($idUser);
+
+            $query = $this->db->select('service.*,user.name, service_status.service_status')
+            ->from('service')
+            ->where('id_professional',$id_professional)
+            ->join('user', 'user.id = service.id_user', 'left')
+            ->join('service_status', 'service.status = service_status.cod', 'left')
+            ->get();
+
+        }
         
         if ($query->num_rows() > 0) {
             return $query->result_array();

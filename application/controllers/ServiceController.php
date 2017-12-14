@@ -52,7 +52,7 @@ class ServiceController extends IndexCore
     }
 
     public function searchServices()
-    {   
+    {  
         $userId = $this->session->userdata('login')['id'];
 
         $this->load->model('service/ServiceModel');
@@ -61,13 +61,18 @@ class ServiceController extends IndexCore
         return $result;
     }
 
-    public function listServices()
-    {
+    public function listServices($type = 'professional')
+    {   
         $this->load->model('service/ServiceModel'); 
         $userId = $this->session->userdata('login')['id'];
 
-        $data['services'] = $this->ServiceModel->listServices($userId);
-        $this->view("service/services", $data);
+        $data['services'] = $this->ServiceModel->listServices($userId,$type);
+        if ($type == 'professional') {
+            $this->view("service/services", $data);
+        } else {
+            $this->view("service/myServices", $data);
+        }
+        
     }
 
     public function viewService($serviceId)
