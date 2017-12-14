@@ -54,4 +54,27 @@ class ServiceModel extends CI_Model
 
         return $id_professional;
     }
+
+    public function getService($serviceId)
+    {   
+        $query = $this->db->select('service.*,user.name, service_status.service_status')
+        ->from('service')
+        ->where('service.id',$serviceId)
+        ->join('user', 'user.id = service.id_user', 'left')
+        ->join('service_status', 'service.status = service_status.cod', 'left')
+        ->get();
+
+        
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+             
+    }
+    
+    public function acceptService($params,$serviceId)
+    {
+        $this->db->where('id', $serviceId);
+        $this->db->update('service', $params);
+        return true;
+    }
 }

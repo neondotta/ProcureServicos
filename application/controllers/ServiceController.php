@@ -70,10 +70,29 @@ class ServiceController extends IndexCore
         $this->view("service/services", $data);
     }
 
+    public function viewService($serviceId)
+    {
+        $this->load->model('service/ServiceModel'); 
+        $data['result'] = $this->ServiceModel->getService($serviceId);
+        
+        $this->view("service/serviceDetail", $data);
+    }
+
     public function acceptService()
     {
         $serviceId = $this->input->post("serviceId");
-        
+        $price = $this->input->post("price");
+        $status = $this->input->post("status");
+
+        $this->load->model('service/ServiceModel'); 
+
+        $params = array(
+            "value" => $price,
+            "status" => $status
+        );
+
+        $result = $this->ServiceModel->acceptService($params,$serviceId);
+        echo json_encode($result);
     }
 
 }   
