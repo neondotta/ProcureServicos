@@ -19,9 +19,9 @@ $(document).ready(function(){
         var price = $('#price').val();
         var serviceId = $('#serviceId').val();
         console.log(price);
-        /*$.ajax({
+        $.ajax({
             type: "POST",
-            url: "./acceptService",
+            url: "http://localhost/procure-servicos/ServiceController/acceptService",
             dataType: "json",
             data:{
                 "price": price,
@@ -33,6 +33,6 @@ $(document).ready(function(){
                 alert("Aguardando resposta do cliente");
             },
     
-        });*/
+        });
     });
 });

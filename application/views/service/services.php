@@ -2,8 +2,12 @@
 
 <div class="col s12">    
     <ul class="collection with-header">
-        <li class="collection-header"><h4>Serviços</h4></li>
-        <?php foreach($services as $s) : ?>
+        <li class="collection-header"><h4>Solicitações de Serviços</h4></li>
+
+        <?php
+        if(!is_null($services)) :
+        foreach($services as $s) : 
+        ?>
             <li class="collection-item avatar">
             <span class="title"><?php echo ucfirst($s['description']);?></span>
     
@@ -14,7 +18,9 @@
             <a href="<?= base_url().'ServiceController/viewService/'.$s['id'] ?>" class="secondary-content waves-effect waves-light  modal-trigger"><i class="material-icons">search</i></a>
             </li>  
             
-        <?php endforeach ?>
+        <?php endforeach ;
+        endif;
+        ?>
     </ul>
 
     

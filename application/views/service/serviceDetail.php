@@ -15,7 +15,7 @@
                             <strong> <?= $s['service_status'] ?></strong><br><br>
                             <input type="hidden" id="serviceId" value="<?= $s['id'] ?>">
                             <input type="text" name="price" id="price" placeholder="Valor do Serviço" value="<?= $s['value'] ?>">
-                            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="accept" href="">Aceitar</a>                            
+                            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="accept" >Aceitar</a>                            
                         </div>
                     </div>
                 </div>

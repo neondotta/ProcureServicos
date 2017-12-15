@@ -85,6 +85,7 @@ class ServiceController extends IndexCore
 
     public function acceptService()
     {
+      
         $serviceId = $this->input->post("serviceId");
         $price = $this->input->post("price");
         $status = $this->input->post("status");
@@ -97,7 +98,7 @@ class ServiceController extends IndexCore
         );
 
         $result = $this->ServiceModel->acceptService($params,$serviceId);
-        echo json_encode($result);
+        echo json_encode("Aguardando cliente");
     }
 
 }   
