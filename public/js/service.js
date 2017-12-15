@@ -35,4 +35,23 @@ $(document).ready(function(){
     
         });
     });
+
+    $('#userAccept').click(function(){
+        var serviceId = $('#serviceId').val();
+        console.log(price);
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/procure-servicos/ServiceController/userAcceptService",
+            dataType: "json",
+            data:{
+                "serviceId": serviceId,
+                "status": 4
+            },
+            success:function(data) {
+                // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
+                alert(data);
+            },
+    
+        });
+    });
 });

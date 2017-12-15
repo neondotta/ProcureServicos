@@ -3,7 +3,9 @@
 <div class="col s12">    
     <ul class="collection with-header">
         <li class="collection-header"><h4>Serviços Solicitados</h4></li>
-        <?php foreach($services as $s) : ?>
+        <?php
+        if(!is_null($services)) :
+        foreach($services as $s) : ?>
             <li class="collection-item avatar">
             <span class="title"><?php echo ucfirst($s['description']);?></span>
     
@@ -11,10 +13,12 @@
                 <?php echo ucfirst($s['name']);?>   <br>
                 <?php echo ucfirst($s['service_status']); ?>
             </p>
-            <a href="<?= base_url().'ServiceController/viewService/'.$s['id'] ?>" class="secondary-content waves-effect waves-light  modal-trigger"><i class="material-icons">search</i></a>
+            <a href="<?= base_url().'ServiceController/viewService/'.$s['id'].'/user' ?>" class="secondary-content waves-effect waves-light  modal-trigger"><i class="material-icons">search</i></a>
             </li>  
             
-        <?php endforeach ?>
+        <?php endforeach ;
+        endif;
+        ?>
     </ul>
 
     

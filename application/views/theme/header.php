@@ -45,6 +45,7 @@
     ?>
     <li><a href="<?= base_url('ProfessionalController/favoriteList')?>">Profissionais Favoritados</a></li>
     <li><a href="<?= base_url('ServiceController/listServices')?>">Solicitações de Serviços</a></li>
+    <li><a href="<?= base_url('ServiceController/listServices/user')?>">Minhas Solicitações</a></li>
     <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
 </ul>
 <nav>
@@ -110,6 +111,7 @@
                     ?>
                 <li><a href="<?= base_url('ProfessionalController/favoriteList')?>">Profissionais Favoritados</a></li>
                 <li><a href="<?= base_url('ServiceController/listServices')?>">Solicitações de Serviços</a></li>
+                <li><a href="<?= base_url('ServiceController/listServices/user')?>">Minhas Solicitações</a></li>
                 <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
             <?php } else { ?>
                 <?=$_SERVER['DOCUMENT_ROOT']."./bah";?>

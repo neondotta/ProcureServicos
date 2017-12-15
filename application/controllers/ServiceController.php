@@ -75,12 +75,17 @@ class ServiceController extends IndexCore
         
     }
 
-    public function viewService($serviceId)
+    public function viewService($serviceId,$type = 'professional')
     {
         $this->load->model('service/ServiceModel'); 
         $data['result'] = $this->ServiceModel->getService($serviceId);
         
-        $this->view("service/serviceDetail", $data);
+        if ($type == 'professional') {
+            $this->view("service/serviceDetail", $data);        
+        } else {
+            $this->view("service/myServiceDetail", $data);
+        }
+
     }
 
     public function acceptService()
@@ -99,6 +104,22 @@ class ServiceController extends IndexCore
 
         $result = $this->ServiceModel->acceptService($params,$serviceId);
         echo json_encode("Aguardando cliente");
+    }
+
+    public function userAcceptService()
+    {
+        $serviceId = $this->input->post("serviceId");
+        $status = $this->input->post("status");
+
+        $this->load->model('service/ServiceModel'); 
+
+        $params = array(
+            "status" => $status
+        );
+
+        $result = $this->ServiceModel->acceptService($params,$serviceId);
+        echo json_encode("Aguardando Profissional para Iniciar o serviço");
+
     }
 
 }   

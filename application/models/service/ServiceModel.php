@@ -68,7 +68,7 @@ class ServiceModel extends CI_Model
 
     public function getService($serviceId)
     {   
-        $query = $this->db->select('service.*,user.name, service_status.service_status')
+        $query = $this->db->select('service.*,service.id as serviceId,service.status as serviceStatus,user.*, service_status.service_status')
         ->from('service')
         ->where('service.id',$serviceId)
         ->join('user', 'user.id = service.id_user', 'left')
