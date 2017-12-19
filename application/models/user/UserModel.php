@@ -50,7 +50,7 @@ class UserModel extends CI_Model
         $this->db->where('id', $user['id']);
         $user = $this->db->get('user')->row_array();
 
-        return ['status' => $user['status']];
+        return $user['status'];
 
     }
 
@@ -61,12 +61,14 @@ class UserModel extends CI_Model
 
         if ($status['status']) {
             $this->db->set('status', FALSE);
+            $result = FALSE;
         } else {
             $this->db->set('status', TRUE);
+            $result = TRUE;
         }
 
-        $result = $this->db->update('user');
-
+        $this->db->update('user');
+        print_r($result);
         return $result;
     }
 

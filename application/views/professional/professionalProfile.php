@@ -45,12 +45,13 @@
             ?>
         </div>
     </div>
+    <?php if($this->session->has_userdata('login')) { ?>
     <div class="col s12 info-professional col s12">
         <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4 margin-r-10" href="#modal1">Contratar</a>
         <?php if ($professional['favorite']) { ?>
-            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="favorite">Favoritar</a>
+            <a class="waves-effect waves-light btn red darken-1 col s4" id="favorite">Favoritar</a>
         <?php } else { ?>
-            <a class="waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4" id="favorite">Favoritado</a>
+            <a class="waves-effect waves-light btn red-text text-darken-1 btn-border-red-darken-1 col s4" id="favorite">Favoritado</a>
         <?php } ?>
         <div id="modal1" class="modal">
             <div class="modal-content">
@@ -184,6 +185,7 @@
         }
         ?>
     </div>
+    <?php } ?>
 
 </div>
 
@@ -210,7 +212,7 @@
         });
 
         $('#favorite').on('click', function () {
-            var favorite = $('#favorite').text();
+            console.log('aaaaaaaaaaaaaaaa');
             const professionalId = <?php echo $this->input->get('id'); ?>;
             $.ajax({
                 type: "POST",
@@ -218,16 +220,29 @@
                 dataType: "json",
                 data: {
                     'professional': professionalId
+                },
+                success: function(){
+                    if($('#favorite').text = 'Favoritar') {
+                        $('#favorite').text('Favoritado').removeClass().addClass('waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4');
+                    } else {
+                        $('#favorite').text('Favoritar').removeClass().addClass('waves-effect waves-light btn modal-trigger red darken-1 col s4');
+                    }
                 }
-            }).done(function(){
-                console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-                if(favorite = 'Favoritar') {
+            });
+        });
+
+        /*$.ajax({
+            type: "POST",
+            url: document.location.origin + "/./index.php/ServiceController/checkService",
+            success: function(data){
+                if($('#favorite').text = 'Favoritar') {
                     $('#favorite').text('Favoritado').removeClass().addClass('waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4');
                 } else {
                     $('#favorite').text('Favoritar').removeClass().addClass('waves-effect waves-light btn modal-trigger red darken-1 col s4');
                 }
-            });
-        });
+
+            }
+        });*/
 
     });
 </script>

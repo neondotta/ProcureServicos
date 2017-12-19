@@ -92,7 +92,7 @@ class UserController extends IndexCore
     public function checkStatus()
     {
         $status = $this->UserModel->checkStatus();
-        print_r($status); die();
+        print_r($status);
         return $status;
     }
 

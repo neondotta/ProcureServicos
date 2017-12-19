@@ -29,17 +29,14 @@
                     <label>
                         <span>Off</span>
                         <?php
-                            if ($this->session->userdata('login')['status']) {
-                                echo form_checkbox('status', 'accept', TRUE);
-                            } else {
-                                echo form_checkbox('status', 'accept', FALSE);
-                            }
+                            echo form_checkbox('status', '','onload="checkStatusUser();"', ['id' => 'statusUser']);
                         ?>
                         <span class="lever"></span>
                         <span>On</span>
                     </label>
                 </div>
             </li>
+            <li><a href="<?= base_url('ProfessionalController/servicesList')?>">Serviços</a></li>
     <?php
         }
     ?>
@@ -93,17 +90,14 @@
                                 <label>
                                     <span>Off</span>
                                     <?php
-                                    if ($this->session->userdata('login')['status']) {
-                                        echo form_checkbox('status', 'accept', TRUE);
-                                    } else {
-                                        echo form_checkbox('status', 'accept', FALSE);
-                                    }
+                                        echo form_checkbox('status', '', 'onload="checkStatusUser();"', ['id' => 'statusUser']);
                                     ?>
                                     <span class="lever"></span>
                                     <span>On</span>
                                 </label>
                             </div>
                         </li>
+                        <li><a href="<?= base_url('ProfessionalController/servicesList')?>">Serviços</a></li>
                         <?php
                     }
                     ?>

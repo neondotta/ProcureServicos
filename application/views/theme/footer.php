@@ -17,7 +17,7 @@
         });
 
         $('select').material_select();
-
+            
         $('.lever').on("click", function () {
             $.ajax({
                 type: "POST",
@@ -26,7 +26,26 @@
             });
         });
 
+        $.ajax({
+            type: "POST",
+            url: document.location.origin + "/index.php/UserController/checkStatus",
+            success: function(data){
+                jQuery('#statusUser').material_select();
+                if (data == false) {
+                    console.log('sucesso');
+                    jQuery('#statusUser').material_select();
+                    return jQuery('#statusUser').removeAttr('checked').change();
+                }
+                console.log('sucesso2');
+                return jQuery('#statusUser').attr('checked', 'checked').change();
+
+            }
+        });
+
+
     });
+
+
 </script>
 
 </body>

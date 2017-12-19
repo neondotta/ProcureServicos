@@ -12,4 +12,5 @@ class ServiceModel extends CI_Model
     {
         return $this->db->insert('service', $service);
     }
+
 }
