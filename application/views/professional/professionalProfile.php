@@ -212,37 +212,23 @@
         });
 
         $('#favorite').on('click', function () {
-            console.log('aaaaaaaaaaaaaaaa');
+
             const professionalId = <?php echo $this->input->get('id'); ?>;
             $.ajax({
                 type: "POST",
-                url: "../index.php/UserController/favoriteProfessional",
-                dataType: "json",
+                url: document.location.origin + "/index.php/UserController/favoriteProfessional",
                 data: {
                     'professional': professionalId
                 },
                 success: function(){
-                    if($('#favorite').text = 'Favoritar') {
-                        $('#favorite').text('Favoritado').removeClass().addClass('waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4');
+                    if($('#favorite').text() == 'Favoritar') {
+                        $('#favorite').text('Favoritado').removeClass().addClass('waves-effect waves-light btn modal-trigger red-text text-darken-1 white btn-border-red-darken-1 col s4');
                     } else {
                         $('#favorite').text('Favoritar').removeClass().addClass('waves-effect waves-light btn modal-trigger red darken-1 col s4');
                     }
                 }
             });
         });
-
-        /*$.ajax({
-            type: "POST",
-            url: document.location.origin + "/./index.php/ServiceController/checkService",
-            success: function(data){
-                if($('#favorite').text = 'Favoritar') {
-                    $('#favorite').text('Favoritado').removeClass().addClass('waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4');
-                } else {
-                    $('#favorite').text('Favoritar').removeClass().addClass('waves-effect waves-light btn modal-trigger red darken-1 col s4');
-                }
-
-            }
-        });*/
 
     });
 </script>
