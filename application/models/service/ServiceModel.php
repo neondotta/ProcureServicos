@@ -81,6 +81,18 @@ class ServiceModel extends CI_Model
         }
              
     }
+
+    public function getServiceStatus($serviceId)
+    {
+        $query = $this->db->select('service.*')
+        ->from('service')
+        ->where('service.id',$serviceId)
+        ->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->row();
+        }
+    }
     
     public function acceptService($params,$serviceId)
     {
@@ -88,4 +100,5 @@ class ServiceModel extends CI_Model
         $this->db->update('service', $params);
         return true;
     }
+
 }

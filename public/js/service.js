@@ -31,6 +31,7 @@ $(document).ready(function(){
             success:function(data) {
                 // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
                 alert("Aguardando resposta do cliente");
+                location.reload();
             },
     
         });
@@ -50,6 +51,67 @@ $(document).ready(function(){
             success:function(data) {
                 // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
                 alert(data);
+                location.reload();
+            },
+    
+        });
+    });
+
+    $('#startService').click(function(){
+        var serviceId = $('#serviceId').val();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost/procure-servicos/ServiceController/startService/"+serviceId,
+            dataType: "json",
+            success:function(data) {
+                // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
+                alert(data);
+                location.reload();
+            },
+    
+        });
+    });
+
+    $('#confirmService').click(function(){
+        var serviceId = $('#serviceId').val();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost/procure-servicos/ServiceController/confirmService/"+serviceId,
+            dataType: "json",
+            success:function(data) {
+                // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
+                alert(data);
+                location.reload();
+            },
+    
+        });
+    });
+
+    $('#finishService').click(function(){
+        var serviceId = $('#serviceId').val();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost/procure-servicos/ServiceController/finishService/"+serviceId,
+            dataType: "json",
+            success:function(data) {
+                // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
+                alert(data);
+                location.reload();
+            },
+    
+        });
+    });
+
+    $('#confirmFinish').click(function(){
+        var serviceId = $('#serviceId').val();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost/procure-servicos/ServiceController/confirmFinish/"+serviceId,
+            dataType: "json",
+            success:function(data) {
+                // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
+                alert(data);
+                location.reload();
             },
     
         });

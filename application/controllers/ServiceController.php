@@ -122,4 +122,74 @@ class ServiceController extends IndexCore
 
     }
 
+
+    public function startService($serviceId) {
+        $this->load->model("service/ServiceModel");
+        
+        $service = $this->ServiceModel->getServiceStatus($serviceId);
+
+        if ($service->status == 4) {
+            $params = array(
+                "status" => 5
+            );
+
+            if($this->ServiceModel->acceptService($params,$serviceId)){            
+                echo json_encode("Aguardando confirmação de inicio do cliente");
+            }
+        } else {
+            echo json_encode("O serviço não pode ser iniciado sem a confirmação do cliente.");
+        }
+    }    
+
+    public function confirmService($serviceId)
+    {
+        $this->load->model("service/ServiceModel");
+        
+        $service = $this->ServiceModel->getServiceStatus($serviceId);
+
+        if ($service->status == 5) {
+            $params = array(
+                "status" => 1
+            );
+
+            if($this->ServiceModel->acceptService($params,$serviceId)){            
+                echo json_encode("O serviço está em andamento");
+            }
+        } 
+    }
+
+    public function finishService($serviceId) {
+        $this->load->model("service/ServiceModel");
+        
+        $service = $this->ServiceModel->getServiceStatus($serviceId);
+
+        if ($service->status == 1) {
+            $params = array(
+                "status" => 6
+            );
+
+            if($this->ServiceModel->acceptService($params,$serviceId)){            
+                echo json_encode("Aguardando confirmação de finalização do cliente");
+            }
+        } else {
+            echo json_encode("O serviço não pode ser finalizado sem a confirmação do cliente.");
+        }
+    } 
+    
+    public function confirmFinish($serviceId)
+    {
+        $this->load->model("service/ServiceModel");
+        
+        $service = $this->ServiceModel->getServiceStatus($serviceId);
+
+        if ($service->status == 6) {
+            $params = array(
+                "status" => 2
+            );
+
+            if($this->ServiceModel->acceptService($params,$serviceId)){            
+                echo json_encode("O serviço está Finalizado");
+            }
+        } 
+    }
 }   

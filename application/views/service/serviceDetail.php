@@ -11,7 +11,7 @@
                             <strong>Usuário:</strong> <?= ucfirst($s['name']) ?><br>
                             <strong>Data:</strong> <?= date("d/m/Y", strtotime($s['date'])); ?><br>
                             <strong>Horário:</strong> <?= $s['time'] ?><br>
-                            <?php if ($s['serviceStatus'] == 4): 
+                            <?php if ($s['serviceStatus'] != 0 || $s['serviceStatus'] != 3): 
                                 $readonly = "readonly";
                                 $disabled = 'disabled'
                             ?>
@@ -23,8 +23,13 @@
                             <input type="hidden" id="serviceId" value="<?= $s['serviceId'] ?>">
                             <label for="price">Valor do serviço:</label>
                             <input type="text" name="price" id="price" placeholder="Valor do Serviço" <?=$readonly?>  value="<?= $s['value'] ?>">
-                            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="accept" <?=$disabled?>>Aceitar</a>  
-                            <a class="waves-effect waves-light btn modal-trigger green darken-1 col s4" id="">Iniciar Serviço</a>                                 
+                            <?php if ($s['serviceStatus'] == 0 || $s['serviceStatus'] == 3) : ?>
+                            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="accept" <?=$disabled?>>Aceitar Serviço</a>  
+                            <?php elseif($s['serviceStatus'] == 1): ?>
+                            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="finishService">Finalizar Serviço</a> 
+                            <?php elseif($s['serviceStatus'] == 4): ?>
+                            <a class="waves-effect waves-light btn modal-trigger green darken-1 col s4" id="startService">Iniciar Serviço</a>                                 
+                            <?php endif ?>
                         </div>
                     </div>
                 </div>
