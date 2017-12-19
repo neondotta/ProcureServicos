@@ -101,4 +101,9 @@ class ServiceModel extends CI_Model
         return true;
     }
 
+    public function serviceRating($params)
+    {
+        return $this->db->insert('service_rating', $params);
+    }
+
 }

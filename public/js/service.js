@@ -109,8 +109,47 @@ $(document).ready(function(){
             url: "http://localhost/procure-servicos/ServiceController/confirmFinish/"+serviceId,
             dataType: "json",
             success:function(data) {
-                // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
                 alert(data);
+                $('#modal1').modal('open');
+
+            },
+    
+        });
+    });
+    
+    $('#serviceRating').click(function(){
+        var serviceId = $('#serviceId').val();
+        var idRating =  $('input[name=star]').attr('id');
+        var description = $("#description").val();
+        var rating = 0;
+
+        switch(idRating) {
+            case 'star-5-2':
+                rating = 5
+                break;
+            case 'star-4-2':
+                rating = 4;
+                break;
+            case 'star-3-2':
+                rating = 3;
+                break;  
+            case 'star-2-2':
+                rating = 2;
+                break;
+            case 'star-1-2':
+                rating = 1;
+                break;      
+        }
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/procure-servicos/ServiceController/serviceRating",
+            dataType: "json",
+            data:{
+                "serviceId": serviceId,
+                "rating": rating,
+                "description": description
+            },
+            success:function(data) {
                 location.reload();
             },
     

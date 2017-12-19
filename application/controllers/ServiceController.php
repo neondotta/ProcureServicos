@@ -192,4 +192,21 @@ class ServiceController extends IndexCore
             }
         } 
     }
+
+    public function serviceRating(){
+        $serviceId = $this->input->post("serviceId");
+        $rating = $this->input->post("rating");
+        $description = $this->input->post("description");
+
+        $this->load->model("service/ServiceModel");
+
+        $params = array(
+            "service_id" => $serviceId,
+            "rating" => $rating,
+            "description" => $description
+        );
+
+        return $this->ServiceModel->serviceRating($params);
+
+    }
 }   
