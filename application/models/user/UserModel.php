@@ -92,12 +92,28 @@ class UserModel extends CI_Model
         $user = $this->session->userdata('login')['id'];
         $fields = ['id_user' => $user, 'id_professional' => $professional];
         if($this->findFavorite($professional)) {
-            print_r('lalalalaalal');
-            print_r($fields);
             return $this->db->delete('favorite_professional', $fields);
         }
-
         return $this->db->insert("favorite_professional", $fields);
     }
 
+    public function favoriteList()
+    {
+        $user = $this->session->userdata('login')['id'];
+
+        $query = $this->db->select('professional.*,user.name, user.email, user.name_picture, user.address_picture')
+            ->from('favorite_professional')
+            ->where(['favorite_professional.id_user' => $user])
+            ->join('professional', 'professional.id = favorite_professional.id_professional')
+            ->join('user', 'user.id = professional.id_user', 'inner')
+            ->get();
+
+        if ($query->num_rows() > 0) {
+            $professional['data']['professional'] = $query->row_array();
+
+            return $professional;
+        }
+
+        return false;
+    }
 }

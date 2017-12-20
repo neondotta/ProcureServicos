@@ -32,13 +32,13 @@
             if($this->session->has_userdata('login')) {
             ?>
                 <?php
-                if ($professional['certificate']) {
-                    ?>
-                    <div class="icon col s3">
-                        <i class="small material-icons teal-text">verified_user</i>
-                    </div>
-                    <?php
-                }
+                    if ($professional['certificate']) {
+                ?>
+                        <div class="icon col s3">
+                            <i class="small material-icons teal-text">verified_user</i>
+                        </div>
+                <?php
+                    }
                 ?>
             <?php
             }
@@ -48,7 +48,7 @@
     <?php if($this->session->has_userdata('login')) { ?>
     <div class="col s12 info-professional col s12">
         <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4 margin-r-10" href="#modal1">Contratar</a>
-        <?php if ($professional['favorite']) { ?>
+        <?php if (!$professional['favorite']) { ?>
             <a class="waves-effect waves-light btn red darken-1 col s4" id="favorite">Favoritar</a>
         <?php } else { ?>
             <a class="waves-effect waves-light btn red-text text-darken-1 btn-border-red-darken-1 col s4" id="favorite">Favoritado</a>
@@ -210,7 +210,6 @@
                 submit.removeAttribute("disabled");
             }
         });
-
         $('#favorite').on('click', function () {
 
             const professionalId = <?php echo $this->input->get('id'); ?>;
