@@ -9,12 +9,14 @@
 
 
     $('#confirm-password').on('keyup', function() {
+        console.log(confirm_password.value);
+        console.log(password.value);
         if(confirm_password.value != password.value) {
             $( "#confirm-password, #password" ).removeClass("valid").addClass("invalid");
             submit.setAttribute("disabled","disabled");
         }else{
             $( "#confirm-password, #password" ).removeClass("invalid").addClass("valid");
-            submit.setAttribute("enable", "enable");
+            submit.removeAttribute("disabled").setAttribute("enable", "enable");
         }
     });
 
@@ -105,16 +107,16 @@
                 $("#street").val("...").change().attr('readonly', true);
                 $("#city").val("...").change().attr('readonly', true);
                 $("#country").val("...").change().attr('readonly', true);
-                $("#nation").val("Brazil").change().attr('readonly', true);
+                $("#nation").val("Brazil").change().attr('readonly', true).removeClass('invalid').addClass('valid');
 
                 //Consulta o webservice viacep.com.br/
                 $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 
                     if (!("erro" in dados)) {
                         //Atualiza os campos com os valores da consulta.
-                        $("#street").val(dados.logradouro);
-                        $("#city").val(dados.localidade);
-                        $("#country").val(dados.uf);
+                        $("#street").val(dados.logradouro).removeClass('invalid').addClass('valid');
+                        $("#city").val(dados.localidade).removeClass('invalid').addClass('valid');
+                        $("#country").val(dados.uf).removeClass('invalid').addClass('valid');
 
                         if(dados.logradouro.length == 0) {
                             $("#street").val("").change().attr('readonly', false).focus();

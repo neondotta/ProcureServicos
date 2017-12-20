@@ -29,17 +29,14 @@
                     <label>
                         <span>Off</span>
                         <?php
-                            if ($this->session->userdata('login')['status']) {
-                                echo form_checkbox('status', 'accept', TRUE);
-                            } else {
-                                echo form_checkbox('status', 'accept', FALSE);
-                            }
+                            echo form_checkbox('status', '','onload="checkStatusUser();"', ['id' => 'statusUser']);
                         ?>
                         <span class="lever"></span>
                         <span>On</span>
                     </label>
                 </div>
             </li>
+            <li><a href="<?= base_url('ProfessionalController/servicesList')?>">Serviços</a></li>
     <?php
         }
     ?>
@@ -95,23 +92,21 @@
                                 <label>
                                     <span>Off</span>
                                     <?php
-                                    if ($this->session->userdata('login')['status']) {
-                                        echo form_checkbox('status', 'accept', TRUE);
-                                    } else {
-                                        echo form_checkbox('status', 'accept', FALSE);
-                                    }
+                                        echo form_checkbox('status', '', 'onload="checkStatusUser();"', ['id' => 'statusUser']);
                                     ?>
                                     <span class="lever"></span>
                                     <span>On</span>
                                 </label>
                             </div>
                         </li>
+                        <li><a href="<?= base_url('ProfessionalController/servicesList')?>">Serviços</a></li>
                         <?php
                     }
                     ?>
                 <li><a href="<?= base_url('ProfessionalController/favoriteList')?>">Profissionais Favoritados</a></li>
                 <li><a href="<?= base_url('ServiceController/listServices')?>">Solicitações de Serviços</a></li>
                 <li><a href="<?= base_url('ServiceController/listServices/user')?>">Minhas Solicitações</a></li>
+                <li><a href="<?= base_url('UserController/favoriteList')?>">Profissionais Favoritados</a></li>
                 <li><a href="<?= base_url('LoginController/logout')?>">Logout</a></li>
             <?php } else { ?>
                 <?=$_SERVER['DOCUMENT_ROOT']."./bah";?>

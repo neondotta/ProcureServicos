@@ -26,7 +26,6 @@ class UserModel extends CI_Model
     public function find($field = NULL,$where = NULL)
     {
         $user = [];
-
         $this->db->where($where);
 
         if($this->db->get('user')->num_rows() == 1) {
@@ -45,21 +44,32 @@ class UserModel extends CI_Model
         $this->db->update('user');
     }
 
-    public function statusUser()
+    public function checkStatus()
     {
         $user = $this->find(null, ['id' => $this->session->userdata('login')['id']]);
+        $this->db->where('id', $user['id']);
+        $user = $this->db->get('user')->row_array();
 
-        if ($user['status'] == 0) {
-            $this->db->set('status', TRUE);
-            $this->session->userdata('login')['status'] = 1;
-        } else {
+        return $user['status'];
+
+    }
+
+    public function statusUser()
+    {
+        $status = $this->checkStatus();
+        $this->db->where('id', $this->session->userdata('login')['id']);
+
+        if ($status['status']) {
             $this->db->set('status', FALSE);
-            $this->session->userdata('login')['status'] = 0;
+            $result = FALSE;
+        } else {
+            $this->db->set('status', TRUE);
+            $result = TRUE;
         }
 
-        $this->db->where('id', $user['id']);
         $this->db->update('user');
-
+        print_r($result);
+        return $result;
     }
 
     public function findFavorite($professional)
@@ -82,12 +92,29 @@ class UserModel extends CI_Model
         $user = $this->session->userdata('login')['id'];
         $fields = ['id_user' => $user, 'id_professional' => $professional];
         if($this->findFavorite($professional)) {
-            print_r('lalalalaalal');
-            print_r($fields);
             return $this->db->delete('favorite_professional', $fields);
         }
-
         return $this->db->insert("favorite_professional", $fields);
     }
 
+    public function favoriteList()
+    {
+        $user = $this->session->userdata('login')['id'];
+
+        $query = $this->db
+            ->where_in('favorite_professional.id_user', $user)
+            ->select('professional.*,user.name, user.email, user.name_picture, user.address_picture')
+            ->from('favorite_professional')
+            ->join('professional', 'professional.id = favorite_professional.id_professional', 'inner')
+            ->join('user', 'user.id = professional.id_user', 'inner')
+            ->get();
+
+        if ($query->num_rows() > 0) {
+            $professional['professional'] = $query->result_array();
+
+            return $professional;
+        }
+
+        return false;
+    }
 }

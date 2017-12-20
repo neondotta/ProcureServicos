@@ -32,25 +32,26 @@
             if($this->session->has_userdata('login')) {
             ?>
                 <?php
-                if ($professional['certificate']) {
-                    ?>
-                    <div class="icon col s3">
-                        <i class="small material-icons teal-text">verified_user</i>
-                    </div>
-                    <?php
-                }
+                    if ($professional['certificate']) {
+                ?>
+                        <div class="icon col s3">
+                            <i class="small material-icons teal-text">verified_user</i>
+                        </div>
+                <?php
+                    }
                 ?>
             <?php
             }
             ?>
         </div>
     </div>
+    <?php if($this->session->has_userdata('login')) { ?>
     <div class="col s12 info-professional col s12">
         <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4 margin-r-10" href="#modal1">Contratar</a>
-        <?php if ($professional['favorite']) { ?>
-            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="favorite">Favoritar</a>
+        <?php if (!$professional['favorite']) { ?>
+            <a class="waves-effect waves-light btn red darken-1 col s4" id="favorite">Favoritar</a>
         <?php } else { ?>
-            <a class="waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4" id="favorite">Favoritado</a>
+            <a class="waves-effect waves-light btn red-text text-darken-1 btn-border-red-darken-1 col s4" id="favorite">Favoritado</a>
         <?php } ?>
         <div id="modal1" class="modal">
             <div class="modal-content">
@@ -184,6 +185,7 @@
         }
         ?>
     </div>
+    <?php } ?>
 
 </div>
 
@@ -208,23 +210,21 @@
                 submit.removeAttribute("disabled");
             }
         });
-
         $('#favorite').on('click', function () {
-            var favorite = $('#favorite').text();
+
             const professionalId = <?php echo $this->input->get('id'); ?>;
             $.ajax({
                 type: "POST",
-                url: "../index.php/UserController/favoriteProfessional",
-                dataType: "json",
+                url: document.location.origin + "/index.php/UserController/favoriteProfessional",
                 data: {
                     'professional': professionalId
-                }
-            }).done(function(){
-                console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-                if(favorite = 'Favoritar') {
-                    $('#favorite').text('Favoritado').removeClass().addClass('waves-effect waves-light btn modal-trigger red-text text-darken-1 btn-border-red-darken-1 col s4');
-                } else {
-                    $('#favorite').text('Favoritar').removeClass().addClass('waves-effect waves-light btn modal-trigger red darken-1 col s4');
+                },
+                success: function(){
+                    if($('#favorite').text() == 'Favoritar') {
+                        $('#favorite').text('Favoritado').removeClass().addClass('waves-effect waves-light btn modal-trigger red-text text-darken-1 white btn-border-red-darken-1 col s4');
+                    } else {
+                        $('#favorite').text('Favoritar').removeClass().addClass('waves-effect waves-light btn modal-trigger red darken-1 col s4');
+                    }
                 }
             });
         });

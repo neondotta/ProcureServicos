@@ -89,6 +89,13 @@ class UserController extends IndexCore
         return $this->UserModel->statusUser();
     }
 
+    public function checkStatus()
+    {
+        $status = $this->UserModel->checkStatus();
+        print_r($status);
+        return $status;
+    }
+
     public function findFavorite()
     {
         return $this->UserModel->findFavorite($this->input->post('professional'));
@@ -99,4 +106,10 @@ class UserController extends IndexCore
         return $this->UserModel->favoriteProfessional($this->input->post('professional'));
     }
 
+    public function favoriteList()
+    {
+        $favorite = $this->UserModel->favoriteList();
+        return $this->view('user/FavoriteList', $favorite);
+
+    }
 }

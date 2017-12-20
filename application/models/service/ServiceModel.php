@@ -12,7 +12,7 @@ class ServiceModel extends CI_Model
     {
         return $this->db->insert('service', $service);
     }
-
+  
     public function searchService($idUser)
     {
         $id_professional = $this->findProfessionalId($idUser);

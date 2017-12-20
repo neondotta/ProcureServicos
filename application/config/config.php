@@ -525,9 +525,9 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-function __autoload($class)
+spl_autoload_register(function($class)
 {
     if (file_exists(APPPATH . "core/" . $class . '.php')) {
         include_once(APPPATH . "core/" . $class . '.php');
     }
-}
+});
