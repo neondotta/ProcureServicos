@@ -1,3 +1,4 @@
+
 <div class="container medium">
     <div class="row ">
 
@@ -12,9 +13,9 @@
             <div class="input-field col s8">
                 <select multiple>
                     <option value="" disabled selected>Profissional</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                    <?php foreach ($categories as $c) : ?>
+                    <option value="<?php echo $c['id'] ?>"><?php echo $c['category'] ?></option>
+                    <?php endforeach ?>
                 </select>
                 <label>Categoria de profissional</label>
             </div>
@@ -66,3 +67,4 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNyLsAhFt4hIZKeNJYC244jPPayM0GhrY"></script>
 <script src="<?= base_url() ?>public/js/googleMaps.js"></script>
+<script src="<?= base_url() ?>public/js/service.js"></script>

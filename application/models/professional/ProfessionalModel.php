@@ -16,7 +16,7 @@ class ProfessionalModel extends CI_Model
     }
 
     public function findId($id, $find)
-    {
+    {   
         $this->load->model('category/CategoryModel');
         return $this->find($id, $find);
     }

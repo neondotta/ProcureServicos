@@ -15,7 +15,9 @@ class IndexController extends IndexCore
 
     public function index()
     {
-        $this->view('index/index');
+        $data = $this->loadCategories();
+
+        $this->view('index/index', $data);
     }
 
     public function listProfessional($listProfessional)
@@ -25,6 +27,12 @@ class IndexController extends IndexCore
         }
 
         return "Não foi localizado profissionais nesta região";
+    }
+
+    public function loadCategories()
+    {
+        $this->load->model('category/CategoryModel');
+        return $this->CategoryModel->find();
     }
 
 }

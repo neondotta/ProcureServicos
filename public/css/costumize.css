@@ -324,3 +324,10 @@ ul#nav-mobile li {
     }
 
 }
+
+
+
+/********************** SERVIÇOS *******************/
+.collection.with-header .collection-item.avatar {
+    padding-left: 20px;
+}
