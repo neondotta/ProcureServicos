@@ -21,7 +21,7 @@ $(document).ready(function(){
         console.log(price);
         $.ajax({
             type: "POST",
-            url: "http://localhost/procure-servicos/ServiceController/acceptService",
+            url: document.location.origin + "/index.php/ServiceController/acceptService",
             dataType: "json",
             data:{
                 "price": price,
@@ -42,7 +42,7 @@ $(document).ready(function(){
         console.log(price);
         $.ajax({
             type: "POST",
-            url: "http://localhost/procure-servicos/ServiceController/userAcceptService",
+            url: document.location.origin + "/index.php/ServiceController/userAcceptService",
             dataType: "json",
             data:{
                 "serviceId": serviceId,
@@ -61,7 +61,7 @@ $(document).ready(function(){
         var serviceId = $('#serviceId').val();
         $.ajax({
             type: "GET",
-            url: "http://localhost/procure-servicos/ServiceController/startService/"+serviceId,
+            url: document.location.origin + "/index.php/ServiceController/startService/"+serviceId,
             dataType: "json",
             success:function(data) {
                 // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
@@ -76,7 +76,7 @@ $(document).ready(function(){
         var serviceId = $('#serviceId').val();
         $.ajax({
             type: "GET",
-            url: "http://localhost/procure-servicos/ServiceController/confirmService/"+serviceId,
+            url: document.location.origin + "/index.php/ServiceController/confirmService/"+serviceId,
             dataType: "json",
             success:function(data) {
                 // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
@@ -91,7 +91,7 @@ $(document).ready(function(){
         var serviceId = $('#serviceId').val();
         $.ajax({
             type: "GET",
-            url: "http://localhost/procure-servicos/ServiceController/finishService/"+serviceId,
+            url: document.location.origin + "/index.php/ServiceController/finishService/"+serviceId,
             dataType: "json",
             success:function(data) {
                 // quando retornar com sucesso o ajax, o mesmo irá adicionar os markers
@@ -106,7 +106,7 @@ $(document).ready(function(){
         var serviceId = $('#serviceId').val();
         $.ajax({
             type: "GET",
-            url: "http://localhost/procure-servicos/ServiceController/confirmFinish/"+serviceId,
+            url: document.location.origin + "/index.php/ServiceController/confirmFinish/"+serviceId,
             dataType: "json",
             success:function(data) {
                 alert(data);
@@ -142,7 +142,7 @@ $(document).ready(function(){
         }
         $.ajax({
             type: "POST",
-            url: "http://localhost/procure-servicos/ServiceController/serviceRating",
+            url: document.location.origin + "/index.php/ServiceController/serviceRating",
             dataType: "json",
             data:{
                 "serviceId": serviceId,
