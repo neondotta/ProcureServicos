@@ -16,9 +16,9 @@ class UserController extends IndexCore
         $this->load->model('user/UserModel');
     }
 
-    public function openForm()
+    public function openForm($data = null)
     {
-        $this->view('user/Form');
+        $this->view('user/Form', $data);
     }
 
     public function insert()
@@ -79,9 +79,53 @@ class UserController extends IndexCore
         redirect(base_url().'UserController/openForm');
     }
 
-    public function edit()
-    {
+    public function edit() {
 
+        $idUser = ['id' => $this->session->userdata('login')['id']];
+        $user = $this->findId($idUser);
+        return $this->view('user/Form', $user);
+    }
+
+    public function findId($id)
+    {
+        return $this->UserModel->findId($id);
+    }
+
+    public function update()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        $user = [
+            "name" => $this->input->post('name'),
+            "cpf" => $this->input->post('cpf'),
+            "cep" => $this->input->post('cep'),
+            "nation" => $this->input->post('nation'),
+            "country" => $this->input->post('country'),
+            "city" => $this->input->post('city'),
+            "street" => $this->input->post('street'),
+            "number" => $this->input->post('number'),
+            "complement" => $this->input->post('complement'),
+            "email" => $this->input->post('email'),
+            "latitude" => $this->input->post('latitude'),
+            "longitude" => $this->input->post('longitude'),
+            "password" => md5($this->input->post('password'))
+        ];
+
+        if ($this->form_validation->run()) {
+
+            $confirmInsert = $this->UserModel->update($user);
+            print_r($confirmInsert);
+            $this->session->set_flashdata('success', 'Edição efetuada com sucesso.');
+            redirect('/');
+        }
+
+        //temporário até criar validações.
+        $this->session->set_flashdata('error', 'Erro na edição. Favor verifique os campos editados.');
+        redirect(base_url('UserController/openForm'));
     }
 
     public function statusUser()
@@ -92,7 +136,6 @@ class UserController extends IndexCore
     public function checkStatus()
     {
         $status = $this->UserModel->checkStatus();
-        print_r($status);
         return $status;
     }
 

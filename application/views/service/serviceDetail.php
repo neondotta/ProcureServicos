@@ -22,7 +22,8 @@
                             <strong> <?= $s['service_status'] ?></strong><br><br>
                             <input type="hidden" id="serviceId" value="<?= $s['serviceId'] ?>">
                             <label for="price">Valor do serviço:</label>    
-                            <input type="text" name="price" id="price" placeholder="Valor do Serviço" <?=$readonly?>  value="<?= $s['value'] ?>">
+                            <input type="text" name="price" id="price" placeholder="Valor do Serviço"   value="<?= $s['value'] ?>">
+
                             <?php if ($s['serviceStatus'] == 0 || $s['serviceStatus'] == 3) : ?>
                             <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="accept" <?=$disabled?>>Aceitar Serviço</a>  
                             <?php elseif($s['serviceStatus'] == 1): ?>

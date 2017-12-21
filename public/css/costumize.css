@@ -62,6 +62,11 @@ ul#nav-mobile li {
             font-weight: 500;
         }
 
+#logo {
+    height:40px;
+    margin-top:5px;
+}
+
 .container.medium {
     width:90vw;
 }
@@ -91,6 +96,7 @@ ul#nav-mobile li {
 
 .col.main-button{
     text-align: center;
+    display: flex;
 }
     .main-button > button, .main-button > a  {
         margin:0 5px;

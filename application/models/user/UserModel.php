@@ -23,6 +23,24 @@ class UserModel extends CI_Model
         return $result;
     }
 
+    public function update($user) {
+        $this->db->where($this->session->userdata('login')['id']);
+        $result = $this->db->update("user", $user);
+
+        return $result;
+    }
+
+    public function findId($user)
+    {
+        $this->db->where($user);
+        $query = $this->db->get('user');
+        if ($query->num_rows() > 0) {
+            $user['perfil'] = $query->row_array();
+
+            return $user;
+        }
+    }
+
     public function find($field = NULL,$where = NULL)
     {
         $user = [];

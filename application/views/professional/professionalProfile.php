@@ -1,6 +1,6 @@
 <div class="container row">
     <div class="col s12 perfil">
-        <img src="<?= $professional['address_picture'] . $professional['name_picture'] ?>" class="col s4">
+        <img src="<?= $professional['address_picture'] . $professional['name_picture'] ?>" class="col s4 m2 l2">
         <div class="simple-data col s8">
             <div class="identifier col s9">
                 <strong><span><?= $professional['name'] ?></span></strong>
@@ -215,7 +215,7 @@
             const professionalId = <?php echo $this->input->get('id'); ?>;
             $.ajax({
                 type: "POST",
-                url: document.location.origin + "/index.php/UserController/favoriteProfessional",
+                url: document.location.origin + "/procure-servicos/index.php/UserController/favoriteProfessional",
                 data: {
                     'professional': professionalId
                 },

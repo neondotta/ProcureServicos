@@ -47,7 +47,7 @@
 </ul>
 <nav>
     <div class="nav-wrapper blue darken-4">
-        <a href="<?= base_url()?>" class="brand-logo">Logo</a>
+        <a href="<?= base_url()?>" class="brand-logo"><img src="<?=base_url('public/images/logo.png') ?>" id="logo" alt=""></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <?php if($this->session->has_userdata('login')) { ?>
@@ -99,11 +99,10 @@
                                 </label>
                             </div>
                         </li>
-                        <li><a href="<?= base_url('ProfessionalController/servicesList')?>">Serviços</a></li>
                         <?php
                     }
                     ?>
-                <li><a href="<?= base_url('ProfessionalController/favoriteList')?>">Profissionais Favoritados</a></li>
+                <li><a href="<?= base_url('UserController/edit')?>">Editar Perfil</a></li>
                 <li><a href="<?= base_url('ServiceController/listServices')?>">Solicitações de Serviços</a></li>
                 <li><a href="<?= base_url('ServiceController/listServices/user')?>">Minhas Solicitações</a></li>
                 <li><a href="<?= base_url('UserController/favoriteList')?>">Profissionais Favoritados</a></li>
