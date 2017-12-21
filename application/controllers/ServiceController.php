@@ -205,7 +205,8 @@ class ServiceController extends IndexCore
             "description" => $description
         );
 
-        return $this->ServiceModel->serviceRating($params);
+        $this->ServiceModel->serviceRating($params);
 
+        echo 'FEITOOO';
     }
 }   
