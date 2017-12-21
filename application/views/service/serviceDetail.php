@@ -25,7 +25,7 @@
                             <input type="text" name="price" id="price" placeholder="Valor do Serviço"   value="<?= $s['value'] ?>">
 
                             <?php if ($s['serviceStatus'] == 0 || $s['serviceStatus'] == 3) : ?>
-                            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="accept" <?=$disabled?>>Aceitar Serviço</a>  
+                            <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="accept">Aceitar Serviço</a>  
                             <?php elseif($s['serviceStatus'] == 1): ?>
                             <a class="waves-effect waves-light btn modal-trigger red darken-1 col s4" id="finishService">Finalizar Serviço</a> 
                             <?php elseif($s['serviceStatus'] == 4): ?>
