@@ -150,6 +150,7 @@ $(document).ready(function(){
                 "description": description
             },
             success:function(data) {
+                $('#modal').modal('close');
                 location.reload();
             },
     
